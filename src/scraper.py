@@ -1,19 +1,23 @@
+import sys
 import requests
 from bs4 import BeautifulSoup
+from objects import Team, Player
 
 base_url = "https://www.basketball-reference.com"
 
-class Team(object):
-
-    def __init__(self,name,w,l,r):
-        self.name = name
-        self.wins = w
-        self.losses = l
-        self.rank = r
-    
-    def __str__(self):
-        s = "{}. {} ~ Wins: {} Losses: {}".format(self.rank, self.name, self.wins, self.losses)
-        return s
+# Method to convert stats to player objects
+def get_player_list(table):
+    player_list = []
+    for row in table:
+        name = row.find("a").string
+        player = Player(name)
+        attr = {}
+        stats = row.findAll("td")
+        for stat in stats:
+            attr[stat["data-stat"]] = stat.string
+        player.set(attr)
+        player_list.append(player)
+    return player_list
 
 # Method to scrape standings from website
 def get_standings(conf):
@@ -38,3 +42,11 @@ def get_standings(conf):
     }
 
     return switch.get(conf, "Invalid Conference")
+
+# Method to scrape player stats from website 
+def get_player_stats():
+    url = "{}/leagues/NBA_2020_per_game.html".format(base_url)
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    table = page_content.findAll("tr",attrs={"class":"full_table"})
+    return get_player_list(table)
