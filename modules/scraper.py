@@ -44,8 +44,8 @@ def get_standings(conf):
     return switch.get(conf, "Invalid Conference")
 
 # Method to scrape player stats from website 
-def get_player_stats():
-    url = "{}/leagues/NBA_2020_per_game.html".format(base_url)
+def get_player_stats(year):
+    url = "{}/leagues/NBA_{}_per_game.html".format(base_url, str(year))
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr",attrs={"class":"full_table"})
