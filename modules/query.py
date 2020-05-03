@@ -6,7 +6,6 @@ class Query(object):
         self.conf = None
         self.region = None
 
-
 # Method to process query 
 def process(query):
     # TODO
