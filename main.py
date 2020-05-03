@@ -1,9 +1,14 @@
+import os
+import sys
 from modules import scraper
 
 def main():
 
-    exit = False
+    if sys.argv[1] and sys.argv[1] == "test":
+        os.system('python -m unittest test.py')
+        sys.exit()
 
+    exit = False
     while not exit:
         query = input("NBA> ")
         if "west" in query:

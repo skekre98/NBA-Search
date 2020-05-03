@@ -1,6 +1,6 @@
 from datetime import date
 import pandas as pd
-from scraper import get_player_stats
+from modules.scraper import get_player_stats
 
 
 # Function to recommend players for fantasy team 

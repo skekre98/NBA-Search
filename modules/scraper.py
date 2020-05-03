@@ -1,7 +1,7 @@
 import sys
 import requests
 from bs4 import BeautifulSoup
-from objects import Team, Player
+from modules.objects import Team, Player
 
 base_url = "https://www.basketball-reference.com"
 
