@@ -50,3 +50,10 @@ def get_player_stats():
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr",attrs={"class":"full_table"})
     return get_player_list(table)
+
+
+l = get_player_stats()
+
+for p in l:
+    score = p.get_fantasy_score()
+    print(p.name, score)

@@ -1,0 +1,1 @@
+from scraper import get_player_stats

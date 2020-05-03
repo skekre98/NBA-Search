@@ -1,4 +1,4 @@
-from web import scraper
+from modules import scraper
 
 def main():
 

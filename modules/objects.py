@@ -71,6 +71,20 @@ class Player(object):
         self.turnovers = float(attr["tov_per_g"])
         self.personal_fouls = float(attr["pf_per_g"])
         self.points = float(attr["pts_per_g"])
+    
+    def get_fantasy_score(self):
+        score = 0
+        score += 3 * self.three_points
+        score += 2 * self.two_points
+        score += self.ft
+        score += 1.2 * self.total_reb
+        score += 1.5 * self.assists
+        score += 2 * self.blocks
+        score += 2 * self.steals
+        score += -1 * self.turnovers
+        return score
+        
+        
 
 
 
