@@ -1,10 +1,10 @@
 import os
 import sys
-from modules import scraper
+from modules import scraper, analysis
 
 def main():
 
-    if sys.argv[1] and sys.argv[1] == "test":
+    if len(sys.argv)>1 and sys.argv[1] == "test":
         os.system('python -m unittest test.py')
         sys.exit()
 
@@ -23,7 +23,8 @@ def main():
             exit = True
         else:
             continue
-
+    
+    analysis.create_player_dataframe()
 
 if __name__ == "__main__":
     main()

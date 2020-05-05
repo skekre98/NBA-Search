@@ -1,5 +1,7 @@
 from datetime import date
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+from sklearn.cluster import KMeans
 from modules.scraper import get_player_stats
 
 
@@ -16,14 +18,16 @@ def fantasy_recommendations():
 
 
 # Function to create player dataframe for clustering
-def create_dataframe():
+def create_player_dataframe():
     year = int(date.today().year)
     players = get_player_stats(year)
 
     # Arrays for player categories 
     ns, pnts, rbs, asts, blks, fgp = [], [], [], [], [], []
+    player_map = {}
 
-    for p in players:
+    for i, p in enumerate(players):
+        player_map[i] = (p.name, p.points)
         ns.append(p.name)
         pnts.append(p.points)
         rbs.append(p.total_reb)
@@ -33,12 +37,24 @@ def create_dataframe():
 
     # Creating a pandas dataframe based on player categories 
     df = pd.DataFrame({
-        'Player': ns,
         'points': pnts,
         'rebounds': rbs,
         'assists': asts,
         'blocks': blks,
         'field goal percent': fgp
     })
+    
+    return df, player_map
 
-    return df
+
+def build_player_cluster(clusters):
+    data = create_player_dataframe()
+    km = KMeans(n_clusters=clusters).fit(data)
+    cluster_map = pd.DataFrame()
+    cluster_map['data_index'] = data.index.values
+    cluster_map['cluster'] = km.labels_
+    for i in range(10):
+        c = cluster_map[cluster_map.cluster == i]
+        for id, cluster in c.iterrows():
+            print(cluster['data_index'], cluster['cluster'])
+        print()
