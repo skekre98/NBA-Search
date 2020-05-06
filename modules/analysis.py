@@ -27,7 +27,7 @@ def create_player_dataframe():
     player_map = {}
 
     for i, p in enumerate(players):
-        player_map[i] = (p.name, p.points)
+        player_map[i] = p.name
         ns.append(p.name)
         pnts.append(p.points)
         rbs.append(p.total_reb)
@@ -43,18 +43,26 @@ def create_player_dataframe():
         'blocks': blks,
         'field goal percent': fgp
     })
-    
+
     return df, player_map
 
 
-def build_player_cluster(clusters):
-    data = create_player_dataframe()
+# Function to cluster players based on overall stats
+def build_stat_clusters(clusters):
+    data, p_map = create_player_dataframe()
     km = KMeans(n_clusters=clusters).fit(data)
     cluster_map = pd.DataFrame()
     cluster_map['data_index'] = data.index.values
     cluster_map['cluster'] = km.labels_
-    for i in range(10):
+
+    # cluster list 
+    player_clusters = []
+    # Iterate over cluster map
+    for i in range(clusters):
         c = cluster_map[cluster_map.cluster == i]
+        group = []
         for id, cluster in c.iterrows():
-            print(cluster['data_index'], cluster['cluster'])
-        print()
+            group.append(p_map[cluster['data_index']])
+        player_clusters.append(group)
+    
+    return player_clusters

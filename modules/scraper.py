@@ -43,6 +43,25 @@ def get_standings(conf):
 
     return switch.get(conf, "Invalid Conference")
 
+# Method to get PER scores for players 
+def get_per(year):
+    url = "{}/leagues/NBA_{}_advanced.html".format(base_url, str(year))
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    table = page_content.findAll("tr",attrs={"class":"full_table"})
+    per_list = []
+    for row in table:
+        name = row.find("a").string
+        
+        per = 0.0
+        stats = row.findAll("td")
+        for stat in stats:
+            if stat["data-stat"] == "per":
+                per = float(stat.string)
+        per_list.append((name, per))
+    return per_list
+
+
 # Method to scrape player stats from website 
 def get_player_stats(year):
     url = "{}/leagues/NBA_{}_per_game.html".format(base_url, str(year))
