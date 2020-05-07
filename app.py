@@ -12,6 +12,10 @@ trainer.train("chatterbot.corpus.english")
 def home():
     return render_template("home.html")
 
+@app.route("/chat")
+def chat():
+    return render_template("chat.html")
+
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
