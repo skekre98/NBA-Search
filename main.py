@@ -1,30 +1,25 @@
 import os
 import sys
-from modules import scraper, analysis
+
+# Function to print help message
+def printHelp():
+    print("usage: python main.py {test | run}")
+    print("  options:")
+    print("    test: runs unit tests for backend functions")
+    print("    run: Runs Flask server on localhost port 5000")
 
 def main():
-
-    if len(sys.argv)>1 and sys.argv[1] == "test":
+    if len(sys.argv)<=1:
+        print("ERROR: Missing Arguments")
+        printHelp()
+    elif sys.argv[1] == "test":
         os.system('python -m unittest test.py')
-        sys.exit()
+    elif sys.argv[1] == "run":
+        os.system('python app.py')
+    else:
+        print("ERROR: Incorrect Arguments")
+        printHelp()
 
-    exit = False
-    while not exit:
-        query = input("NBA> ")
-        if "west" in query:
-            ranks = scraper.get_standings("west")
-            for r in ranks:
-                print(r)
-            exit = True
-        elif "east" in query:
-            ranks = scraper.get_standings("east")
-            for r in ranks:
-                print(r)
-            exit = True
-        else:
-            continue
-    
-    analysis.create_player_dataframe()
 
 if __name__ == "__main__":
     main()
