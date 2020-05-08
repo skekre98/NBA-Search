@@ -165,8 +165,12 @@
             </div>
         </div>
     </header>
-    <!-- Header part end-->
-    <div id='bodybox'>
+    <!-- Chat box-->
+    <div class="left-content">
+      <img src="{{url_for('static', filename='img/AI-Orange.png')}}" alt="AIO">
+    </div>
+    <div class="right-content">
+      <div id='bodybox'>
         <div id='chatborder'>
           <p id="chatlog7" class="chatlog">&nbsp;</p>
           <p id="chatlog6" class="chatlog">&nbsp;</p>
@@ -175,10 +179,9 @@
           <p id="chatlog3" class="chatlog">&nbsp;</p>
           <p id="chatlog2" class="chatlog">&nbsp;</p>
           <p id="chatlog1" class="chatlog">&nbsp;</p>
-          <div id="userInput">
-            <input type="text" name="chat" id="chatbox" placeholder="Message" onfocus="placeHolder()">
-          </div>
+          <input type="text" name="chat" id="chatbox" placeholder="Type here to chat." onfocus="placeHolder()" size="40">
         </div>
+    </div>
     </div>
       <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
       <!-- custom js -->

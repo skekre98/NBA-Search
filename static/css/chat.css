@@ -1,6 +1,6 @@
 #bodybox {
     margin: auto;
-    max-width: 550px;
+    max-width: 100%;
     font: 15px arial, sans-serif;
     background-color: rgb(255, 102, 0);
     border-style: solid;
@@ -14,6 +14,7 @@
 }
 
 #chatborder {
+    text-align: center;
     border-style: solid;
     background-color: #f6f9f6;
     border-width: 3px;
