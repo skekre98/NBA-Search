@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <!-- themify CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
+    <!-- chat CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link
@@ -164,53 +166,24 @@
         </div>
     </header>
     <!-- Header part end-->
-
-    <div class="box"></div>
-    <div class="boxed">
-      <div>
-        <div id="chatbox">
-          <img
-            src="{{url_for('static', filename='img/bball.png')}}"
-            alt="SHAQ"
-            style="width:40px;height:40px;"
-          />
-          <p class="botText">
-            <span>Hi! I'm SHAQ an NBA ChatBot</span>
-          </p>
+    <div id='bodybox'>
+        <div id='chatborder'>
+          <p id="chatlog7" class="chatlog">&nbsp;</p>
+          <p id="chatlog6" class="chatlog">&nbsp;</p>
+          <p id="chatlog5" class="chatlog">&nbsp;</p>
+          <p id="chatlog4" class="chatlog">&nbsp;</p>
+          <p id="chatlog3" class="chatlog">&nbsp;</p>
+          <p id="chatlog2" class="chatlog">&nbsp;</p>
+          <p id="chatlog1" class="chatlog">&nbsp;</p>
+          <div id="userInput">
+            <input type="text" name="chat" id="chatbox" placeholder="Message" onfocus="placeHolder()">
+          </div>
         </div>
-        <div id="userInput">
-          <input id="textInput" type="text" name="msg" placeholder="Message" />
-        </div>
-      </div>
-
-      <!-- jquery plugins here-->
-      <!-- jquery -->
+    </div>
       <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
       <!-- custom js -->
       <script src="{{url_for('static', filename='js/custom.js')}}"></script>
-      <script>
-        function getBotResponse() {
-          var rawText = $("#textInput").val();
-          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
-          $("#textInput").val("");
-          $("#chatbox").append(userHtml);
-          document
-            .getElementById("userInput")
-            .scrollIntoView({ block: "start", behavior: "smooth" });
-          $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
-            $("#chatbox").append(botHtml);
-            document
-              .getElementById("userInput")
-              .scrollIntoView({ block: "start", behavior: "smooth" });
-          });
-        }
-        $("#textInput").keypress(function(e) {
-          if (e.which == 13) {
-            getBotResponse();
-          }
-        });
-      </script>
+      <script src="{{url_for('static', filename='js/chatbox.js')}}"></script>
     </div>
   </body>
 </html>

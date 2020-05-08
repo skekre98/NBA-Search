@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
@@ -20,10 +20,11 @@ def chat():
 def test():
     return render_template("test_chat.html")
 
-@app.route("/get")
+@app.route("/bot-msg", methods=['POST'])
 def get_bot_response():
-    userText = request.args.get('msg')
-    return str(chatbot.get_response(userText))
+    usr_msg = request.form['msg']
+    bot_msg = str(chatbot.get_response(usr_msg))
+    return jsonify(bot_msg)
 
 if __name__ == "__main__":
     app.run()
