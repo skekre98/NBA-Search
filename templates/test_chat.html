@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <!-- themify CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
+    <!-- chat CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <link
@@ -164,30 +166,44 @@
         </div>
     </header>
     <!-- Header part end-->
-
-    <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-content-center">
-                <div class="col-lg-7 col-xl-5">
-                    <div class="banner_text">
-                        <h1><span>Insight &</span><br> 
-                    Chill</h1>
-                        <p>Hi, I am an NBA chatbot. I love talking about basketball and life in general.</p>
-                        <a href="{{ url_for('chat') }}" class="btn_1">Let's Chat<span class="ti-angle-right"></span> </a>
-                    </div>
-                </div>
-            </div>
+    <div id='bodybox'>
+        <div id='chatborder'>
+          <p id="chatlog7" class="chatlog">&nbsp;</p>
+          <p id="chatlog6" class="chatlog">&nbsp;</p>
+          <p id="chatlog5" class="chatlog">&nbsp;</p>
+          <p id="chatlog4" class="chatlog">&nbsp;</p>
+          <p id="chatlog3" class="chatlog">&nbsp;</p>
+          <p id="chatlog2" class="chatlog">&nbsp;</p>
+          <p id="chatlog1" class="chatlog">&nbsp;</p>
+          <input type="text" name="chat" id="chatbox" placeholder="Message" onfocus="placeHolder()">
         </div>
-    </section>
-  <!-- banner part start-->
-
-  <a href="{{ url_for('test') }}">test</a>
-
-      <!-- jquery plugins here-->
-      <!-- jquery -->
+    </div>
       <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
       <!-- custom js -->
       <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+      <script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document
+            .getElementById("userInput")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+            $("#chatbox").append(botHtml);
+            document
+              .getElementById("userInput")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+      </script>
+    </div>
   </body>
 </html>

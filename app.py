@@ -16,6 +16,10 @@ def home():
 def chat():
     return render_template("chat.html")
 
+@app.route("/test")
+def test():
+    return render_template("test_chat.html")
+
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
