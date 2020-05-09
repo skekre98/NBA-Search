@@ -18,7 +18,7 @@ def chat():
 
 @app.route("/test")
 def test():
-    return render_template("test_chat.html")
+    return render_template("author.html")
 
 @app.route("/bot-msg", methods=['POST'])
 def get_bot_response():

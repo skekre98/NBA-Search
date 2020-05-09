@@ -8,20 +8,6 @@ body {
   font-size: 14px;
 }
 
-/* Left side object  */
-.left-content {
-  background-color: white;
-  float: left;
-  width: 60%;
-}
-
-/* Right side object  */
-.right-content {
-  background-color: white;
-  float: right;
-  width: 40%;
-}
-
 /* line 9, E:/166 Basketball/Basketball_Template/sass/_common.scss */
 section {
   overflow: hidden !important;

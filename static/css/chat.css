@@ -1,6 +1,17 @@
-#bodybox {
+#boximg {
     margin: auto;
     max-width: 100%;
+    height: 100%;
+    background-image: url(../img/circuit.jpg);
+    border-style: solid;
+    padding-top: 5%;
+    padding-bottom: 7%;
+}
+
+#bodybox {
+    margin: auto;
+    max-width: 60%;
+    height: 100%;
     font: 15px arial, sans-serif;
     background-color: rgb(255, 102, 0);
     border-style: solid;
@@ -9,12 +20,12 @@
     padding-bottom: 25px;
     padding-right: 25px;
     padding-left: 25px;
-    box-shadow: 5px 5px 5px grey;
     border-radius: 15px;
 }
 
 #chatborder {
     text-align: center;
+    height: 100%;
     border-style: solid;
     background-color: #f6f9f6;
     border-width: 3px;
