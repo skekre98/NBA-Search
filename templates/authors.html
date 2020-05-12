@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <title>Chatbot</title>
+  <title>Authors</title>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <!-- themify CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
-    <!-- chat CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <!-- chat CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}">
+    <!-- author CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/author.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link
       rel="shortcut icon"
@@ -37,65 +39,6 @@
         font-size: 20px;
         margin-top: 3px;
         text-align: center;
-      }
-      #chatbox {
-        margin-left: auto;
-        margin-right: auto;
-        width: 60%;
-        margin-top: 60px;
-      }
-      #userInput {
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-        margin-top: 60px;
-      }
-      #textInput {
-        width: 90%;
-        border: none;
-        border-bottom: 3px solid black;
-        font-family: monospace;
-        font-size: 17px;
-      }
-      .userText {
-        color: white;
-        font-family: monospace;
-        font-size: 17px;
-        text-align: right;
-        line-height: 30px;
-      }
-      .userText span {
-        background-color: red;
-        padding: 10px;
-        border-radius: 2px;
-      }
-      .botText {
-        color: white;
-        font-family: monospace;
-        font-size: 17px;
-        text-align: left;
-        line-height: 30px;
-      }
-      .botText span {
-        background-color: #4169e1;
-        padding: 10px;
-        border-radius: 2px;
-      }
-      #tidbit {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 300px;
-      }
-      .boxed {
-        margin-left: auto;
-        margin-right: auto;
-        width: 78%;
-        margin-top: 60px;
-        border: 1px solid green;
-      }
-      .box {
-        border: 2px solid black;
       }
     </style>
   </head>
@@ -163,34 +106,40 @@
             </div>
         </div>
     </header>
-    <!-- Chat box-->
-      <div id="boximg">
-        <div id='bodybox'>
-            <div id='chatborder'>
-              <p id="chatlog20" class="chatlog">&nbsp;</p>
-              <p id="chatlog19" class="chatlog">&nbsp;</p>
-              <p id="chatlog18" class="chatlog">&nbsp;</p>
-              <p id="chatlog17" class="chatlog">&nbsp;</p>
-              <p id="chatlog16" class="chatlog">&nbsp;</p>
-              <p id="chatlog15" class="chatlog">&nbsp;</p>
-              <p id="chatlog14" class="chatlog">&nbsp;</p>
-              <p id="chatlog13" class="chatlog">&nbsp;</p>
-              <p id="chatlog12" class="chatlog">&nbsp;</p>
-              <p id="chatlog11" class="chatlog">&nbsp;</p>
-              <p id="chatlog10" class="chatlog">&nbsp;</p>
-              <p id="chatlog9" class="chatlog">&nbsp;</p>
-              <p id="chatlog8" class="chatlog">&nbsp;</p>
-              <p id="chatlog7" class="chatlog">&nbsp;</p>
-              <p id="chatlog6" class="chatlog">&nbsp;</p>
-              <p id="chatlog5" class="chatlog">&nbsp;</p>
-              <p id="chatlog4" class="chatlog">&nbsp;</p>
-              <p id="chatlog3" class="chatlog">&nbsp;</p>
-              <p id="chatlog2" class="chatlog">&nbsp;</p>
-              <p id="chatlog1" class="chatlog">&nbsp;</p>
-              <input type="text" name="chat" id="chatbox" placeholder="Type here to chat." onfocus="placeHolder()" size="40">
+
+    <!-- Authors  -->
+    <h2 class="h4 block-title text-center mt-2">Authors</h2>
+    
+    <div id="boximg">
+        <section class="container py-5">
+            <div class="row pt-3">
+                <div class="col-lg-3 col-sm-6 mb-30 pb-2">
+                    <div class="team-card-style-3 mx-auto">
+                        <div class="team-thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Author Picture">
+                        </div>
+                        <h4 class="team-name">Sharvil Kekre</h4><a class="team-contact-link" href="tel:+19871625346"><i class="fe-icon-phone"></i>&nbsp;+1 (987) 162 53 46</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a>
+                        <div class="team-social-bar-wrap">
+                            <div class="team-social-bar">
+                                <a class="social-btn sb-style-1 sb-twitter" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a class="social-btn sb-style-1 sb-github" href="#">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                                <a class="social-btn sb-style-1 sb-stackoverflow" href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a class="social-btn sb-style-1 sb-skype" href="#">
+                                    <i class="fa fa-skype"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-      </div>
+        </section>
+    </div>
+    <!-- Authors end -->
 
     <!-- footer part start-->
     <footer class="copyright_part">

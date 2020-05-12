@@ -6,8 +6,7 @@ body{
   position: relative;
   max-width: 360px;
   text-align: center;
-  background:#fff;
- box-shadow: 0 22px 36px -12px rgba(64, 64, 64, .13);
+  background: #ff8b23;
 }
 .team-contact-link {
   display: block;

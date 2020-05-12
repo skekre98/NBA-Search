@@ -128,24 +128,21 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav mr-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link active" href="#">Home</a>
+                                        <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="https://github.com/skekre98/NBA-Search" class="nav-link">Github</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">Insights</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">About Us</a>
+                                        <a href="{{ url_for('authors') }}" class="nav-link">Authors</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Pages
+                                            Insights
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="elements.html">Elements</a>
-                                            <a class="dropdown-item" href="single-blog.html">Single blog</a>
+                                            <a class="dropdown-item" href="{{ url_for('home') }}">Blogs</a>
+                                            <a class="dropdown-item" href="{{ url_for('home') }}">Predictions</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -181,8 +178,6 @@
         </div>
     </section>
   <!-- banner part start-->
-
-  <!-- <a href="{{ url_for('test') }}" class="btn_1">Author</a> -->
 
   <!-- footer part start-->
   <footer class="copyright_part">

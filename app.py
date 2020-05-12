@@ -12,13 +12,17 @@ trainer.train("chatterbot.corpus.english")
 def home():
     return render_template("home.html")
 
+@app.route("/home")
+def home2():
+    return render_template("home.html")
+
 @app.route("/chat")
 def chat():
     return render_template("chat.html")
 
-@app.route("/test")
-def test():
-    return render_template("author.html")
+@app.route("/authors")
+def authors():
+    return render_template("authors.html")
 
 @app.route("/bot-msg", methods=['POST'])
 def get_bot_response():
