@@ -21,6 +21,7 @@
     padding-right: 25px;
     padding-left: 25px;
     border-radius: 15px;
+    opacity: 0.8;
 }
 
 #chatborder {
@@ -48,4 +49,5 @@
     font: 17px arial, sans-serif;
     height: 22px;
     width: 100%;
+    opacity: 1;
 }
