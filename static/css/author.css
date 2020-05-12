@@ -18,6 +18,7 @@ body{
   max-width: 360px;
   text-align: center;
   background: #ff8b23;
+  opacity: 0.95;
 }
 .team-contact-link {
   display: block;
@@ -234,6 +235,7 @@ body{
   margin: auto;
   background-color: black;
   box-shadow: 0 12px 20px 1px rgba(64, 64, 64, .11);
+  opacity: 0.95;
 }
 .team-card-style-3:hover, .team-card-style-4:hover {
   border-color: transparent;
@@ -324,6 +326,7 @@ body{
     background-color: black;
     -webkit-box-shadow: 0 12px 20px 1px rgba(64,64,64,0.11);
     box-shadow: 0 12px 20px 1px rgba(64,64,64,0.11);
+    opacity: 0.95;
 }
 .social-btn {
     display: inline-block;
