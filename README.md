@@ -41,7 +41,7 @@ How to get started:
 1. Fork the NBA-Search repo.
 2. Create a new branch in you current repo from the 'master' branch with issue label.
 3. 'Check out' the code with Git or [GitHub Desktop](https://desktop.github.com/)
-4. Check [contributing.md](.github/CONTRIBUTING.md#sync-projects)
+4. Check [contributing.md](CONTRIBUTING.md)
 5. Push commits and create a Pull Request (PR) to NBA-Search
 
 ## Dependencies
