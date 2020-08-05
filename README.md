@@ -29,6 +29,21 @@ This is an NBA Analytics website with multiple components such as a chatbot, blo
    ```
    You can also add you own unit tests in *test.py*
 
+## Contributing
+
+There is a lot to do so contributions are really appreciated! This is a great project for early stage developers to work with.
+
+To begin it is recommended starting with issues labelled [up-for-grabs](https://github.com/skekre98/NBA-Search/issues?q=is%3Aopen+is%3Aissue+label%3Aup-for-grabs).
+
+
+How to get started:
+
+1. Fork the NBA-Search repo.
+2. Create a new branch in you current repo from the 'master' branch with issue label.
+3. 'Check out' the code with Git or [GitHub Desktop](https://desktop.github.com/)
+4. Check [contributing.md](.github/CONTRIBUTING.md#sync-projects)
+5. Push commits and create a Pull Request (PR) to NBA-Search
+
 ## Dependencies
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - The framework used to build the web app.
 * [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - The HTML parser used for web scraping.
