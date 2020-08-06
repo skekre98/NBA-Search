@@ -43,7 +43,7 @@ class Player(object):
         self.points = None
 
     
-    def set(self, attr):
+    def create(self, attr):
         self.position = attr["pos"]
         self.team = attr["team_id"]
         self.games = int(attr["g"])

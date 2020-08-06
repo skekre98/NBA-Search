@@ -5,7 +5,20 @@ from sklearn.cluster import KMeans
 from modules.scraper import get_player_stats
 
 
-# Function to recommend players for fantasy team 
+"""
+Function to generate ranked list 
+of players based on fantasy score.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+player_scores : list
+    The ranked list of players with tuples containing
+    name and score.
+"""
 def fantasy_recommendations():
     year = int(date.today().year)
     players = get_player_stats(year)
@@ -17,7 +30,21 @@ def fantasy_recommendations():
     return player_scores
 
 
-# Function to create player dataframe for clustering
+"""
+Function to generate ranked list 
+of players based on fantasy score.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+df : pandas.DataFrame
+    The dataframe of player stats
+player_map : dict
+    The mapping of player name to dataframe index
+"""
 def create_player_dataframe():
     year = int(date.today().year)
     players = get_player_stats(year)
@@ -46,8 +73,26 @@ def create_player_dataframe():
 
     return df, player_map
 
+"""
+Function to cluster NBA players based 
+on attributes such as points, rebounds, 
+assists, blocks, and field goal percentage.
+The idea behind clustering players is to 
+gain insights on potential trade options 
+and tier lists. The clustering algorithm
+of choice is KMeans.
 
-# Function to cluster players based on overall stats
+Parameters
+----------
+clusters : int
+    The final number of clusters desired
+
+Returns
+-------
+player_clusters : list
+    A 2D matrix representing the clusters 
+    that were formed after KMeans
+"""
 def build_stat_clusters(clusters):
     data, p_map = create_player_dataframe()
     km = KMeans(n_clusters=clusters).fit(data)

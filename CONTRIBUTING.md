@@ -14,7 +14,7 @@ This issue is meant for functional changes. Please provide the following informa
 This issue is meant for non-functional changes. Please provide the following information:
 - The enhancement description
 - How you will add this enhancement
-- Why this would be a good `enhanceent` to add
+- Why this would be a good `enhancement` to add
 
 ### Bug Issue
 
@@ -28,8 +28,8 @@ This issue is meant for potential bugs. Please provide the following information
 
 Please document any public function and class. At least required: 
 
-* Function: Summary, param and return.
-* Class: Summary
+* Function: Summary, Parameters, and Returns.
+* Class: Summary and Attributes
 
 ### Update your fork
 

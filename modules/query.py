@@ -1,3 +1,4 @@
+# TODO
 class Query(object):
 
     def __init__(self,category, s):

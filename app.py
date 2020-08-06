@@ -8,6 +8,18 @@ chatbot = ChatBot("SHAq")
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train("chatterbot.corpus.english")
 
+"""
+Function to handle routing to home page.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+HTML file
+    Rendering of HTML template for home page
+"""
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -16,14 +28,54 @@ def home():
 def home2():
     return render_template("home.html")
 
+"""
+Function to handle routing to chatbox page.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+HTML file
+    Rendering of HTML template for chatbox page
+"""
 @app.route("/chat")
 def chat():
     return render_template("chat.html")
 
+"""
+Function to handle routing to authors page.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+HTML file
+    Rendering of HTML template for authors page
+"""
 @app.route("/authors")
 def authors():
     return render_template("authors.html")
 
+"""
+Function to handle POST request from user
+with embedded message. The message is then 
+passed to the chatbot and the response is returned 
+to user.
+
+Parameters
+----------
+request : json
+    The POST request sent from user sending a message
+
+Returns
+-------
+Bot response : json
+    The chatbot response to user message
+"""
 @app.route("/bot-msg", methods=['POST'])
 def get_bot_response():
     usr_msg = request.form['msg']
