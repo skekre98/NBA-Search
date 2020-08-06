@@ -7,6 +7,7 @@ def printHelp():
     print("  options:")
     print("    test: runs unit tests for backend functions")
     print("    run: Runs Flask server on localhost port 5000")
+    print("    data: data visualization for training sets")
 
 def main():
 
@@ -24,6 +25,8 @@ def main():
         os.system('python -m unittest test.py')
     elif sys.argv[1] == "run":
         os.system('python app.py')
+    elif sys.argv[1] == "data":
+        os.system('python data_reader.py')
     else:
         print("ERROR: Incorrect Arguments")
         printHelp()

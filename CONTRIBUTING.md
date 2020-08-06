@@ -20,8 +20,8 @@ This issue is meant for non-functional changes. Please provide the following inf
 
 This issue is meant for potential bugs. Please provide the following information:
 - Bug description
-- Description of current implementation
-- Description of `bug` fix implementation
+- How to reproduce bug
+- Technical specifications
 
 
 ### Pull requests
