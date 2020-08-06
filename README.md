@@ -48,4 +48,4 @@ How to get started:
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - The framework used to build the web app.
 * [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - The HTML parser used for web scraping.
 * [Sklearn](https://scikit-learn.org/stable/) - The machine learning library used to implement information retrieval.
-* [Pandas](https://pandas.pydata.org/docs/) - A python library used for data manipulation.
+* [Pandas](https://pandas.pydata.org/docs/) - The python library used for data manipulation.
