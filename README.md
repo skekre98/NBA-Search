@@ -22,6 +22,9 @@ This is an NBA Analytics website with multiple components such as a chatbot, blo
    ```
    python main.py run
    ```
+<p align="center">
+     <img src="/static/img/site.png">
+</p>
 
 4. Run the following command to run the unit tests:
    ```
