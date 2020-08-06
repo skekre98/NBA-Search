@@ -22,11 +22,11 @@ def main():
         print("ERROR: Missing Arguments")
         printHelp()
     elif sys.argv[1] == "test":
-        os.system('python -m unittest test.py')
+        os.system('python3 -m unittest test.py')
     elif sys.argv[1] == "run":
-        os.system('python app.py')
+        os.system('python3 app.py')
     elif sys.argv[1] == "data":
-        os.system('python data_reader.py')
+        os.system('python3 data_reader.py')
     else:
         print("ERROR: Incorrect Arguments")
         printHelp()
