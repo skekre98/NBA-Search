@@ -10,7 +10,7 @@ assignees: ''
 **Description of feature/enhancement**
 A clear and concise description of the feature/enhancement.
 
-**Describe of implementation**
+**Description of implementation**
 A clear and concise description of how this will be implemented and added into project.
 
 **Why this is a good feature/enhancement**
