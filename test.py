@@ -21,6 +21,14 @@ class TestAnalysis(unittest.TestCase):
         c = 100
         res = analysis.build_stat_clusters(c)
         self.assertTrue(len(res), c)
+    
+    def test_query_filter(self):
+        flag_1 = analysis.isNBA("Will this team make it to the finals?")
+        flag_0 = analysis.isNBA("Michael Jordan is good!")
+        flag_n = analysis.isNBA("This is a random query...")
+        self.assertEqual(flag_1, 1)
+        self.assertEqual(flag_0, 0)
+        self.assertEqual(flag_n, -1)
 
 # Test cases for web scraper 
 class TestScraper(unittest.TestCase):
