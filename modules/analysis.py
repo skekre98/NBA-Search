@@ -1,9 +1,40 @@
-from datetime import date
+import spacy
 import pandas as pd
+from datetime import date
+from data.text_data import nba_words
+from modules.scraper import get_player_stats
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cluster import KMeans
-from modules.scraper import get_player_stats
 
+nlp = spacy.load("en_core_web_sm")
+
+"""
+Function to determine if query is NBA related
+
+Parameters
+----------
+query : string
+    String representing user query
+
+Returns
+-------
+score : int
+    The certainty with which the query is NBA related
+    1 ~ NBA query, 0 ~ unsure, -1 ~ Random query
+"""
+def isNBA(query):
+    temp_query = query.lower()
+    query_list = temp_query.split()
+    for word in query_list:
+        if word in nba_words:
+            return 1
+    
+    doc = nlp(query)
+    for ent in doc.ents:
+        if ent.label_ == "ORG" or ent.label_ == "PERSON":
+            return 0
+    
+    return -1
 
 """
 Function to generate ranked list 
