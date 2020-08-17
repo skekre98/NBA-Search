@@ -26,7 +26,7 @@ def main():
     elif sys.argv[1] == "run":
         os.system('python3 app.py')
     elif sys.argv[1] == "data":
-        os.system('python3 data_reader.py')
+        os.system('python3 visualize.py')
     else:
         print("ERROR: Incorrect Arguments")
         printHelp()

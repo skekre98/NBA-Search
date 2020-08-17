@@ -6,6 +6,32 @@ from modules.objects import Team, Player
 base_url = "https://www.basketball-reference.com"
 
 """
+Function to get a list of player names
+
+Parameters
+----------
+year : int
+    The year to scrape for NBA player
+    names
+
+Returns
+-------
+player_list : list
+    The list of player names
+"""
+def get_player_names(year):
+    url = "{}/leagues/NBA_{}_per_game.html".format(base_url, str(year))
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    table = page_content.findAll("tr",attrs={"class":"full_table"})
+    names = []
+    for row in table:
+        name = row.find("a").string
+        names.append(name)
+    return names
+
+
+"""
 Function to get a list of player objects 
 with player stats
 
@@ -19,7 +45,7 @@ Returns
 player_list : list
     The list of player objects with scraped stats
 """
-def get_player_list(table):
+def get_stat_list(table):
     player_list = []
     for row in table:
         name = row.find("a").string
@@ -122,4 +148,4 @@ def get_player_stats(year):
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr",attrs={"class":"full_table"})
-    return get_player_list(table)
+    return get_stat_list(table)

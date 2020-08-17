@@ -32,6 +32,13 @@ class TestScraper(unittest.TestCase):
         for t in per_list:
             self.assertTrue(isinstance(t[0], str))
             self.assertTrue(isinstance(t[1], float))
+    
+    # Method to test scraper for player names
+    def test_get_names(self):
+        year = int(date.today().year)
+        names = scraper.get_player_names(year)
+        for n in names:
+            self.assertTrue(isinstance(n, str))
 
 if __name__ == '__main__':
     unittest.main()
