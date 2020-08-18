@@ -3,7 +3,7 @@ import sys
 
 # Function to print help message
 def printHelp():
-    print("usage: python main.py {test | run}")
+    print("usage: python main.py {test, run, data}")
     print("  options:")
     print("    test: runs unit tests for backend functions")
     print("    run: Runs Flask server on localhost port 5000")

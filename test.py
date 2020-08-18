@@ -1,6 +1,7 @@
 import unittest
 from datetime import date
 from modules import analysis, scraper
+import preprocess
 
 # Test cases for Analysis API 
 class TestAnalysis(unittest.TestCase):
@@ -47,6 +48,32 @@ class TestScraper(unittest.TestCase):
         names = scraper.get_player_names(year)
         for n in names:
             self.assertTrue(isinstance(n, str))
+
+# Test cases for data preprocessing
+class TestPreprocess(unittest.TestCase):
+
+    # Method to test name funneling 
+    def test_name_funnel(self):
+        names = set()
+        for i in range(100):
+            fnld = preprocess.funnel_name("Lebron James")
+            names.add(fnld)
+        correct = {"lebron", "james", "lebron james"}
+        diff = correct.difference(names)
+        self.assertFalse(bool(diff))
+    
+    # Method to test rank query generation 
+    def test_rank_gen(self):
+        samples = 1500
+        ql = preprocess.generate_rank_queries(samples)
+        self.assertEqual(len(ql), samples)
+    
+    # Method to test stat query generation 
+    def test_stat_gen(self):
+        samples = 1500
+        ql = preprocess.generate_stat_queries(samples)
+        self.assertEqual(len(ql), samples)
+
 
 if __name__ == '__main__':
     unittest.main()
