@@ -71,27 +71,29 @@ def generate_stat_queries(samples):
     cnt = 0
     query_list = []
     while cnt < samples:
-        randq = randint(0, 12)
-        if randq < 11:
+        randq = randint(0, 6)
+        if randq < 5:
             name = funnel_name(choice(names))
             action = choice(stat_list)
             query1 = "how many {}s does {} put up, 2\n".format(action, name)
             query2 = "how many {}s does {} have per game, 2\n".format(action, name)
-            Qs = [query1, query2]
-            query_list.append(choice(Qs))
-        elif randq == 11:
-            action = choice(stat_list)
-            query1 = "who is the best {}er in the nba, 2\n".format(action)
-            query2 = "who is the worst {}er in the nba, 2\n".format(action)
-            query3 = "who has the most {}s per game, 2\n".format(action)
+            query3 = "how many {}s did {}, 2\n".format(action, name)
             Qs = [query1, query2, query3]
             query_list.append(choice(Qs))
-        elif randq == 12:
+        elif randq == 5:
+            action = choice(stat_list)
+            query1 = "who is the best {}er in the league, 2\n".format(action)
+            query2 = "who is the worst {}er there is, 2\n".format(action)
+            query3 = "who has the most {}s per game, 2\n".format(action)
+            query4 = "who is the best {}er, 2\n".format(action)
+            Qs = [query1, query2, query3, query4]
+            query_list.append(choice(Qs))
+        elif randq == 6:
             stat = choice(percent_list)
             query1 = "who has the highest {} percentage in the nba, 2\n".format(action)
             query2 = "who has the highest {} percentage, 2\n".format(action)
-            query3 = "who has the best {}{} in the nba, 2\n".format(action, "%")
-            query4 = "who has the highest {}{}, 2\n".format(action, "%")
+            query3 = "who has the best {}{}, 2\n".format(action, "%")
+            query4 = "who has the highest {}{} around, 2\n".format(action, "%")
             Qs = [query1, query2, query3, query4]
             query_list.append(choice(Qs))
         cnt += 1
