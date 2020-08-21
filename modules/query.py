@@ -1,12 +1,12 @@
-# TODO
+import pickle
+from inference.inference_network import InferenceNetwork
+
 class Query(object):
 
-    def __init__(self,category, s):
-        self.category = category
-        self.string = s
-        self.conf = None
-        self.region = None
+    def __init__(self, query):
+        self.text = query
 
-# Method to process query 
-def process(query):
-    # TODO
+    # Method to process query 
+    def process(self):
+        network = InferenceNetwork(self.text)
+        return network.response()

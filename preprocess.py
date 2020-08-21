@@ -72,13 +72,22 @@ def generate_stat_queries(samples):
     query_list = []
     while cnt < samples:
         randq = randint(0, 6)
-        if randq < 5:
+        if randq < 2:
             name = funnel_name(choice(names))
             action = choice(stat_list)
             query1 = "how many {}s does {} put up, 2\n".format(action, name)
             query2 = "how many {}s does {} have per game, 2\n".format(action, name)
             query3 = "how many {}s did {}, 2\n".format(action, name)
             Qs = [query1, query2, query3]
+            query_list.append(choice(Qs))
+        elif randq < 5:
+            name = funnel_name(choice(names))
+            action = choice(stat_list)
+            query1 = "what is {}s {} percentage, 2\n".format(action, name)
+            query2 = "what is {}s {} {}, 2\n".format(action, name, "%")
+            query3 = "what was {}s {} percentage in {}, 2\n".format(action, name, str(randint(1988,2020)))
+            query4 = "who had the best {} in {}, 2\n".format(action, str(randint(1988,2020)))
+            Qs = [query1, query2, query3, query4]
             query_list.append(choice(Qs))
         elif randq == 5:
             action = choice(stat_list)
