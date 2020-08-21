@@ -10,6 +10,7 @@ nba_words = {"nba",
             "league", 
             "bench", 
             "score",
+            "shooting"
             "scorer",
             "trade",
             "trades", 

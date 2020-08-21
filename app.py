@@ -1,5 +1,6 @@
 import os
 from modules.analysis import isNBA
+from modules.query import Query
 from data.text_data import unsure, non_nba
 from flask import Flask, render_template, request, jsonify
 from chatterbot import ChatBot
@@ -89,8 +90,9 @@ def get_bot_response():
     elif flag == 0:
         return jsonify(unsure)
     else:
-        bot_msg = str(chatbot.get_response(usr_msg))
-        return jsonify(bot_msg)
+        handler = Query(usr_msg)
+        response = handler.process()
+        return jsonify(response)
 
 if __name__ == "__main__":
     app.run()

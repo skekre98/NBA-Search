@@ -3,11 +3,12 @@ import sys
 
 # Function to print help message
 def printHelp():
-    print("usage: python main.py {test, run, data}")
+    print("usage: python main.py {test, run, data, train}")
     print("  options:")
     print("    test: runs unit tests for backend functions")
     print("    run: Runs Flask server on localhost port 5000")
     print("    data: data visualization for training sets")
+    print("    train: trains a new query classification model")
 
 def main():
 
@@ -27,6 +28,8 @@ def main():
         os.system('python3 app.py')
     elif sys.argv[1] == "data":
         os.system('python3 visualize.py')
+    elif sys.argv[1] == "train":
+        os.system('python3 query_classifier.py')
     else:
         print("ERROR: Incorrect Arguments")
         printHelp()
