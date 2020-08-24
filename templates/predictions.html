@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+    <title>Predictions</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="icon" href="{{url_for('static', filename='img/favicon.png')}}">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        <!-- themify CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
+        <!-- style CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <!-- bracket CSS  -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bracket.css')}}">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+    
+        <title>March Madness Stock Matchup</title>
+    </head>
+    <body>
+        <!--::header part start::-->
+        <header class="header_area">
+            <div class="sub_header">
+                <div class="container">
+                    <div class="row align-items-center">
+                    <div class="col-md-4 col-xl-6">
+                        <div id="logo">
+                            <a href="#"><img src="{{url_for('static', filename='img/bbrain.png')}}" alt="SHAQ" style="width:75px;height:60px;"/></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-xl-6">
+                        <div class="sub_header_social_icon float-right">
+                            <a href="https://github.com/skekre98/NBA-Search" class="register_icon"><i class="ti-arrow-right"></i>CONTRIBUTE</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="https://github.com/skekre98/NBA-Search" class="nav-link">Github</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ url_for('authors') }}" class="nav-link">About Us</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Insights
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ url_for('home') }}">Blogs</a>
+                                                <a class="dropdown-item" href="{{ url_for('predictions') }}">Predictions</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="header_social_icon d-none d-lg-block">
+                                        <ul>
+                                            <li><a href="https://www.basketball-reference.com"><i class="ti-basketball"></i></a></li>
+                                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"><i class="ti-html5"></i></a></li>
+                                            <li><a href="https://developer.mozilla.org/en-US/docs/Archive/CSS3"><i class="ti-css3"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <header class="hero">
+            <div class="hero-wrap">
+                <p class="intro" id="intro">flexbox</p>
+                    <h1 id="headline">Tournament</h1>
+                    <p class="year"><i class="fa fa-star"></i> 2015 <i class="fa fa-star"></i></p>
+                <p>Ballin' Outta Control</p>
+            </div>
+        </header>
+    
+    
+        <section id="bracket">
+        <div class="container">
+        <div class="split split-one">
+            <div class="round round-one current">
+                <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+                <ul class="matchup">
+                    <li class="team team-top">Duke<span class="score">76</span></li>
+                    <li class="team team-bottom">Virginia<span class="score">82</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">Wake Forest<span class="score">64</span></li>
+                    <li class="team team-bottom">Clemson<span class="score">56</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">North Carolina<span class="score">68</span></li>
+                    <li class="team team-bottom">Florida State<span class="score">54</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">NC State<span class="score">74</span></li>
+                    <li class="team team-bottom">Maryland<span class="score">92</span></li>
+                </ul>			
+                <ul class="matchup">
+                    <li class="team team-top">Georgia Tech<span class="score">78</span></li>
+                    <li class="team team-bottom">Georgia<span class="score">80</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">Auburn<span class="score">64</span></li>
+                    <li class="team team-bottom">Florida<span class="score">63</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">Kentucky<span class="score">70</span></li>
+                    <li class="team team-bottom">Alabama<span class="score">59</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">Vanderbilt<span class="score">64</span></li>
+                    <li class="team team-bottom">Gonzaga<span class="score">68</span></li>
+                </ul>										
+            </div>	<!-- END ROUND ONE -->
+    
+            <div class="round round-two">
+                <div class="round-details">Round 2<br/><span class="date">March 18</span></div>			
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>										
+            </div>	<!-- END ROUND TWO -->
+            
+            <div class="round round-three">
+                <div class="round-details">Round 3<br/><span class="date">March 22</span></div>			
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>										
+            </div>	<!-- END ROUND THREE -->		
+        </div> 
+    
+    <div class="champion">
+            <div class="semis-l">
+                <div class="round-details">west semifinals <br/><span class="date">March 26-28</span></div>		
+                <ul class ="matchup championship">
+                    <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                </ul>
+            </div>
+            <div class="final">
+                <i class="fa fa-trophy"></i>
+                <div class="round-details">championship <br/><span class="date">March 30 - Apr. 1</span></div>		
+                <ul class ="matchup championship">
+                    <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                </ul>
+            </div>
+            <div class="semis-r">		
+                <div class="round-details">east semifinals <br/><span class="date">March 26-28</span></div>		
+                <ul class ="matchup championship">
+                    <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                </ul>
+            </div>	
+        </div>
+    
+    
+        <div class="split split-two">
+    
+    
+            <div class="round round-three">
+                <div class="round-details">Round 3<br/><span class="date">March 22</span></div>						
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>										
+            </div>	<!-- END ROUND THREE -->	
+    
+            <div class="round round-two">
+                <div class="round-details">Round 2<br/><span class="date">March 18</span></div>						
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                </ul>										
+            </div>	<!-- END ROUND TWO -->
+             <div class="round round-one current">
+                <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+                <ul class="matchup">
+                    <li class="team team-top">Minnesota<span class="score">62</span></li>
+                    <li class="team team-bottom">Northwestern<span class="score">54</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">Michigan<span class="score">68</span></li>
+                    <li class="team team-bottom">Iowa<span class="score">66</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">Illinois<span class="score">64</span></li>
+                    <li class="team team-bottom">Wisconsin<span class="score">56</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">Purdue<span class="score">36</span></li>
+                    <li class="team team-bottom">Boise State<span class="score">40</span></li>
+                </ul>			
+                <ul class="matchup">
+                    <li class="team team-top">Penn State<span class="score">38</span></li>
+                    <li class="team team-bottom">Indiana<span class="score">44</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">Ohio State<span class="score">52</span></li>
+                    <li class="team team-bottom">VCU<span class="score">80</span></li>
+                </ul>	
+                <ul class="matchup">
+                    <li class="team team-top">USC<span class="score">58</span></li>
+                    <li class="team team-bottom">Cal<span class="score">59</span></li>
+                </ul>
+                <ul class="matchup">
+                    <li class="team team-top">Virginia Tech<span class="score">74</span></li>
+                    <li class="team team-bottom">Dartmouth<span class="score">111</span></li>
+                </ul>										
+            </div>	<!-- END ROUND ONE -->          				
+        </div>
+        </div>
+        </section>
+        
+        <!-- footer part start-->
+        <footer class="copyright_part">
+            <div class="container">
+                <div class="row align-items-center">
+                    <p class="footer-text m-0 col-lg-8 col-md-12">
+                    </script> In Loving Memory Of Kobe Bryant <i class="ti-heart" aria-hidden="true"></i>
+                    </p>
+                    <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                    <a href="https://www.basketball-reference.com"><i class="ti-basketball"></i></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"><i class="ti-html5"></i></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Archive/CSS3"><i class="ti-css3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer part end-->
+
+        <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
+        <!-- custom js -->
+        <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+        <script src="{{url_for('static', filename='js/chatbox.js')}}"></script>
+    </body>
+</html>
