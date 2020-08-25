@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="icon" href="{{url_for('static', filename='img/favicon.png')}}">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
         <!-- themify CSS -->
@@ -86,55 +85,42 @@
                 </div>
             </div>
         </header>
-        <header class="hero">
-            <div class="hero-wrap">
-                <h1 id="headline">NBA Playoffs</h1>
-                <p class="year"><i class="fa fa-star"></i>2020<i class="fa fa-star"></i></p>
-            </div>
-        </header>
+
+        <div class="hero">
+            <p align="center">
+                <img class="predimg" src="{{url_for('static', filename='img/predictions.png')}}" width="350" height="300">
+            </p>
+        </div> 
     
     
         <section id="bracket">
+            <p align="center">
+                <img class="playoffimg" src="{{url_for('static', filename='img/playoffs.png')}}" width="500" height="125">
+            </p>
         <div class="container">
         <div class="split split-one">
             <div class="round round-one current">
-                <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+                <div class="round-details">Round 1<br/><span class="date">August 17</span></div>
                 <ul class="matchup">
-                    <li class="team team-top">Duke<span class="score">76</span></li>
-                    <li class="team team-bottom">Virginia<span class="score">82</span></li>
+                    <li class="team team-top">LA Lakers<span class="score">3</span></li>
+                    <li class="team team-bottom">Portland Trailblazers<span class="score">1</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Wake Forest<span class="score">64</span></li>
-                    <li class="team team-bottom">Clemson<span class="score">56</span></li>
+                    <li class="team team-top">Houston Rockets<span class="score">2</span></li>
+                    <li class="team team-bottom">OKC Thunder<span class="score">2</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">North Carolina<span class="score">68</span></li>
-                    <li class="team team-bottom">Florida State<span class="score">54</span></li>
+                    <li class="team team-top">Denver Nuggets<span class="score">1</span></li>
+                    <li class="team team-bottom">Utah Jazz<span class="score">3</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">NC State<span class="score">74</span></li>
-                    <li class="team team-bottom">Maryland<span class="score">92</span></li>
-                </ul>			
-                <ul class="matchup">
-                    <li class="team team-top">Georgia Tech<span class="score">78</span></li>
-                    <li class="team team-bottom">Georgia<span class="score">80</span></li>
-                </ul>	
-                <ul class="matchup">
-                    <li class="team team-top">Auburn<span class="score">64</span></li>
-                    <li class="team team-bottom">Florida<span class="score">63</span></li>
-                </ul>	
-                <ul class="matchup">
-                    <li class="team team-top">Kentucky<span class="score">70</span></li>
-                    <li class="team team-bottom">Alabama<span class="score">59</span></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top">Vanderbilt<span class="score">64</span></li>
-                    <li class="team team-bottom">Gonzaga<span class="score">68</span></li>
-                </ul>										
+                    <li class="team team-top">LA Clippers<span class="score">2</span></li>
+                    <li class="team team-bottom">Dallas Mavericks<span class="score">2</span></li>
+                </ul>												
             </div>	<!-- END ROUND ONE -->
     
             <div class="round round-two">
-                <div class="round-details">Round 2<br/><span class="date">March 18</span></div>			
+                <div class="round-details">Round 2<br/><span class="date">August 27</span></div>			
                 <ul class="matchup">
                     <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
                     <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
@@ -143,22 +129,11 @@
                     <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
                     <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
                 </ul>	
-                <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
                 </ul>										
             </div>	<!-- END ROUND TWO -->
             
             <div class="round round-three">
-                <div class="round-details">Round 3<br/><span class="date">March 22</span></div>			
-                <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                </ul>	
+                <div class="round-details">Western Finals<br/><span class="date">TBD</span></div>			
                 <ul class="matchup">
                     <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
                     <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
@@ -167,28 +142,14 @@
         </div> 
     
     <div class="champion">
-            <div class="semis-l">
-                <div class="round-details">west semifinals <br/><span class="date">March 26-28</span></div>		
-                <ul class ="matchup championship">
-                    <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                </ul>
-            </div>
             <div class="final">
                 <i class="fa fa-trophy"></i>
-                <div class="round-details">championship <br/><span class="date">March 30 - Apr. 1</span></div>		
+                <div class="round-details">NBA Finals<br/><span class="date">TBD</span></div>		
                 <ul class ="matchup championship">
                     <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
                     <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
                 </ul>
             </div>
-            <div class="semis-r">		
-                <div class="round-details">east semifinals <br/><span class="date">March 26-28</span></div>		
-                <ul class ="matchup championship">
-                    <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                </ul>
-            </div>	
         </div>
     
     
@@ -196,11 +157,7 @@
     
     
             <div class="round round-three">
-                <div class="round-details">Round 3<br/><span class="date">March 22</span></div>						
-                <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                </ul>	
+                <div class="round-details">Eastern Finals<br/><span class="date">TBD</span></div>						
                 <ul class="matchup">
                     <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
                     <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
@@ -208,58 +165,35 @@
             </div>	<!-- END ROUND THREE -->	
     
             <div class="round round-two">
-                <div class="round-details">Round 2<br/><span class="date">March 18</span></div>						
+                <div class="round-details">Round 2<br/><span class="date">August 27</span></div>						
                 <ul class="matchup">
                     <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-bottom">Miami Heat<span class="score">&nbsp;</span></li>
                 </ul>	
                 <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-top">Boston Celtics<span class="score">0</span></li>
+                    <li class="team team-bottom">Toronto Raptors<span class="score">0</span></li>
                 </ul>	
-                <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
                 </ul>										
             </div>	<!-- END ROUND TWO -->
              <div class="round round-one current">
-                <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+                <div class="round-details">Round 1<br/><span class="date">August 17</span></div>
                 <ul class="matchup">
-                    <li class="team team-top">Minnesota<span class="score">62</span></li>
-                    <li class="team team-bottom">Northwestern<span class="score">54</span></li>
+                    <li class="team team-top">Milwaukee Bucks<span class="score">3</span></li>
+                    <li class="team team-bottom">Orlando Magic<span class="score">1</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Michigan<span class="score">68</span></li>
-                    <li class="team team-bottom">Iowa<span class="score">66</span></li>
+                    <li class="team team-top">Indiana Pacers<span class="score">0</span></li>
+                    <li class="team team-bottom">Miami Heat<span class="score">4</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Illinois<span class="score">64</span></li>
-                    <li class="team team-bottom">Wisconsin<span class="score">56</span></li>
+                    <li class="team team-top">Boston Celtics<span class="score">4</span></li>
+                    <li class="team team-bottom">Philadephia 76ers<span class="score">0</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Purdue<span class="score">36</span></li>
-                    <li class="team team-bottom">Boise State<span class="score">40</span></li>
-                </ul>			
-                <ul class="matchup">
-                    <li class="team team-top">Penn State<span class="score">38</span></li>
-                    <li class="team team-bottom">Indiana<span class="score">44</span></li>
-                </ul>	
-                <ul class="matchup">
-                    <li class="team team-top">Ohio State<span class="score">52</span></li>
-                    <li class="team team-bottom">VCU<span class="score">80</span></li>
-                </ul>	
-                <ul class="matchup">
-                    <li class="team team-top">USC<span class="score">58</span></li>
-                    <li class="team team-bottom">Cal<span class="score">59</span></li>
-                </ul>
-                <ul class="matchup">
-                    <li class="team team-top">Virginia Tech<span class="score">74</span></li>
-                    <li class="team team-bottom">Dartmouth<span class="score">111</span></li>
-                </ul>										
+                    <li class="team team-top">Toronto Raptors<span class="score">4</span></li>
+                    <li class="team team-bottom">Brooklyn Nets<span class="score">0</span></li>
+                </ul>					
             </div>	<!-- END ROUND ONE -->          				
         </div>
         </div>

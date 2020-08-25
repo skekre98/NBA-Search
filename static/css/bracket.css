@@ -9,7 +9,22 @@ body {
     position:relative; 
     text-align: center; 
     overflow: hidden; 
-    color: #fcfcfc; 
+    background-color: black;
+    color: black; 
+    height: 300px;
+}
+
+.predimg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.playoffimg {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    top: -25px;
 }
 
 .hero h1 {
@@ -128,7 +143,7 @@ body {
     font-size: 11px;
     text-transform: uppercase;
     float: right;
-    color: #2C7399;
+    color: #CC6600;
     font-weight: bold;
     font-family: 'Roboto Condensed', sans-serif;
     position: absolute;
@@ -160,7 +175,7 @@ body {
 .round-details {
     font-family: 'Roboto Condensed', sans-serif; 
     font-size: 13px; 
-    color: #2C7399;
+    color: black;
     text-transform: uppercase;
     text-align: center;
     height: 40px;
@@ -169,7 +184,7 @@ body {
 .champion li, .round li {
     background-color: #fff;
     box-shadow: none; 
-    opacity: 0.45;
+    opacity: 1;
 }
 
 .current li {
@@ -244,7 +259,7 @@ body {
 
 .share-icon {color: #fff; opacity: 0.35; }
 .share-icon:hover { opacity:1;  -webkit-animation: pulse 0.5s; animation: pulse 0.5s;}
-.date {font-size: 10px; letter-spacing: 2px;font-family: 'Istok Web', sans-serif;color:#3F915F;}
+.date {font-size: 10px; letter-spacing: 2px;font-family: 'Istok Web', sans-serif;color:#CC6600;}
 
 
 
