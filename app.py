@@ -1,5 +1,7 @@
 import os
 from modules.analysis import isNBA
+from modules.scraper import get_playoff_bracket
+from modules.transformer import create_html_bracket
 from modules.query import Query
 from data.text_data import unsure, non_nba
 from flask import Flask, render_template, request, jsonify
@@ -79,6 +81,8 @@ HTML file
 """
 @app.route("/predictions")
 def predictions():
+    bracket = get_playoff_bracket()
+    bracket = create_html_bracket(bracket)
     return render_template("predictions.html")
 
 """

@@ -29,3 +29,7 @@ class predictors(TransformerMixin):
         return self
     def get_params(self, deep=True):
         return {}
+
+def create_html_bracket(bracket_map):
+    # TODO
+    return 0

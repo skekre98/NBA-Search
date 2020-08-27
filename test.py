@@ -31,6 +31,7 @@ class TestAnalysis(unittest.TestCase):
         self.assertEqual(flag_0, 0)
         self.assertEqual(flag_n, -1)
 
+
 # Test cases for web scraper 
 class TestScraper(unittest.TestCase):
 
@@ -48,6 +49,22 @@ class TestScraper(unittest.TestCase):
         names = scraper.get_player_names(year)
         for n in names:
             self.assertTrue(isinstance(n, str))
+    
+    # Method to test scraper for playoff bracket
+    def test_get_playoff_bracket(self):
+        bracket = scraper.get_playoff_bracket()
+        levels = {
+            "Western Conference First Round",
+            "Eastern Conference First Round",
+            "Western Conference Semifinals",
+            "Eastern Conference Semifinals",
+            "Western Conference Finals",
+            "Eastern Conference Finals",
+            "Finals"
+        }
+        for l in bracket:
+            self.assertTrue(l in levels)
+
 
 # Test cases for data preprocessing
 class TestPreprocess(unittest.TestCase):
