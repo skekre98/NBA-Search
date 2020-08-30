@@ -102,32 +102,32 @@
             <div class="round round-one current">
                 <div class="round-details">Round 1<br/><span class="date">August 17</span></div>
                 <ul class="matchup">
-                    <li class="team team-top">LA Lakers<span class="score">3</span></li>
-                    <li class="team team-bottom">Portland Trailblazers<span class="score">1</span></li>
+                    <li class="team team-top">{{ bracket["wc1"][-1][0][0] }}<span class="score">{{ bracket["wc1"][-1][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wc1"][-1][1][0] }}<span class="score">{{ bracket["wc1"][-1][1][1] }}</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Houston Rockets<span class="score">2</span></li>
-                    <li class="team team-bottom">OKC Thunder<span class="score">2</span></li>
+                    <li class="team team-top">{{ bracket["wc1"][-2][0][0] }}<span class="score">{{ bracket["wc1"][-2][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wc1"][-2][1][0] }}<span class="score">{{ bracket["wc1"][-2][1][1] }}</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Denver Nuggets<span class="score">1</span></li>
-                    <li class="team team-bottom">Utah Jazz<span class="score">3</span></li>
+                    <li class="team team-top">{{ bracket["wc1"][-3][0][0] }}<span class="score">{{ bracket["wc1"][-3][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wc1"][-3][1][0] }}<span class="score">{{ bracket["wc1"][-3][1][1] }}</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">LA Clippers<span class="score">2</span></li>
-                    <li class="team team-bottom">Dallas Mavericks<span class="score">2</span></li>
+                    <li class="team team-top">{{ bracket["wc1"][-4][0][0] }}<span class="score">{{ bracket["wc1"][-4][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wc1"][-4][1][0] }}<span class="score">{{ bracket["wc1"][-4][1][1] }}</span></li>
                 </ul>												
             </div>	<!-- END ROUND ONE -->
     
             <div class="round round-two">
                 <div class="round-details">Round 2<br/><span class="date">August 27</span></div>			
                 <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                </ul>	
+                    <li class="team team-top">{{ bracket["wc2"][-1][1][0] }}<span class="score">{{ bracket["wc2"][-1][1][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wc2"][-1][0][0] }}<span class="score">{{ bracket["wc2"][-1][0][1] }}</span></li>
+                </ul>
                 <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-top">{{ bracket["wc2"][-2][0][0] }}<span class="score">{{ bracket["wc2"][-2][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wc2"][-2][1][0] }}<span class="score">{{ bracket["wc2"][-2][1][1] }}</span></li>
                 </ul>	
                 </ul>										
             </div>	<!-- END ROUND TWO -->
@@ -135,9 +135,9 @@
             <div class="round round-three">
                 <div class="round-details">Western Finals<br/><span class="date">TBD</span></div>			
                 <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
-                </ul>										
+                    <li class="team team-top">{{ bracket["wcf"][0][1][0] }}<span class="score">{{ bracket["wcf"][0][1][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["wcf"][0][0][0] }}<span class="score">{{ bracket["wcf"][0][0][1] }}</span></li>
+                </ul>											
             </div>	<!-- END ROUND THREE -->		
         </div> 
     
@@ -145,9 +145,9 @@
             <div class="final">
                 <i class="fa fa-trophy"></i>
                 <div class="round-details">NBA Finals<br/><span class="date">TBD</span></div>		
-                <ul class ="matchup championship">
-                    <li class="team team-top">&nbsp;<span class="vote-count">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="vote-count">&nbsp;</span></li>
+                <ul class="matchup">
+                    <li class="team team-top">{{ bracket["f"][0][0] }}<span class="score">{{ bracket["f"][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["f"][1][0] }}<span class="score">{{ bracket["f"][1][1] }}</span></li>
                 </ul>
             </div>
         </div>
@@ -159,40 +159,40 @@
             <div class="round round-three">
                 <div class="round-details">Eastern Finals<br/><span class="date">TBD</span></div>						
                 <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">&nbsp;<span class="score">&nbsp;</span></li>
+                    <li class="team team-top">{{ bracket["ecf"][0][1][0] }}<span class="score">{{ bracket["ecf"][0][1][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ecf"][0][0][0] }}<span class="score">{{ bracket["ecf"][0][0][1] }}</span></li>
                 </ul>										
             </div>	<!-- END ROUND THREE -->	
     
             <div class="round round-two">
                 <div class="round-details">Round 2<br/><span class="date">August 27</span></div>						
                 <ul class="matchup">
-                    <li class="team team-top">&nbsp;<span class="score">&nbsp;</span></li>
-                    <li class="team team-bottom">Miami Heat<span class="score">&nbsp;</span></li>
+                    <li class="team team-top">{{ bracket["ec2"][-1][0][0] }}<span class="score">{{ bracket["ec2"][-1][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ec2"][-1][1][0] }}<span class="score">{{ bracket["ec2"][-1][1][1] }}</span></li>
                 </ul>	
                 <ul class="matchup">
-                    <li class="team team-top">Boston Celtics<span class="score">0</span></li>
-                    <li class="team team-bottom">Toronto Raptors<span class="score">0</span></li>
+                    <li class="team team-top">{{ bracket["ec2"][-2][0][0] }}<span class="score">{{ bracket["ec2"][-2][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ec2"][-2][1][0] }}<span class="score">{{ bracket["ec2"][-2][1][1] }}</span></li>
                 </ul>	
                 </ul>										
             </div>	<!-- END ROUND TWO -->
              <div class="round round-one current">
                 <div class="round-details">Round 1<br/><span class="date">August 17</span></div>
                 <ul class="matchup">
-                    <li class="team team-top">Milwaukee Bucks<span class="score">3</span></li>
-                    <li class="team team-bottom">Orlando Magic<span class="score">1</span></li>
+                    <li class="team team-top">{{ bracket["ec1"][-2][0][0] }}<span class="score">{{ bracket["ec1"][-2][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ec1"][-2][1][0] }}<span class="score">{{ bracket["ec1"][-2][1][1] }}</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Indiana Pacers<span class="score">0</span></li>
-                    <li class="team team-bottom">Miami Heat<span class="score">4</span></li>
+                    <li class="team team-top">{{ bracket["ec1"][-3][0][0] }}<span class="score">{{ bracket["ec1"][-3][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ec1"][-3][1][0] }}<span class="score">{{ bracket["ec1"][-3][1][1] }}</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Boston Celtics<span class="score">4</span></li>
-                    <li class="team team-bottom">Philadephia 76ers<span class="score">0</span></li>
+                    <li class="team team-top">{{ bracket["ec1"][-4][0][0] }}<span class="score">{{ bracket["ec1"][-4][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ec1"][-4][1][0] }}<span class="score">{{ bracket["ec1"][-4][1][1] }}</span></li>
                 </ul>
                 <ul class="matchup">
-                    <li class="team team-top">Toronto Raptors<span class="score">4</span></li>
-                    <li class="team team-bottom">Brooklyn Nets<span class="score">0</span></li>
+                    <li class="team team-top">{{ bracket["ec1"][-1][0][0] }}<span class="score">{{ bracket["ec1"][-1][0][1] }}</span></li>
+                    <li class="team team-bottom">{{ bracket["ec1"][-1][1][0] }}<span class="score">{{ bracket["ec1"][-1][1][1] }}</span></li>
                 </ul>					
             </div>	<!-- END ROUND ONE -->          				
         </div>

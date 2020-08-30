@@ -21,7 +21,7 @@ bracket_map : dict
 """
 def get_playoff_bracket():
     year = int(date.today().year)
-    url = "{}/playoffs/NBA_{}.html".format(base_url, str(year))
+    url = "{}/playoffs/NBA_{}.html".format(base_url, str(2019))
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr")
@@ -50,9 +50,9 @@ def get_playoff_bracket():
             curr_score = a_list[1].next_sibling.string
             score1 = curr_score[3]
             score2 = curr_score[5]
-            cell = [(team1, score1), (team2, score2)]
+            cell = [(team1, str(score1)), (team2, str(score2))]
             bracket_map[level].append(cell)
-        
+
     return bracket_map
     
 

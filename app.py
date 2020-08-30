@@ -83,7 +83,7 @@ HTML file
 def predictions():
     bracket = get_playoff_bracket()
     bracket = create_html_bracket(bracket)
-    return render_template("predictions.html")
+    return render_template("predictions.html", bracket=bracket)
 
 """
 Function to handle POST request from user
