@@ -44,10 +44,10 @@ def create_html_bracket(bracket_map):
     
     wf = west[-1][0]
     ef = east[-1][0]
-    west_team = "&nbsp;"
-    west_score = "&nbsp;"
-    east_team = "&nbsp;"
-    east_score = "&nbsp;"
+    west_team = ""
+    west_score = ""
+    east_team = ""
+    east_score = ""
 
     # Western Finalist 
     for team in wf:
@@ -76,9 +76,7 @@ def create_html_bracket(bracket_map):
         "ecf" : east[2],
         "f" : finals
     }
-    
-    for key in playoff_map:
-        print(playoff_map[key])
+
     return playoff_map
 
 # Function to build HTML level for playoff bracket 
@@ -92,10 +90,10 @@ def build_level(prev, bracket, conf):
     }
     next = []
     for cell in prev:
-        team = "&nbsp;"
-        score = "&nbsp;"
+        team = ""
+        score = ""
         for t in cell:
-            if t[0] != "&nbsp;" and t[1] == "4":
+            if t[0] != "" and t[1] == "4":
                 team = t[0]
                 key = str(len(prev)) + conf
                 next_level = bracket[level_map[key]]
@@ -103,7 +101,7 @@ def build_level(prev, bracket, conf):
                     for match in matchup:
                         if match[0] == team:
                             score = match[1]
-                if score == "&nbsp;":
+                if score == "":
                     score = "0"
         next.append((team, score))
     

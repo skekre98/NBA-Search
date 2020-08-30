@@ -21,7 +21,7 @@ bracket_map : dict
 """
 def get_playoff_bracket():
     year = int(date.today().year)
-    url = "{}/playoffs/NBA_{}.html".format(base_url, str(2019))
+    url = "{}/playoffs/NBA_{}.html".format(base_url, str(year))
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr")
