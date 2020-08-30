@@ -1,9 +1,61 @@
 import sys
 import requests
+from datetime import date
 from bs4 import BeautifulSoup
 from modules.objects import Team, Player
 
 base_url = "https://www.basketball-reference.com"
+
+"""
+Function to get a map of current playoff 
+scores
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+bracket_map : dict
+    A mapping of the NBA playoff bracket
+"""
+def get_playoff_bracket():
+    year = int(date.today().year)
+    url = "{}/playoffs/NBA_{}.html".format(base_url, str(year))
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    table = page_content.findAll("tr")
+    bracket_map = {
+        "Western Conference First Round" : [],
+        "Eastern Conference First Round" : [],
+        "Western Conference Semifinals" : [],
+        "Eastern Conference Semifinals" : [],
+        "Western Conference Finals" : [],
+        "Eastern Conference Finals" : [],
+        "Finals" : []
+    }
+
+    for row in table:
+        td_list = row.findAll("td")
+        a_list = row.findAll("a")
+        level = None
+        if td_list:
+            for t in td_list:
+                if t.string in bracket_map:
+                    level = t.string
+        
+        if level:
+            team1 = a_list[0].string
+            team2 = a_list[1].string
+            curr_score = a_list[1].next_sibling.string
+            score1 = curr_score[3]
+            score2 = curr_score[5]
+            cell = [(team1, str(score1)), (team2, str(score2))]
+            bracket_map[level].append(cell)
+
+    return bracket_map
+    
+
 
 """
 Function to get a list of player names
