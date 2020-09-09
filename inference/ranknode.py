@@ -6,7 +6,7 @@ class RankNode(object):
         self.query = query
 
     def response(self):
-        name_1, name_2 = self.extract_name()
+        name_1, name_2 = self.extract_names()
         metric = self.extract_metric()
         stat_1 = self.get_stat(name_1, metric)
         stat_2 = self.get_stat(name_2, metric)
@@ -18,13 +18,13 @@ class RankNode(object):
 
         resp_1 = "{} has performed better in the past with a {} or {}".format(max_entity[0], metric, max_entity[1])
         resp_2 = "Statistically speaking {} is superior with a {} or {}".format(max_entity[0], metric, max_entity[1])
-        resp_3 = "With a {} of {} I'd have to go with {}. It is alright if you have a different opinion as long as you don't mind being wrong".format(metric, max_entity[1], max_entity[0])
+        resp_3 = "With a {} of {} I'd have to go with {}. It's alright if you have a different opinion as long as you don't mind being wrong".format(metric, max_entity[1], max_entity[0])
         resp_list = [resp_1, resp_2, resp_3]
         return random.choice(resp_list)
 
-    def extract_name(self):
+    def extract_names(self):
         # TODO 
-        return "Lebron James"
+        return "Lebron James", "Kobe Bryant"
     
     def extract_metric(self):
         # TODO 
