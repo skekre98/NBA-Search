@@ -1,6 +1,12 @@
 import pickle
 from sklearn.externals import joblib
 from modules.transformer import predictors, query_tokenizer
+from inference.ranknode import RankNode
+
+node_map = {
+    1 : "rank",
+    2 : "stat"
+}
 
 class InferenceNetwork(object):
 
@@ -13,7 +19,9 @@ class InferenceNetwork(object):
         self.node_type = query_clf.predict([query.lower()])[0]
     
     def response(self):
-        if self.node_type == 1:
-            return "This is a rank question!"
-        elif self.node_type == 2:
+        if self.node_type == "rank":
+            node = RankNode(self.query)
+        elif self.node_type == "stat":
             return "This is a stat question!"
+        
+        return node.response()
