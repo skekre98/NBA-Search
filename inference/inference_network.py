@@ -16,12 +16,12 @@ class InferenceNetwork(object):
         # Query classification 
         model_file = "inference/models/query_classifier.pkl"
         query_clf = joblib.load(model_file)
-        self.node_type = query_clf.predict([query.lower()])[0]
+        self.node_type = node_map[query_clf.predict([query.lower()])[0]]
     
     def response(self):
         if self.node_type == "rank":
             node = RankNode(self.query)
         elif self.node_type == "stat":
-            return "This is a stat question!"
+            node = RankNode(self.query)
         
         return node.response()

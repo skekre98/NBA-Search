@@ -3,5 +3,3 @@ sklearn
 spacy
 beautifulsoup4
 Flask>=0.11
-chatterbot
-chatterbot-corpus
