@@ -1,10 +1,20 @@
 import random
 import spacy
+from difflib import SequenceMatcher
 
 inc_names = "Seems I couldn't extract players for ranking, try writing the names more verbosely. "
 inc_names += "My grasp on the English language still needs a little improvement..."
 inc_metric = "Seems I couldn't extract players for ranking, try writing the names more verbosely. "
 inc_metric += "My grasp on the English language still needs a little improvement..."
+
+metric_map = {
+	"true shooting percentage" : ["shooting", "shooter"],
+	"total rebound percentage" : ["rebounder", "rebounding"],
+	"defensive plus/minus" : ["defender", "defending"],
+	"offensive plus/minus" : ["scorer", "scoring"],
+	"player efficiency rating" : ["player", "playing"],
+	"assist percentage" : ["maker", "assisting", "passer", "passing"]
+}
 
 class RankNode(object):
 
@@ -52,13 +62,21 @@ class RankNode(object):
 		for token in doc:
 			for tag, pos in metric_pos:
 				if tag == token.tag_ and pos == token.pos_:
-					return token 
+					return token.text 
 		return None
 	
 	def metric2stat(self, metric):
-		# TODO
-		return "shooting percentage"
+		metric = metric.lower()
+		max_similarity = lambda a, b : a if a[1] > b[1] else b
+		max_stat = (None, 0,0)
+		for stat in metric_map:
+			for m2s in metric_map[stat]:
+				ratio = SequenceMatcher(None, metric, m2s).ratio()
+				if ratio > 0.8:
+					curr_stat = (stat, ratio)
+					max_stat = max_similarity(max_stat, curr_stat)
+		return max_stat[0]
 	
-	def get_stat(self, name, metric):
+	def get_stat(self, name, stat):
 		# TODO 
 		return random.randint(0, 10)

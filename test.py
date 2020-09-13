@@ -77,8 +77,38 @@ class TestRankNode(unittest.TestCase):
         resp = node.response()
         stat = [int(word) for word in resp.split() if word.replace('.','').isdigit()]
         self.assertTrue(isinstance(resp, str))
-        self.assertGreater(len(stat), 0)
+    
+    # Method to test rank node metric conversion
+    def test_metric2stat(self):
+        node = RankNode("Query")
+        test_map = {
+            "true shooting percentage" : "shooting",
+            "defensive plus/minus" : "defending",
+            "player efficiency rating" : "player",
+        }
 
+        for stat in test_map:
+            metric = test_map[stat]
+            predicted_stat = node.metric2stat(metric)
+            self.assertEqual(predicted_stat, stat)
+
+        metric = "This is nothing"
+        predicted_stat = node.metric2stat(metric)
+        self.assertIsNone(predicted_stat)
+    
+    # Method to test metric extraction
+    def test_extract_metric(self):
+        node = RankNode("Who is a better shooter Kobe or Lebron?")
+        metric = node.extract_metric()
+        self.assertEqual(metric, "shooter")
+    
+    # Method to test name extraction
+    def test_extract_names(self):
+        node = RankNode("Who is a better shooter Kobe Bryant or Lebron James?")
+        name1, name2 = node.extract_names()
+        names = set([name1, name2])
+        self.assertTrue("Kobe Bryant" in names)
+        self.assertTrue("Lebron James" in names)
 
 if __name__ == '__main__':
     unittest.main()
