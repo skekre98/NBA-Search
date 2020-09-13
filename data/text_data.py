@@ -10,6 +10,8 @@ nba_words = {"nba",
             "league", 
             "bench", 
             "score",
+            "passing",
+            "passer",
             "shooting",
             "shooter",
             "scorer",
@@ -21,7 +23,9 @@ nba_words = {"nba",
             "assists", 
             "assist",
             "team",
-            "teams"
+            "teams",
+            "defending",
+            "defender"
         }
 
 # unsure message 

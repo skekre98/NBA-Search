@@ -32,7 +32,6 @@ class TestAnalysis(unittest.TestCase):
         self.assertEqual(flag_0, 0)
         self.assertEqual(flag_n, -1)
 
-
 # Test cases for web scraper 
 class TestScraper(unittest.TestCase):
 

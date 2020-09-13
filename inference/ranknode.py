@@ -2,10 +2,13 @@ import random
 import spacy
 from difflib import SequenceMatcher
 
-inc_names = "Seems I couldn't extract players for ranking, try writing the names more verbosely. "
+inc_names = "Seems I couldn't extract players for ranking, try writing your question more verbosely. "
 inc_names += "My grasp on the English language still needs a little improvement..."
-inc_metric = "Seems I couldn't extract players for ranking, try writing the names more verbosely. "
+inc_metric = "Seems I couldn't extract the metric for ranking, try writing your question more verbosely. "
 inc_metric += "My grasp on the English language still needs a little improvement..."
+inc_stat = "Seems I was unable to isolate the required statistics necessary for ranking, "
+inc_stat += "try writing your quesion more verbosely."
+inc_stat += "My grasp on the English language still needs a little improvement..."
 
 metric_map = {
 	"true shooting percentage" : ["shooting", "shooter"],
@@ -30,10 +33,13 @@ class RankNode(object):
 		if not metric:
 			return inc_metric
 		stat = self.metric2stat(metric)
-		stat_1 = self.get_stat(name_1, metric)
-		stat_2 = self.get_stat(name_2, metric)
-		entity_1 = (name_1, stat_1) 
-		entity_2 = (name_2, stat_2)
+		if not stat:
+			return inc_stat
+
+		value_1 = self.get_stat(name_1, metric)
+		value_2 = self.get_stat(name_2, metric)
+		entity_1 = (name_1, value_1) 
+		entity_2 = (name_2, value_2)
 
 		better_player = lambda a, b : a if a[1] > b[1] else b
 		max_entity = better_player(entity_1, entity_2)

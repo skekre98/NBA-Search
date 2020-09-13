@@ -98,15 +98,9 @@ Bot response : json
 @app.route("/bot-msg", methods=['POST'])
 def get_bot_response():
     usr_msg = request.form['msg']
-    flag = isNBA(usr_msg)
-    if flag == -1:
-        return jsonify(non_nba)
-    elif flag == 0:
-        return jsonify(unsure)
-    else:
-        handler = Query(usr_msg)
-        response = handler.process()
-        return jsonify(response)
+    handler = Query(usr_msg)
+    response = handler.process()
+    return jsonify(response)
 
 if __name__ == "__main__":
     app.run()
