@@ -5,6 +5,14 @@ from bs4 import BeautifulSoup
 from modules.objects import Team, Player
 
 base_url = "https://www.basketball-reference.com"
+adv_stat_map = {
+    "true shooting percentage" : "ts_pct",
+	"total rebound percentage" : "trb_pct",
+	"defensive plus/minus" : "dbpm",
+	"offensive plus/minus" : "obpm",
+	"player efficiency rating" : "per",
+	"assist percentage" : "ast_pct" 
+}
 
 """
 Function to get a map of current playoff 
@@ -179,6 +187,26 @@ def get_per(year):
                 per = float(stat.string)
         per_list.append((name, per))
     return per_list
+
+"""
+Function to get the advanced statistic
+for NBA player career
+
+Parameters
+----------
+player : int
+    NBA player for stat retrieval
+stat : string
+    statistic to return
+
+Returns
+-------
+stat_list : list
+    The list of tuples with player name and PER
+"""
+def get_adv_stat(player, stat):
+    # TODO 
+    return 1.0
 
 """
 Function to get NBA players stats

@@ -1,6 +1,7 @@
 import random
 import spacy
 from difflib import SequenceMatcher
+from modules.scraper import get_adv_stat
 
 inc_names = "Seems I couldn't extract players for ranking, try writing your question more verbosely. "
 inc_names += "My grasp on the English language still needs a little improvement..."
@@ -84,5 +85,4 @@ class RankNode(object):
 		return max_stat[0]
 	
 	def get_stat(self, name, stat):
-		# TODO 
-		return random.randint(0, 10)
+		return get_adv_stat(name, stat)
