@@ -37,8 +37,8 @@ class RankNode(object):
 		if not stat:
 			return inc_stat
 
-		value_1 = self.get_stat(name_1, metric)
-		value_2 = self.get_stat(name_2, metric)
+		value_1 = self.get_stat(name_1, stat)
+		value_2 = self.get_stat(name_2, stat)
 		entity_1 = (name_1, value_1) 
 		entity_2 = (name_2, value_2)
 

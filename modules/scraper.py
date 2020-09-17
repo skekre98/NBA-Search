@@ -1,8 +1,10 @@
 import sys
 import requests
 from datetime import date
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
+from difflib import SequenceMatcher
 from modules.objects import Team, Player
+from data.text_data import alltime_player_list
 
 base_url = "https://www.basketball-reference.com"
 adv_stat_map = {
@@ -67,6 +69,7 @@ def get_playoff_bracket():
 
 """
 Function to get a list of player names
+from specific year
 
 Parameters
 ----------
@@ -204,9 +207,34 @@ Returns
 stat_list : list
     The list of tuples with player name and PER
 """
-def get_adv_stat(player, stat):
-    # TODO 
-    return 1.0
+def get_adv_stat(name, stat):
+
+    max_similarity = lambda a, b : a if a[1] > b[1] else b
+    similar_name = (None, 0.0)
+    for player in alltime_player_list:
+        ratio = SequenceMatcher(None, name, player).ratio()
+        curr_name = (player, ratio)
+        similar_name = max_similarity(similar_name, curr_name)
+
+    target_name = similar_name[0]
+    ln_initial = target_name.split()[-1][0].lower()
+    url = "{}/players/{}/".format(base_url, ln_initial)
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    th = page_content.findAll("th")
+    for row in th:
+        a = row.find("a")
+        if a and a.string == target_name:
+            url = base_url + a["href"]
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    advanced_div = page_content.find("div",attrs={"id":"all_advanced"})
+    comments = advanced_div.find_all(string=lambda text: isinstance(text, Comment))[0]
+    stat_html = str(comments)
+    stat_soup = BeautifulSoup(stat_html, "html.parser")
+    stat_tag = adv_stat_map[stat]
+    stat_td = stat_soup.find("td", attrs={"data-stat":stat_tag})
+    return float(stat_td.string)
 
 """
 Function to get NBA players stats
