@@ -8,7 +8,7 @@ inc_names += "My grasp on the English language still needs a little improvement.
 inc_metric = "Seems I couldn't extract the metric for ranking, try writing your question more verbosely. "
 inc_metric += "My grasp on the English language still needs a little improvement..."
 inc_stat = "Seems I was unable to isolate the required statistics necessary for ranking, "
-inc_stat += "try writing your quesion more verbosely."
+inc_stat += "try writing your quesion more verbosely. "
 inc_stat += "My grasp on the English language still needs a little improvement..."
 
 metric_map = {
