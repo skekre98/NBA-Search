@@ -1,6 +1,8 @@
 import unittest
+import random
 from datetime import date
 from modules import analysis, scraper
+from inference.ranknode import RankNode
 import preprocess
 
 # Test cases for Analysis API 
@@ -30,7 +32,6 @@ class TestAnalysis(unittest.TestCase):
         self.assertEqual(flag_1, 1)
         self.assertEqual(flag_0, 0)
         self.assertEqual(flag_n, -1)
-
 
 # Test cases for web scraper 
 class TestScraper(unittest.TestCase):
@@ -64,32 +65,70 @@ class TestScraper(unittest.TestCase):
         }
         for l in bracket:
             self.assertTrue(l in levels)
-
-
-# Test cases for data preprocessing
-class TestPreprocess(unittest.TestCase):
-
-    # Method to test name funneling 
-    def test_name_funnel(self):
-        names = set()
-        for i in range(100):
-            fnld = preprocess.funnel_name("Lebron James")
-            names.add(fnld)
-        correct = {"lebron", "james", "lebron james"}
-        diff = correct.difference(names)
-        self.assertFalse(bool(diff))
     
-    # Method to test rank query generation 
-    def test_rank_gen(self):
-        samples = 1500
-        ql = preprocess.generate_rank_queries(samples)
-        self.assertEqual(len(ql), samples)
+    # Method to test advanced stat scraper 
+    def test_get_adv_stats(self):
+        names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
+        stats = ["true shooting percentage", "total rebound percentage", "defensive plus/minus"]
+        for i in range(5):
+            random_name = random.choice(names)
+            random_stat = random.choice(stats)
+            stat = scraper.get_adv_stat(random_name, random_stat)
+            self.assertTrue(isinstance(stat, float))
+
+# Test cases for rank node
+class TestRankNode(unittest.TestCase):
+
+    # Method to test rank node response 
+    def test_node_response(self):
+        query = "query"
+        node = RankNode(query)
+        resp = node.response()
+        stat = [int(word) for word in resp.split() if word.replace('.','').isdigit()]
+        self.assertTrue(isinstance(resp, str))
     
-    # Method to test stat query generation 
-    def test_stat_gen(self):
-        samples = 1500
-        ql = preprocess.generate_stat_queries(samples)
-        self.assertEqual(len(ql), samples)
+    # Method to test rank node metric conversion
+    def test_metric2stat(self):
+        node = RankNode("Query")
+        test_map = {
+            "true shooting percentage" : "shooting",
+            "defensive plus/minus" : "defending",
+            "player efficiency rating" : "player",
+        }
+
+        for stat in test_map:
+            metric = test_map[stat]
+            predicted_stat = node.metric2stat(metric)
+            self.assertEqual(predicted_stat, stat)
+
+        metric = "This is nothing"
+        predicted_stat = node.metric2stat(metric)
+        self.assertIsNone(predicted_stat)
+    
+    # Method to test metric extraction
+    def test_extract_metric(self):
+        node = RankNode("Who is a better shooter Kobe or Lebron?")
+        metric = node.extract_metric()
+        self.assertEqual(metric, "shooter")
+    
+    # Method to test name extraction
+    def test_extract_names(self):
+        node = RankNode("Who is a better shooter Kobe Bryant or Lebron James?")
+        name1, name2 = node.extract_names()
+        names = set([name1, name2])
+        self.assertTrue("Kobe Bryant" in names)
+        self.assertTrue("Lebron James" in names)
+    
+    # Method to test stat getter
+    def test_get_stat(self):
+        node = RankNode("Query")
+        names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
+        stats = ["true shooting percentage", "total rebound percentage", "defensive plus/minus"]
+        for i in range(5):
+            random_name = random.choice(names)
+            random_stat = random.choice(stats)
+            stat = node.get_stat(random_name, random_stat)
+            self.assertTrue(isinstance(stat, float))
 
 
 if __name__ == '__main__':

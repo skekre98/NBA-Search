@@ -5,15 +5,9 @@ from modules.transformer import create_html_bracket
 from modules.query import Query
 from data.text_data import unsure, non_nba
 from flask import Flask, render_template, request, jsonify
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
 
 app = Flask(__name__)
-
 os.system('python3 -m spacy download en_core_web_sm')
-chatbot = ChatBot("SHAq")
-trainer = ChatterBotCorpusTrainer(chatbot)
-trainer.train("chatterbot.corpus.english")
 
 """
 Function to handle routing to home page.
@@ -104,15 +98,9 @@ Bot response : json
 @app.route("/bot-msg", methods=['POST'])
 def get_bot_response():
     usr_msg = request.form['msg']
-    flag = isNBA(usr_msg)
-    if flag == -1:
-        return jsonify(non_nba)
-    elif flag == 0:
-        return jsonify(unsure)
-    else:
-        handler = Query(usr_msg)
-        response = handler.process()
-        return jsonify(response)
+    handler = Query(usr_msg)
+    response = handler.process()
+    return jsonify(response)
 
 if __name__ == "__main__":
     app.run()
