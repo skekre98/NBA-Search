@@ -42,13 +42,15 @@ class RankNode(object):
 		entity_1 = (name_1, value_1) 
 		entity_2 = (name_2, value_2)
 
-		better_player = lambda a, b : a if a[1] > b[1] else b
-		max_entity = better_player(entity_1, entity_2)
+		better_player = lambda a, b : (a, b) if a[1] > b[1] else (b, a)
+		(max_entity, min_entity) = better_player(entity_1, entity_2)
 
 		resp_1 = "{} has performed better in the past with a {} of {}.".format(max_entity[0], stat, max_entity[1])
 		resp_2 = "Statistically speaking {} is superior with a {} of {}.".format(max_entity[0], stat, max_entity[1])
 		resp_3 = "With a {} of {} I'd have to go with {}. It's alright if you have a different opinion as long as you don't mind being wrong.".format(stat, max_entity[1], max_entity[0])
-		resp_list = [resp_1, resp_2, resp_3]
+		resp_4 = "I mean {} has a {} of {}, so I'm going to assume that was a rhetorical question...".format(max_entity[0], stat, max_entity[1])
+		resp_5 = "Is that a trick question? {} has a {} or {} while {} only has a {} of {}.".format(max_entity[0], stat, max_entity[1], min_entity[0], stat, min_entity[1])
+		resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5]
 		return random.choice(resp_list)
 
 	def extract_names(self):

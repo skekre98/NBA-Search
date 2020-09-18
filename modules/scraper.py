@@ -234,6 +234,8 @@ def get_adv_stat(name, stat):
     stat_soup = BeautifulSoup(stat_html, "html.parser")
     stat_tag = adv_stat_map[stat]
     stat_td = stat_soup.find("td", attrs={"data-stat":stat_tag})
+    print(stat_soup)
+    print(stat_td)
     return float(stat_td.string)
 
 """
