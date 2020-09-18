@@ -1,4 +1,5 @@
 import unittest
+import random
 from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
@@ -64,7 +65,16 @@ class TestScraper(unittest.TestCase):
         }
         for l in bracket:
             self.assertTrue(l in levels)
-
+    
+    # Method to test advanced stat scraper 
+    def test_get_adv_stats(self):
+        names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
+        stats = ["true shooting percentage", "total rebound percentage", "defensive plus/minus"]
+        for i in range(5):
+            random_name = random.choice(names)
+            random_stat = random.choice(stats)
+            stat = scraper.get_adv_stat(random_name, random_stat)
+            self.assertTrue(isinstance(stat, float))
 
 # Test cases for rank node
 class TestRankNode(unittest.TestCase):
@@ -108,6 +118,18 @@ class TestRankNode(unittest.TestCase):
         names = set([name1, name2])
         self.assertTrue("Kobe Bryant" in names)
         self.assertTrue("Lebron James" in names)
+    
+    # Method to test stat getter
+    def test_get_stat(self):
+        node = RankNode("Query")
+        names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
+        stats = ["true shooting percentage", "total rebound percentage", "defensive plus/minus"]
+        for i in range(5):
+            random_name = random.choice(names)
+            random_stat = random.choice(stats)
+            stat = node.get_stat(random_name, random_stat)
+            self.assertTrue(isinstance(stat, float))
+
 
 if __name__ == '__main__':
     unittest.main()

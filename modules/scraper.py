@@ -208,7 +208,6 @@ stat_list : list
     The list of tuples with player name and PER
 """
 def get_adv_stat(name, stat):
-
     max_similarity = lambda a, b : a if a[1] > b[1] else b
     similar_name = (None, 0.0)
     for player in alltime_player_list:
@@ -234,9 +233,7 @@ def get_adv_stat(name, stat):
     stat_soup = BeautifulSoup(stat_html, "html.parser")
     stat_tag = adv_stat_map[stat]
     stat_td = stat_soup.find("td", attrs={"data-stat":stat_tag})
-    print(stat_soup)
-    print(stat_td)
-    return float(stat_td.string)
+    return float(stat_td.string) if stat_td else 0.0
 
 """
 Function to get NBA players stats
