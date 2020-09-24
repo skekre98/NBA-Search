@@ -1,4 +1,5 @@
 import spacy
+import random
 
 inc_name = "Seems I couldn't extract the name for retrieval, try writing your question more verbosely. "
 inc_name += "Unfortunately English is not my native language..."
@@ -22,7 +23,10 @@ class StatNode(object):
         resp_1 = "Seems {} has a {} of {}".format(name, stat, stat_val)
         resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}".format(name, stat_val, stat)
         resp_3 = "{}...obviously".format(stat_val)
-        resp_4 = "Last I checked... {} had a {} or {}".format(name, stat, stat_val)
+        resp_4 = "Last I checked... {} had a {} of {}".format(name, stat, stat_val)
+        resp_5 = "Do you not have every NBA stat since the beginning of time memorized? Well he has a {} of {}".format(stat, stat_val)
+        resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5]
+		return random.choice(resp_list)
     
     def extract_entities(self):
         doc = self.nlp(self.query)
