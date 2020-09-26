@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-The currently issue labels being handled are features, enhancements, and bugs
+The current issue labels being handled are features, enhancements, and bugs.
 
 ### Feature Issue
 
