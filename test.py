@@ -91,7 +91,13 @@ class TestScraper(unittest.TestCase):
         dennis_rodmans = ["Dennis Rodman", "Rodman", "rodman"]        
         for i in dennis_rodmans:
             self.assertEqual(scraper.get_target_name(i), "Dennis Rodman")
-    
+
+    # Method to test get player url  
+    def test_get_player_url(self):
+        self.assertEqual(scraper.get_player_url("Kobe Bryant"), "https://www.basketball-reference.com/players/b/bryanko01.html")
+        self.assertEqual(scraper.get_player_url("LeBron James"), "https://www.basketball-reference.com/players/j/jamesle01.html")
+        self.assertEqual(scraper.get_player_url("Dennis Rodman"), "https://www.basketball-reference.com/players/r/rodmade01.html")
+
     # Method to test advanced stat scraper 
     def test_get_adv_stats(self):
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]

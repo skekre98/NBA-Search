@@ -212,6 +212,33 @@ def get_target_name(query):
     return target_name
 
 """
+Function to get the player URL for a given 
+target_name from `alltime_player_list`
+
+Parameters
+----------
+target_name : string
+    from `alltime_player_list`
+
+Returns
+-------
+url : string
+"""
+def get_player_url(target_name):
+    ln_initial = target_name.split()[-1][0].lower()
+    url = "{}/players/{}/".format(base_url, ln_initial)
+
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    th = page_content.findAll("th")
+    for row in th:
+        a = row.find("a")
+        if a and a.string == target_name:
+            url = base_url + a["href"]
+    
+    return url
+
+"""
 Function to get the advanced statistic
 for NBA player career
 
@@ -229,16 +256,7 @@ stat_list : list
 """
 def get_adv_stat(name, stat):
     target_name = get_target_name(name)
-    ln_initial = target_name.split()[-1][0].lower()
-    url = "{}/players/{}/".format(base_url, ln_initial)
-
-    resp = requests.get(url)
-    page_content = BeautifulSoup(resp.content, "html.parser")
-    th = page_content.findAll("th")
-    for row in th:
-        a = row.find("a")
-        if a and a.string == target_name:
-            url = base_url + a["href"]
+    url = get_player_url(target_name)
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     advanced_div = page_content.find("div",attrs={"id":"all_advanced"})
