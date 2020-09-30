@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup, Comment
 from difflib import SequenceMatcher
 from modules.objects import Team, Player
 from data.text_data import alltime_player_list
+from fuzzywuzzy import fuzz, process
 
 base_url = "https://www.basketball-reference.com"
 adv_stat_map = {
@@ -192,6 +193,25 @@ def get_per(year):
     return per_list
 
 """
+Function to get the player name for a given
+search string
+
+Parameters
+----------
+query : string
+    user-inputted query (as determined by
+    NLP)
+
+Returns
+-------
+target_name : string from `alltime_player_list`
+"""
+def get_target_name(query):
+    target_name, ratio = process.extractOne(query, alltime_player_list, scorer=fuzz.partial_token_sort_ratio)
+
+    return target_name
+
+"""
 Function to get the advanced statistic
 for NBA player career
 
@@ -208,16 +228,10 @@ stat_list : list
     The list of tuples with player name and PER
 """
 def get_adv_stat(name, stat):
-    max_similarity = lambda a, b : a if a[1] > b[1] else b
-    similar_name = (None, 0.0)
-    for player in alltime_player_list:
-        ratio = SequenceMatcher(None, name, player).ratio()
-        curr_name = (player, ratio)
-        similar_name = max_similarity(similar_name, curr_name)
-
-    target_name = similar_name[0]
+    target_name = get_target_name(name)
     ln_initial = target_name.split()[-1][0].lower()
     url = "{}/players/{}/".format(base_url, ln_initial)
+
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     th = page_content.findAll("th")

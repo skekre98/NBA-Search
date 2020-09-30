@@ -66,6 +66,32 @@ class TestScraper(unittest.TestCase):
         for l in bracket:
             self.assertTrue(l in levels)
     
+    # Method to test get target name  
+    def test_get_target_name(self):
+        lebron_jamess = ["LeBron James", "Lebron James", "Lebron"]
+        for i in lebron_jamess:
+            self.assertEqual(scraper.get_target_name(i), "LeBron James")
+        
+        shaquille_oneals = ["Shaquille O'Neal", "Shaq O'Niel", "Shakiel O'Neal"]
+        for i in shaquille_oneals:
+            self.assertEqual(scraper.get_target_name(i), "Shaquille O'Neal")
+        
+        klay_thompsons = ["Klay Thompson", "Clay Thompson", "Clay Thomson", "Klay Thomson"]
+        for i in klay_thompsons:
+            self.assertEqual(scraper.get_target_name(i), "Klay Thompson")
+        
+        kobe_bryants = ["Kobe Bryant", "kobe", "Kobe"]        
+        for i in kobe_bryants:
+            self.assertEqual(scraper.get_target_name(i), "Kobe Bryant")
+        
+        wilt_chamberlains = ["Wilt Chamberlain", "Wilt", "wilt"]        
+        for i in wilt_chamberlains:
+            self.assertEqual(scraper.get_target_name(i), "Wilt Chamberlain")
+
+        dennis_rodmans = ["Dennis Rodman", "Rodman", "rodman"]        
+        for i in dennis_rodmans:
+            self.assertEqual(scraper.get_target_name(i), "Dennis Rodman")
+    
     # Method to test advanced stat scraper 
     def test_get_adv_stats(self):
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
