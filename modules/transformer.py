@@ -4,8 +4,7 @@ from sklearn.base import TransformerMixin
 
 # Build a list of stopwords to use to filter
 nlp = spacy.load('en_core_web_sm')
-for word in ['what','where','which','why','who','how','or']:
-    nlp.vocab[word].is_stop = False
+wh_words = ['what','where','which','why','who','how','or']
 punctuations = string.punctuation
 
 # Function to clean the text 
@@ -17,8 +16,8 @@ def query_tokenizer(sentence):
     mytokens = nlp(sentence)
     tokens = []
     for token in mytokens:
-        if (not token.is_stop and not token.is_punct) or (token.pos_ == 'ADJ'):
-            tokens.append(str(token.lemma_))
+        if (not token.is_stop and not token.is_punct) or (token.pos_ == 'ADJ') or (token.text.lower() in wh_words):
+            tokens.append(str(token.lemma_).lower())
     return tokens
 
 # Class for text transformation
