@@ -2,6 +2,7 @@ import pickle
 from sklearn.externals import joblib
 from modules.transformer import predictors, query_tokenizer
 from inference.ranknode import RankNode
+from inference.statnode import StatNode
 
 node_map = {
     1 : "rank",
@@ -22,6 +23,6 @@ class InferenceNetwork(object):
         if self.node_type == "rank":
             node = RankNode(self.query)
         elif self.node_type == "stat":
-            node = RankNode(self.query)
+            node = StatNode(self.query)
         
         return node.response()
