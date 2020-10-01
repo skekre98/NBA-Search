@@ -3,6 +3,7 @@ import random
 from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
+from preprocess import funnel_name
 import preprocess
 
 # Test cases for Analysis API 
@@ -162,6 +163,13 @@ class TestRankNode(unittest.TestCase):
             stat = node.get_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
 
+# Test case for funnel_name method in preprocess
+class TestPreprocess(unittest.TestCase):
+    def test_get_random_player_names(self):
+        names = ["Bud Acton", "Gary Alexander", "Steven Adams"]
+        for i in range(3):
+            player_name = funnel_name(names[i])
+            self.assertTrue(player_name in ' '.join(names))
 
 if __name__ == '__main__':
     unittest.main()

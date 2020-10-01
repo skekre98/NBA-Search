@@ -9,11 +9,11 @@ def funnel_name(name):
     inst = randint(1, 3)
     name_split = name.split()
     if inst == 1:
-        return name_split[0].lower()
+        return name_split[0]
     elif inst == 2:
-        return name_split[1].lower()
+        return name_split[1]
     else:
-        return name.lower()
+        return name
 
 # Function to generate rank queries 
 def generate_rank_queries(samples):
