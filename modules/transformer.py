@@ -1,14 +1,12 @@
 import string
 import spacy
-from spacy.lang.en import English
-from spacy.lang.en.stop_words import STOP_WORDS
 from sklearn.base import TransformerMixin
 
 # Build a list of stopwords to use to filter
-nlp = spacy.load('en')
-stopwords = list(STOP_WORDS)
+nlp = spacy.load('en_core_web_sm')
+for word in ['what','where','which','why','who','how','or']:
+    nlp.vocab[word].is_stop = False
 punctuations = string.punctuation
-parser = English()
 
 # Function to clean the text 
 def clean_text(text):     
@@ -16,10 +14,12 @@ def clean_text(text):
 
 # Function to tokenize text 
 def query_tokenizer(sentence):
-    mytokens = parser(sentence)
-    mytokens = [word.lemma_.lower().strip() if word.lemma_ != "-PRON-" else word.lower_ for word in mytokens]
-    mytokens = [word for word in mytokens if word not in stopwords and word not in punctuations]
-    return mytokens
+    mytokens = nlp(sentence)
+    tokens = []
+    for token in mytokens:
+        if (not token.is_stop and not token.is_punct) or (token.pos_ == 'ADJ'):
+            tokens.append(str(token.lemma_))
+    return tokens
 
 # Class for text transformation
 class predictors(TransformerMixin):
