@@ -4,11 +4,6 @@ from modules.transformer import predictors, query_tokenizer
 from inference.ranknode import RankNode
 from inference.statnode import StatNode
 
-node_map = {
-    1 : "rank",
-    2 : "stat"
-}
-
 class InferenceNetwork(object):
 
     def __init__(self, query):
@@ -17,12 +12,12 @@ class InferenceNetwork(object):
         # Query classification 
         model_file = "inference/models/query_classifier.pkl"
         query_clf = joblib.load(model_file)
-        self.node_type = node_map[query_clf.predict([query.lower()])[0]]
+        self.node_type = query_clf.predict([query.lower()])[0]
     
     def response(self):
         if self.node_type == "rank":
-            node = RankNode(self.query)
+            node = RankNode()
         elif self.node_type == "stat":
-            node = StatNode(self.query)
-        
+            node = StatNode()
+        node.load_query(self.query)
         return node.response()
