@@ -84,7 +84,7 @@ def generate_stat_queries(samples):
             name = funnel_name(choice(names))
             action = choice(stat_list)
             query1 = "what is {}s {} percentage,stat\n".format(action, name)
-            query2 = "what is {}s {} {},stat\n".format(action, name, "%")
+            query2 = "what is {} {}s {},stat\n".format(name, action, "%")
             query3 = "what was {}s {} percentage in {},stat\n".format(action, name, str(randint(1988,2020)))
             query4 = "who had the best {} in {},stat\n".format(action, str(randint(1988,2020)))
             Qs = [query1, query2, query3, query4]
