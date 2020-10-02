@@ -115,14 +115,17 @@ class TestRankNode(unittest.TestCase):
     # Method to test rank node response 
     def test_node_response(self):
         query = "query"
-        node = RankNode(query)
+        node = RankNode()
+        node.load_query(query)
         resp = node.response()
         stat = [int(word) for word in resp.split() if word.replace('.','').isdigit()]
         self.assertTrue(isinstance(resp, str))
     
     # Method to test rank node metric conversion
     def test_metric2stat(self):
-        node = RankNode("Query")
+        query = "query"
+        node = RankNode()
+        node.load_query(query)
         test_map = {
             "true shooting percentage" : "shooting",
             "defensive plus/minus" : "defending",
@@ -140,13 +143,17 @@ class TestRankNode(unittest.TestCase):
     
     # Method to test metric extraction
     def test_extract_metric(self):
-        node = RankNode("Who is a better shooter Kobe or Lebron?")
+        query = "Who is a better shooter Kobe or Lebron?"
+        node = RankNode()
+        node.load_query(query)
         metric = node.extract_metric()
         self.assertEqual(metric, "shooter")
     
     # Method to test name extraction
     def test_extract_names(self):
-        node = RankNode("Who is a better shooter Kobe Bryant or Lebron James?")
+        query = "Who is a better shooter Kobe Bryant or Lebron James?"
+        node = RankNode()
+        node.load_query(query)
         name1, name2 = node.extract_names()
         names = set([name1, name2])
         self.assertTrue("Kobe Bryant" in names)
@@ -154,7 +161,7 @@ class TestRankNode(unittest.TestCase):
     
     # Method to test stat getter
     def test_get_stat(self):
-        node = RankNode("Query")
+        node = RankNode()
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
         stats = ["true shooting percentage", "total rebound percentage", "defensive plus/minus"]
         for i in range(5):
@@ -163,8 +170,10 @@ class TestRankNode(unittest.TestCase):
             stat = node.get_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
 
-# Test case for funnel_name method in preprocess
+# Test case for data preprocess
 class TestPreprocess(unittest.TestCase):
+
+    # Method to test funnel name 
     def test_get_random_player_names(self):
         names = ["Bud Acton", "Gary Alexander", "Steven Adams"]
         for i in range(3):
