@@ -31,7 +31,7 @@ def main():
     elif sys.argv[1] == "train":
         os.system('python3 query_classifier.py')
     else:
-        print("ERROR: Incorrect Arguments")
+        print("ERROR: Invalid Arguments")
         printHelp()
 
 
