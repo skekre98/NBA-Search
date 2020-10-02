@@ -22,9 +22,12 @@ metric_map = {
 
 class RankNode(object):
 
-	def __init__(self, query):
-		self.query = query
+	def __init__(self):
+		self.query = ""
 		self.nlp = spacy.load('en_core_web_sm')
+
+	def load_query(self, query):
+		self.query = query
 
 	def response(self):
 		name_1, name_2 = self.extract_names()

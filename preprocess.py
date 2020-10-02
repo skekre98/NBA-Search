@@ -27,30 +27,30 @@ def generate_rank_queries(samples):
             name1 = funnel_name(choice(names))
             name2 = funnel_name(choice(names))
             stat = choice(stat_list)
-            query = "who is a better {}er between {} and {}, rank\n".format(stat, name1, name2)
+            query = "who is a better {}er between {} and {},rank\n".format(stat, name1, name2)
             query_list.append(query)
         elif randq == 1:
             name1 = funnel_name(choice(names))
             name2 = funnel_name(choice(names))
-            query1 = "could {} beat {} in 1v1, rank\n".format(name1, name2)
-            query2 = "could {} beat {} in one on one, rank\n".format(name1, name2)
-            query3 = "could {} beat {} in basketball, rank\n".format(name1, name2)
+            query1 = "could {} beat {} in 1v1,rank\n".format(name1, name2)
+            query2 = "could {} beat {} in one on one,rank\n".format(name1, name2)
+            query3 = "could {} beat {} in basketball,rank\n".format(name1, name2)
             Qs = [query1, query2, query3]
             query_list.append(choice(Qs))
         elif randq == 2:
             name1 = funnel_name(choice(names))
             name2 = funnel_name(choice(names))
             stat = choice(stat_list)
-            query1 = "who is better at {}ing {} or {}, rank\n".format(stat, name1, name2)
-            query2 = "is {} or {} better at {}ing, rank\n".format(name1, name2, stat)
+            query1 = "who is better at {}ing {} or {},rank\n".format(stat, name1, name2)
+            query2 = "is {} or {} better at {}ing,rank\n".format(name1, name2, stat)
             Qs = [query1, query2]
             query_list.append(choice(Qs))
         elif randq == 3:
             name1 = funnel_name(choice(names))
             name2 = funnel_name(choice(names))
-            query1 = "should I pick {} or {}, rank\n".format(name1, name2)
-            query2 = "should I put {} or {} on my fantasy team, rank\n".format(name1, name2)
-            query3 = "who should I pick for fantasy, rank\n"
+            query1 = "should I pick {} or {},rank\n".format(name1, name2)
+            query2 = "should I put {} or {} on my fantasy team,rank\n".format(name1, name2)
+            query3 = "who should I pick for fantasy,rank\n"
             Qs = [query1, query2, query3]
             query_list.append(choice(Qs))
         else:
@@ -58,7 +58,7 @@ def generate_rank_queries(samples):
             goats = ["Michael Jordan", "Kobe Bryant", "Lebron James", "Magic Johnson", "Larry Bird"]
             name1 = funnel_name(choice(goats))
             name2 = funnel_name(choice(goats))
-            query = "{} or {}, rank\n".format(name1, name2)
+            query = "{} or {},rank\n".format(name1, name2)
             query_list.append(query)
         cnt += 1
     
@@ -75,34 +75,34 @@ def generate_stat_queries(samples):
         if randq < 2:
             name = funnel_name(choice(names))
             action = choice(stat_list)
-            query1 = "how many {}s does {} put up, stat\n".format(action, name)
-            query2 = "how many {}s does {} have per game, stat\n".format(action, name)
-            query3 = "how many {}s did {}, stat\n".format(action, name)
+            query1 = "how many {}s does {} put up,stat\n".format(action, name)
+            query2 = "how many {}s does {} have per game,stat\n".format(action, name)
+            query3 = "how many {}s did {},stat\n".format(action, name)
             Qs = [query1, query2, query3]
             query_list.append(choice(Qs))
         elif randq < 5:
             name = funnel_name(choice(names))
             action = choice(stat_list)
-            query1 = "what is {}s {} percentage, stat\n".format(action, name)
-            query2 = "what is {} {}s {}, stat\n".format(name, action, "%")
-            query3 = "what was {}s {} percentage in {}, stat\n".format(action, name, str(randint(1988,2020)))
-            query4 = "who had the best {} in {}, stat\n".format(action, str(randint(1988,2020)))
+            query1 = "what is {}s {} percentage,stat\n".format(action, name)
+            query2 = "what is {} {}s {},stat\n".format(name, action, "%")
+            query3 = "what was {}s {} percentage in {},stat\n".format(action, name, str(randint(1988,2020)))
+            query4 = "who had the best {} in {},stat\n".format(action, str(randint(1988,2020)))
             Qs = [query1, query2, query3, query4]
             query_list.append(choice(Qs))
         elif randq == 5:
             action = choice(stat_list)
-            query1 = "who is the best {}er in the league, stat\n".format(action)
-            query2 = "who is the worst {}er there is, stat\n".format(action)
-            query3 = "who has the most {}s per game, stat\n".format(action)
-            query4 = "who is the best {}er, stat\n".format(action)
+            query1 = "who is the best {}er in the league,stat\n".format(action)
+            query2 = "who is the worst {}er there is,stat\n".format(action)
+            query3 = "who has the most {}s per game,stat\n".format(action)
+            query4 = "who is the best {}er,stat\n".format(action)
             Qs = [query1, query2, query3, query4]
             query_list.append(choice(Qs))
         elif randq == 6:
             stat = choice(percent_list)
-            query1 = "who has the highest {} percentage in the nba, stat\n".format(action)
-            query2 = "who has the highest {} percentage, stat\n".format(action)
-            query3 = "who has the best {}{}, stat\n".format(action, "%")
-            query4 = "who has the highest {}{} around, stat\n".format(action, "%")
+            query1 = "who has the highest {} percentage in the nba,stat\n".format(action)
+            query2 = "who has the highest {} percentage,stat\n".format(action)
+            query3 = "who has the best {}{},stat\n".format(action, "%")
+            query4 = "who has the highest {}{} around,stat\n".format(action, "%")
             Qs = [query1, query2, query3, query4]
             query_list.append(choice(Qs))
         cnt += 1
