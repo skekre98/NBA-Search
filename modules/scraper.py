@@ -6,16 +6,9 @@ from difflib import SequenceMatcher
 from modules.objects import Team, Player
 from data.text_data import alltime_player_list
 from fuzzywuzzy import fuzz, process
+from data.text_data import total_stat_map, adv_stat_map
 
 base_url = "https://www.basketball-reference.com"
-adv_stat_map = {
-    "true shooting percentage" : "ts_pct",
-	"total rebound percentage" : "trb_pct",
-	"defensive plus/minus" : "dbpm",
-	"offensive plus/minus" : "obpm",
-	"player efficiency rating" : "per",
-	"assist percentage" : "ast_pct" 
-}
 
 """
 Function to get a map of current playoff 
@@ -264,7 +257,7 @@ def get_total_stat(name, stat):
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     tfoot_soup = page_content.find("tfoot")
-    stat_tag = "fg3_pct"
+    stat_tag = total_stat_map[stat]
     stat_td = tfoot_soup.find("td", attrs={"data-stat":stat_tag})
     return float(stat_td.string) if stat_td else 0.0
 

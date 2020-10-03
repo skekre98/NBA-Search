@@ -1,6 +1,7 @@
 import spacy
 import random
 from modules.scraper import get_adv_stat, get_total_stat
+from data.text_data import adv_stat_map, total_stat_map
 
 inc_name = "Seems I couldn't extract the name for retrieval, try writing your question more verbosely. "
 inc_name += "Unfortunately English is not my native language..."
@@ -51,5 +52,8 @@ class StatNode(object):
 		return "field goal percentage"
 	
 	def get_player_stat(self, name, stat):
-		val = get_total_stat(name, stat)
+		if stat in total_stat_map:
+			val = get_total_stat(name, stat)
+		else:
+			val = get_adv_stat(name, stat)
 		return val
