@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
         <!-- bracket CSS  -->
         <link rel="stylesheet" href="{{url_for('static', filename='css/bracket.css')}}">
+        <!-- standings CSS  -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/standings.css')}}">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
@@ -198,7 +200,95 @@
         </div>
         </div>
         </section>
-        
+
+        <!-- START STANDINGS SECTION -->
+        <h2 class="nba-standings-header">NBA Standings</h2>
+        <div class="row nba-standings">
+            <div class="col-md-4">
+                <h3 class="nba-standings-sub-header">WESTERN</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead style="border-color: white;">
+                        <tr>
+                            <th class="col-md-1">TEAM NAME</th>
+                            <th class="col-md-2">WINS</th>
+                            <th class="col-md-3">LOSES</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="col-md-1">Los Angeles Lakers</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">20</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-1">Los Angeles Lakers</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">20</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-1">Los Angeles Lakers</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">20</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Houston Rockets</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">30</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-3">Los Angeles Clippers</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">10</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3 class="nba-standings-sub-header">EASTERN</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="col-md-1">TEAM NAME</th>
+                            <th class="col-md-2">WINS</th>
+                            <th class="col-md-3">LOSES</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="col-md-1">Boston Celtics</td>
+                            <td class="col-md-2">10</td>
+                            <td class="col-md-3">20</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Miami Heat</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">30</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-3">Toronto Raptors</td>
+                            <td class="col-md-2">20</td>
+                            <td class="col-md-3">10</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-1">Boston Celtics</td>
+                            <td class="col-md-2">10</td>
+                            <td class="col-md-3">20</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-1">Boston Celtics</td>
+                            <td class="col-md-2">10</td>
+                            <td class="col-md-3">20</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END STANDINGS SECTION -->
+
         <!-- footer part start-->
         <footer class="copyright_part">
             <div class="container">
