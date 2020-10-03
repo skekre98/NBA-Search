@@ -26,11 +26,11 @@ class StatNode(object):
 			return inc_stat
 		
 		stat_val = self.get_player_stat(name, stat)
-		resp_1 = "Seems {} has a {} of {}".format(name, stat, stat_val)
-		resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}".format(name, stat_val, stat)
+		resp_1 = "Seems {} has a {} of {}.".format(name, stat, stat_val)
+		resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}.".format(name, stat_val, stat)
 		resp_3 = "{}...obviously".format(stat_val)
-		resp_4 = "Last I checked... {} had a {} of {}".format(name, stat, stat_val)
-		resp_5 = "Do you not have every NBA stat since the beginning of time memorized? Well he has a {} of {}".format(stat, stat_val)
+		resp_4 = "Last I checked... {} had a {} of {}.".format(name, stat, stat_val)
+		resp_5 = "Do you not have every NBA stat since the beginning of time memorized? Well he has a {} of {}.".format(stat, stat_val)
 		resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5]
 		return random.choice(resp_list)
 	
@@ -49,7 +49,7 @@ class StatNode(object):
 	
 	def extract_stat(self):
 		# TODO 
-		return "field goal percentage"
+		return "true shooting percentage"
 	
 	def get_player_stat(self, name, stat):
 		if stat in total_stat_map:
