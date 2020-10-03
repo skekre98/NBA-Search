@@ -18,7 +18,7 @@ class StatNode(object):
 		self.query = query
 
 	def response(self):
-		name = self.extract_entities()
+		name = self.extract_name()
 		stat = self.extract_stat()
 		if not name:
 			return inc_name
