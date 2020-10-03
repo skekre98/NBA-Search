@@ -147,8 +147,12 @@ def get_standings(conf):
         team = row.find("a")["title"]
         wins = row.find("td",attrs={"data-stat":"wins"}).string
         losses = row.find("td",attrs={"data-stat":"losses"}).string
-        t = Team(team, wins, losses, i%15+1)
-        standings.append(t)
+        team_map = {
+		"name" : team,
+		"wins" : wins,
+		"losses" : losses
+	}
+        standings.append(team_map)
     
     # Return rankings based on conference 
     switch = {

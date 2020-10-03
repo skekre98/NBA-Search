@@ -131,20 +131,25 @@
                                     <li class="nav-item active">
                                         <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="https://github.com/skekre98/NBA-Search" class="nav-link">Github</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ url_for('authors') }}" class="nav-link">About Us</a>
-                                    </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
                                             Insights
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ url_for('home') }}">Blogs</a>
-                                            <a class="dropdown-item" href="{{ url_for('predictions') }}">Predictions</a>
+                                            <a class="dropdown-item"
+                                               href="{{ url_for('predictions') }}">Predictions</a>
                                         </div>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="{{ url_for('authors') }}" class="nav-link">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="https://github.com/skekre98/NBA-Search/graphs/contributors"
+                                           class="nav-link" target="_blank">Contributors</a>
                                     </li>
                                 </ul>
                                 <div class="header_social_icon d-none d-lg-block">

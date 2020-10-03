@@ -53,7 +53,7 @@ def create_html_bracket(bracket_map):
         if team[1] == "4":
             west_team = team[0]
             if bracket_map["Finals"]:
-                west_score = bracket_map["Finals"][0][1][1]
+                west_score = bracket_map["Finals"][0][0][1]
             break
     finals.append((west_team, west_score))
 
@@ -62,7 +62,7 @@ def create_html_bracket(bracket_map):
         if team[1] == "4":
             east_team = team[0]
             if bracket_map["Finals"]:
-                east_score = bracket_map["Finals"][0][0][1]
+                east_score = bracket_map["Finals"][0][1][1]
             break
     finals.append((east_team, east_score))
 
