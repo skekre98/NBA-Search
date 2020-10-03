@@ -102,7 +102,7 @@ class TestScraper(unittest.TestCase):
     # Method to test advanced stat scraper 
     def test_get_adv_stats(self):
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
-        stats = ["true shooting percentage", "total rebound percentage", "defensive plus/minus"]
+        stats = ["true shooting percentage", "total rebound percentage", "defensive box plus/minus"]
         for i in range(5):
             random_name = random.choice(names)
             random_stat = random.choice(stats)
