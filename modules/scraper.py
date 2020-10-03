@@ -6,16 +6,9 @@ from difflib import SequenceMatcher
 from modules.objects import Team, Player
 from data.text_data import alltime_player_list
 from fuzzywuzzy import fuzz, process
+from data.text_data import total_stat_map, adv_stat_map
 
 base_url = "https://www.basketball-reference.com"
-adv_stat_map = {
-    "true shooting percentage" : "ts_pct",
-	"total rebound percentage" : "trb_pct",
-	"defensive plus/minus" : "dbpm",
-	"offensive plus/minus" : "obpm",
-	"player efficiency rating" : "per",
-	"assist percentage" : "ast_pct" 
-}
 
 """
 Function to get a map of current playoff 
@@ -243,12 +236,38 @@ def get_player_url(target_name):
     return url
 
 """
+Function to get the total statistic
+for NBA player career
+
+Parameters
+----------
+name : string
+    NBA player for stat retrieval
+stat : string
+    statistic to return
+
+Returns
+-------
+stat_list : list
+    The list of tuples with player name and PER
+"""
+def get_total_stat(name, stat):
+    target_name = get_target_name(name)
+    url = get_player_url(target_name)
+    resp = requests.get(url)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    tfoot_soup = page_content.find("tfoot")
+    stat_tag = total_stat_map[stat]
+    stat_td = tfoot_soup.find("td", attrs={"data-stat":stat_tag})
+    return float(stat_td.string) if stat_td else 0.0
+
+"""
 Function to get the advanced statistic
 for NBA player career
 
 Parameters
 ----------
-player : int
+name : string
     NBA player for stat retrieval
 stat : string
     statistic to return
@@ -270,6 +289,7 @@ def get_adv_stat(name, stat):
     stat_tag = adv_stat_map[stat]
     stat_td = stat_soup.find("td", attrs={"data-stat":stat_tag})
     return float(stat_td.string) if stat_td else 0.0
+
 
 """
 Function to get NBA players stats
