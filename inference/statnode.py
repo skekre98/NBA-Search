@@ -17,7 +17,8 @@ class StatNode(object):
 		self.query = query
 
 	def response(self):
-		name, stat = self.extract_entities()
+		name = self.extract_entities()
+		stat = self.extract_stat()
 		if not name:
 			return inc_name
 		elif not stat:
@@ -32,7 +33,7 @@ class StatNode(object):
 		resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5]
 		return random.choice(resp_list)
 	
-	def extract_entities(self):
+	def extract_name(self):
 		doc = self.nlp(self.query)
 		name = None
 		for entity in doc.ents:
@@ -42,15 +43,12 @@ class StatNode(object):
 			for entity in doc.ents:
 				if entity.label_ == "ORG":
 					name = entity.text
-		
-		metric_pos = [("NN", "NOUN"), ("VBG", "VERB")]
-		stat = None
-		for token in doc:
-			for tag, pos in metric_pos:
-				if tag == token.tag_ and pos == token.pos_:
-					stat = token.text
-		
-		return name, stat
+
+		return name
+	
+	def extract_stat(self):
+		# TODO 
+		return "field goal percentage"
 	
 	def get_player_stat(self, name, stat):
 		val = get_total_stat(name, stat)
