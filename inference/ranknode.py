@@ -47,13 +47,25 @@ class RankNode(object):
 
 		better_player = lambda a, b : (a, b) if a[1] > b[1] else (b, a)
 		(max_entity, min_entity) = better_player(entity_1, entity_2)
+		return self.generate_random_response(max_entity, min_entity, stat)
 
+	def generate_random_response(self, max_entity, min_entity, stat):		
 		resp_1 = "{} has performed better in the past with a {} of {}.".format(max_entity[0], stat, max_entity[1])
 		resp_2 = "Statistically speaking {} is superior with a {} of {}.".format(max_entity[0], stat, max_entity[1])
 		resp_3 = "With a {} of {} I'd have to go with {}. It's alright if you have a different opinion as long as you don't mind being wrong.".format(stat, max_entity[1], max_entity[0])
 		resp_4 = "I mean {} has a {} of {}, so I'm going to assume that was a rhetorical question...".format(max_entity[0], stat, max_entity[1])
-		resp_5 = "Is that a trick question? {} has a {} or {} while {} only has a {} of {}.".format(max_entity[0], stat, max_entity[1], min_entity[0], stat, min_entity[1])
-		resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5]
+		resp_5 = "Is that a trick question? {} has a {} of {} while {} only has a {} of {}.".format(max_entity[0], stat, max_entity[1], min_entity[0], stat, min_entity[1])
+		resp_6 = "{} maintains a higher {} of {}.".format(max_entity[0], stat, max_entity[1])
+		resp_7 = "{} of {}: {}, {} of {}: {}, {} wins!".format(stat.capitalize(), max_entity[0], max_entity[1], stat, min_entity[0], min_entity[1], max_entity[0])
+		resp_8 = "How could you even question {}'s {} {}.".format(max_entity[0], max_entity[1], stat)
+		resp_9 = "{}'s {} {} is trash compared to {}'s {} {}.".format(min_entity[0], min_entity[1], stat, max_entity[0], max_entity[1], stat)
+		resp_10 = "{}'s {} {} blows {}'s {} {} out of the water.".format(max_entity[0], max_entity[1], stat, min_entity[0], min_entity[1], stat)
+		resp_11 = "Easy answer: {}'s {} {} is just better.".format(max_entity[0], max_entity[1], stat)
+		resp_12 = "{}'s {} {} is good... Once it reaches {}'s {} {}.".format(min_entity[0], min_entity[1], stat, max_entity[0], max_entity[1], stat)
+		resp_13 = "{} has a higher {} at {} which is just {} more than {}.".format(max_entity[0], stat, max_entity[1], round(max_entity[1]-min_entity[1], 3), min_entity[0])
+		resp_14 = "{} has to put in a bit more work before you can even think about comparing his {} {} to {}'s {} {}.".format(min_entity[0], min_entity[1], stat, max_entity[0], max_entity[1], stat)
+		resp_15 = "Don't even try to compare {}'s {} with {}'s {} when {}'s is {} higher than {}'s".format(max_entity[0], stat, min_entity[0], stat, max_entity[0], round(max_entity[1]-min_entity[1], 3), min_entity[0])
+		resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5, resp_6, resp_7, resp_8, resp_9, resp_10, resp_11, resp_12, resp_13, resp_14, resp_15]
 		return random.choice(resp_list)
 
 	def extract_names(self):
@@ -91,3 +103,4 @@ class RankNode(object):
 	
 	def get_stat(self, name, stat):
 		return get_adv_stat(name, stat)
+
