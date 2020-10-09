@@ -46,6 +46,22 @@ def chat():
     return render_template("chat.html")
 
 """
+Function to render blogs page.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+HTML file
+    Rendering of HTML template for blog page
+"""
+@app.route("/blog")
+def blog():
+    return render_template("blogs.html")
+
+"""
 Function to handle routing to authors page.
 
 Parameters
