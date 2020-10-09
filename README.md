@@ -16,10 +16,11 @@ This is an NBA Analytics website with multiple components such as a chatbot, blo
    git clone https://github.com/skekre98/NBA-Search.git
    ```
 
-2. Run the following command to set up all necessary requirements:
+2. Run the following command to set up all necessary dependencies:
    ```
-   pip install -r requirements.txt
+   ./setup.sh
    ```
+   - you will likely need to give the setup script permission to execute
 
 3. Run the following command to deploy the web app on your localhost:
    ```
