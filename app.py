@@ -1,4 +1,3 @@
-import os
 from modules.analysis import isNBA
 from modules.scraper import get_playoff_bracket
 from modules.transformer import create_html_bracket
@@ -7,7 +6,6 @@ from data.text_data import unsure, non_nba
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
-os.system('python3 -m spacy download en_core_web_sm')
 
 """
 Function to handle routing to home page.
@@ -19,7 +17,7 @@ n/a
 Returns
 -------
 HTML file
-    Rendering of HTML template for home page
+    Rendering of HTML template for home page.
 """
 @app.route("/")
 def home():

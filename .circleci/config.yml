@@ -10,8 +10,7 @@ jobs:
       - run:
           name: Running tests
           command: |
-            pip install -r requirements.txt
-            python3 -m spacy download en_core_web_sm
+            ./setup.sh
             python3 -m unittest test.py
       - store_artifacts:
           path: test-reports/
