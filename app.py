@@ -17,7 +17,7 @@ n/a
 Returns
 -------
 HTML file
-    Rendering of HTML template for home page
+    Rendering of HTML template for home page.
 """
 @app.route("/")
 def home():
