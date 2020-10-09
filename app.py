@@ -7,7 +7,6 @@ from data.text_data import unsure, non_nba
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
-os.system('python3 -m spacy download en_core_web_sm')
 
 """
 Function to handle routing to home page.
