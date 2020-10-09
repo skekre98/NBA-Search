@@ -1,4 +1,3 @@
-import os
 from modules.analysis import isNBA
 from modules.scraper import get_playoff_bracket
 from modules.transformer import create_html_bracket
