@@ -19,6 +19,16 @@ hr {
 .form-control:-ms-input-placeholder { color: #999; }  
 .form-control::placeholder { color: #999; }
 
+.container-fluid {
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.blog {
+    align-items: center;
+}
+
 .tm-header {
     background-color: #FFBF00;
     color: white;
@@ -72,8 +82,6 @@ hr {
 
 .tm-row {
     align-items: center;
-    text-align: center;
-    margin-left: 7%;
 }
 
 .tm-nav { margin-bottom: 100px; }
