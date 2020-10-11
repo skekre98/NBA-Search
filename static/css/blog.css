@@ -64,15 +64,14 @@ hr {
 .tm-site-logo i { color: #FFBF00; }
 
 .tm-main {
-    margin-left: 400px;
+    /* margin-left: 400px; */
     padding: 80px 100px 25px;
 }
 
 .tm-post { max-width: 470px; }
 
 .tm-row {
-    max-width: 980px;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .tm-nav { margin-bottom: 100px; }
