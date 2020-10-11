@@ -71,11 +71,9 @@ hr {
 .tm-post { max-width: 470px; }
 
 .tm-row {
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     text-align: center;
+    margin-left: 7%;
 }
 
 .tm-nav { margin-bottom: 100px; }
