@@ -25,42 +25,6 @@ hr {
     vertical-align: middle;
 }
 
-.blog {
-    align-items: center;
-}
-
-.tm-header {
-    background-color: #FFBF00;
-    color: white;
-    
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 100;
-    width: 400px;
-    overflow-y: visible;     
-}
-
-.tm-header-wrapper {
-    overflow-y: scroll;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding: 30px;
-    width: 100%;
-    height: 100%; 
-}
-
-.tm-header-wrapper::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-
-.tm-site-header {
-    margin-top: 50px;
-    margin-bottom: 115px;
-}
-
 .tm-site-logo {
     width: 75px;
     height: 75px;
@@ -143,7 +107,6 @@ ul {
     width: 50px;
     height: 50px;
     text-align: center;
-    padding-top: 8px; 
     margin-right: 15px;   
     margin-bottom: 15px;
 }
@@ -427,15 +390,6 @@ a:hover figcaption { color: #056767; }
 .tm-contact-form label { font-size: 1.4rem; }
 .tm-contact-form .form-group { display: flex; }
 
-@media (max-width: 1540px) {
-    .tm-header { width: 320px; }
-
-    .tm-main {
-        margin-left: 320px;
-        width: calc(100% - 320px);
-    }
-}
-
 @media (max-width: 1300px) {
     .tm-about-col {
         flex: 0 0 100%;
@@ -462,14 +416,6 @@ a:hover figcaption { color: #056767; }
 
 /* Hide sidebar */
 @media (max-width: 991px) {
-    .tm-header {
-        width: 320px;
-        left: -320px;        
-        transition: all 0.3s ease;
-    }
-
-    .tm-header.show { left: 0; }
-    .tm-header-wrapper { padding: 15px; }
 
     .navbar-toggler {
         display: block;
@@ -483,8 +429,6 @@ a:hover figcaption { color: #056767; }
         border-radius: 0;
         top: 5px;
     }
-
-    .tm-header.show .navbar-toggler { left: 320px; }
 
     .tm-main {
         margin-left: 0;
