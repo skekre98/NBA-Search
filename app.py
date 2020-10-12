@@ -94,6 +94,22 @@ def predictions():
     return render_template("predictions.html", bracket=bracket)
 
 """
+Function to handle routing to home page.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+HTML file
+    Rendering of HTML template for home page.
+"""
+@app.route("/download")
+def download():
+    print("download called")
+
+"""
 Function to handle POST request from user
 with embedded message. The message is then 
 passed to the chatbot and the response is returned 
