@@ -126,7 +126,7 @@ def generate_info_queries(samples):
         elif randq == 3:
             query = "who are you,info\n"
             query1 = "who made you,info\n"
-            Qs = [query, query1, query2]
+            Qs = [query, query1]
             query_list.append(choice(Qs))
         elif randq == 4:
             query = "where are you,info\n"
