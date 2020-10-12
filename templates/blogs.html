@@ -1,98 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <title>NBA Search</title>
+  <title>Blogs</title>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- blog CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/blog.css')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <!-- themify CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
-    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-      body {
-        font-family: monospace;
-      }
-      h1 {
-        display: inline-block;
-        font-size: 3em;
-        margin: 0;
-        padding: 14px;
-      }
-      h3 {
-        color: black;
-        font-size: 20px;
-        margin-top: 3px;
-        text-align: center;
-      }
-      #chatbox {
-        margin-left: auto;
-        margin-right: auto;
-        width: 60%;
-        margin-top: 60px;
-      }
-      #userInput {
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-        margin-top: 60px;
-      }
-      #textInput {
-        width: 90%;
-        border: none;
-        border-bottom: 3px solid black;
-        font-family: monospace;
-        font-size: 17px;
-      }
-      .userText {
-        color: white;
-        font-family: monospace;
-        font-size: 17px;
-        text-align: right;
-        line-height: 30px;
-      }
-      .userText span {
-        background-color: red;
-        padding: 10px;
-        border-radius: 2px;
-      }
-      .botText {
-        color: white;
-        font-family: monospace;
-        font-size: 17px;
-        text-align: left;
-        line-height: 30px;
-      }
-      .botText span {
-        background-color: #4169e1;
-        padding: 10px;
-        border-radius: 2px;
-      }
-      #tidbit {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 300px;
-      }
-      .boxed {
-        margin-left: auto;
-        margin-right: auto;
-        width: 78%;
-        margin-top: 60px;
-        border: 1px solid green;
-      }
-      .box {
-        border: 2px solid black;
-      }
-    </style>
   </head>
   <body>
       <!--::header part start::-->
@@ -165,22 +86,84 @@
     </header>
     <!-- Header part end-->
 
-    <!-- banner part start-->
-    <section class="banner_part">
-        <div class="container">
-            <div class="row align-content-center">
-                <div class="col-lg-7 col-xl-5">
-                    <div class="banner_text">
-                        <h1><span>Insight &</span><br> 
-                    Chill</h1>
-                        <p>Hi, I am an NBA chatbot. I love talking about basketball and life in general.</p>
-                        <a href="{{ url_for('chat') }}" class="btn_1">Let's Chat<span class="ti-angle-right"></span> </a>
+    <!-- blog part start-->
+    <div class="container-fluid">
+        <div style="width:1000px; margin:0 auto;">
+            <!-- Search form -->          
+            <div class="row tm-row">
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <!-- Requires tm-pt-60 for badge  -->
+                    <a href="{{ url_for('blog') }}" class="effect-lily tm-post-link tm-pt-20">
+                        <div class="tm-post-link-inner">
+                            <img src="{{url_for('static', filename='img/AI-Orange.png')}}" alt="Image" class="img-fluid">                            
+                        </div>
+                        <!-- <span class="position-absolute tm-new-badge">New</span> -->
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Random Blog #1</h2>
+                    </a>                    
+                    <p class="tm-pt-30">
+                        This is a mock description of this blog article. It is about stuff that hasn't been written
+                        and could end up being pretty cool.
+                    </p>
+                    <div class="d-flex justify-content-between tm-pt-45">
+                        <span class="tm-color-primary">Tag 1 . Tag 2</span>
+                        <span class="tm-color-primary">October 1, 2020</span>
                     </div>
-                </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>by Author Name</span>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <!-- Requires tm-pt-60 for badge  -->
+                    <a href="{{ url_for('blog') }}" class="effect-lily tm-post-link tm-pt-20">
+                        <div class="tm-post-link-inner">
+                            <img src="{{url_for('static', filename='img/AI-Orange.png')}}" alt="Image" class="img-fluid">                            
+                        </div>
+                        <!-- <span class="position-absolute tm-new-badge">New</span> -->
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Random Blog #2</h2>
+                    </a>                    
+                    <p class="tm-pt-30">
+                        This is a mock description of this blog article. It is about stuff that hasn't been written
+                        and could end up being pretty cool!
+                    </p>
+                    <div class="d-flex justify-content-between tm-pt-45">
+                        <span class="tm-color-primary">Tag 1 . Tag 2</span>
+                        <span class="tm-color-primary">October 1, 2020</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>by John Smith</span>
+                    </div>
+                </article>
+                <article class="col-12 col-md-6 tm-post">
+                    <hr class="tm-hr-primary">
+                    <!-- Requires tm-pt-60 for badge  -->
+                    <a href="{{ url_for('blog') }}" class="effect-lily tm-post-link tm-pt-20">
+                        <div class="tm-post-link-inner">
+                            <img src="{{url_for('static', filename='img/AI-Orange.png')}}" alt="Image" class="img-fluid">                            
+                        </div>
+                        <!-- <span class="position-absolute tm-new-badge">New</span> -->
+                        <h2 class="tm-pt-30 tm-color-primary tm-post-title">Random Blog #3</h2>
+                    </a>                    
+                    <p class="tm-pt-30">
+                        This is a mock description of this blog article. It is about stuff that hasn't been written
+                        and could end up being pretty cool.
+                    </p>
+                    <div class="d-flex justify-content-between tm-pt-45">
+                        <span class="tm-color-primary">Tag 1 . Tag 2</span>
+                        <span class="tm-color-primary">October 1, 2020</span>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <span>by Jane Doe</span>
+                    </div>
+                </article>
             </div>
-        </div>
-    </section>
-  <!-- banner part start-->
+        </div>    
+  </div>
+  <!-- blog part end  -->
 
   <!-- footer part start-->
   <footer class="copyright_part">
@@ -203,6 +186,6 @@
     <!-- jquery -->
     <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
     <!-- custom js -->
-    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+    <script src="{{url_for('static', filename='js/blog.js')}}"></script>
   </body>
 </html>

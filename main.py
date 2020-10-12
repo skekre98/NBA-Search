@@ -1,7 +1,7 @@
 import os
 import sys
 
-# Function to print help message
+# Function to print help messages
 def printHelp():
     print("usage: python main.py {test, run, data, train}")
     print("  options:")
