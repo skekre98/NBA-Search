@@ -98,7 +98,7 @@ def generate_stat_queries(samples):
             Qs = [query1, query2, query3, query4]
             query_list.append(choice(Qs))
         elif randq == 6:
-            stat = choice(percent_list)
+            action = choice(stat_list)
             query1 = "who has the highest {} percentage in the nba,stat\n".format(action)
             query2 = "who has the highest {} percentage,stat\n".format(action)
             query3 = "who has the best {}{},stat\n".format(action, "%")
@@ -109,14 +109,47 @@ def generate_stat_queries(samples):
     
     return query_list
 
+#function to generate info queries
+def generate_info_queries(samples):
+    verb_list = ["do", "know"]
+    cnt = 0
+    query_list = []
+    while cnt < samples:
+        randq = randint(0, 6)
+        if randq <= 2:
+            verb = choice(verb_list)
+            query = "what are you,info\n"
+            query1 = "what do you {},info\n".format(verb)
+            query2 = "what can you {},info\n".format(verb)
+            Qs = [query1, query2]
+            query_list.append(choice(Qs))
+        elif randq == 3:
+            query = "who are you,info\n"
+            query1 = "who made you,info\n"
+            Qs = [query, query1]
+            query_list.append(choice(Qs))
+        elif randq == 4:
+            query = "where are you,info\n"
+            query_list.append(query)
+        elif randq == 5:
+            query = "how are you,info\n"
+            query_list.append(query)
+        elif randq == 6:
+            query = "when were you made,info\n"
+            query_list.append(query)
+        cnt += 1
+    return query_list
+
 def main():
 
     ranked_queries = generate_rank_queries(1500)
     stat_queries = generate_stat_queries(1500)
+    info_queries = generate_info_queries(1500)
     query_csv = open("data/query.csv", "a")
     for i in range(1500):
         query_csv.write(stat_queries[i])
         query_csv.write(ranked_queries[i])
+        query_csv.write(info_queries[i])
     query_csv.close()
 if __name__ == "__main__":
     main()
