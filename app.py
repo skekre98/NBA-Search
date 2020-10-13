@@ -3,9 +3,11 @@ from modules.scraper import get_playoff_bracket
 from modules.transformer import create_html_bracket
 from modules.query import Query
 from data.text_data import unsure, non_nba
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 
 app = Flask(__name__)
+
+
 
 """
 Function to handle routing to home page.
@@ -92,6 +94,33 @@ def predictions():
     bracket = get_playoff_bracket()
     bracket = create_html_bracket(bracket)
     return render_template("predictions.html", bracket=bracket)
+
+"""
+Function to download requested blog for user.
+
+Parameters
+----------
+n/a
+
+Returns
+-------
+HTML file
+    Rendering of HTML template for blog page.
+"""
+@app.route("/download/<string:id>", methods=['GET', 'POST'])
+def download(id):
+    if id is None:
+        self.Error(400)
+    try:
+        blog_map ={
+            "1" : "https://drive.google.com/uc?export=download&id=13FmzW70fMMfTwrypxzJRG-J6woty8ePz", # Dog pic
+            "2" : "https://drive.google.com/uc?export=download&id=13FmzW70fMMfTwrypxzJRG-J6woty8ePz", # Dog pic
+            "3" : "https://drive.google.com/uc?export=download&id=13FmzW70fMMfTwrypxzJRG-J6woty8ePz"  # Dog pic
+        }
+        return redirect(blog_map[id])
+    except Exception as e:
+        self.log.exception(e)
+        self.Error(400)
 
 """
 Function to handle POST request from user
