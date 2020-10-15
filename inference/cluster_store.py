@@ -18,3 +18,8 @@ class ClusterStore(object):
     def build_agglomerative_clusters(self):
         # TODO 
         pass
+
+    # Function to calculate the average similarity of current clusters 
+    def average_similarity(self):
+        # TODO 
+        pass
