@@ -23,3 +23,8 @@ class ClusterStore(object):
     def average_similarity(self):
         # TODO 
         pass
+
+    # Function to calculate average distance of current clusters 
+    def average_distance(self):
+        # TODO
+        pass
