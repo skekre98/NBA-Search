@@ -28,3 +28,8 @@ class ClusterStore(object):
     def average_distance(self):
         # TODO
         pass
+
+    # Function to reset clusters back to original data 
+    def reset(self):
+        # TODO
+        pass
