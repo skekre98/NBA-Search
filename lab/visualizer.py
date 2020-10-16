@@ -10,5 +10,5 @@ class Visualizer(object):
         self.plot.clf()
 
     # Function to display current plot 
-    def display():
+    def display(self):
         self.plot.show()
