@@ -5,3 +5,4 @@ beautifulsoup4
 Flask>=0.11
 fuzzywuzzy>=0.18.0
 python-Levenshtein>=0.12.0
+matplotlib==3.3.2
