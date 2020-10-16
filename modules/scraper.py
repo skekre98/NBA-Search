@@ -312,3 +312,25 @@ def get_player_stats(year):
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr",attrs={"class":"full_table"})
     return get_stat_list(table)
+
+
+"""
+Function to get NBA player's stats
+for a specific game
+
+Parameters
+----------
+link : string
+    The game to scrape for NBA player
+    stats
+
+Returns
+-------
+team1 : dict
+    A dictionary of players with list of stats as value
+team2 : dict
+    A dictionary of players with list of stats as value
+"""
+def get_game_stats(link):
+    # TODO
+    pass
