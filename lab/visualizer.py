@@ -1,5 +1,9 @@
+import matplotlib.pyplot as plt
+
 class Visualizer(object):
 
     def __init__(self):
-        # TODO
-        pass
+        self.plot = plt
+
+    def display():
+        self.plot.show()
