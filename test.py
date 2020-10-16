@@ -231,12 +231,6 @@ class TestRouting(unittest.TestCase):
             response = c.get('/download')
             self.assertEqual(response.status_code, 404)
 
-    def test_download_routing_invalid_id(self):
-        with app.test_client() as c:
-            # passing an invalid id to the download url will cause a 500 error
-            response = c.get('/download/123')
-            self.assertEqual(response.status_code, 500)
-
     def test_get_bot_response_routing(self):
         with app.test_client() as c:
             response = c.post('/bot-msg', data={'msg': 'test message'})
