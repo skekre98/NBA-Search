@@ -6,6 +6,7 @@ function install_python_packages {
 
 function install_spacy_cnn {
 	python3 -m spacy download en_core_web_sm
+	python3 -m spacy download en_core_web_md
 }
 
 install_python_packages
