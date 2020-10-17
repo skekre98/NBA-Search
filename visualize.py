@@ -34,6 +34,8 @@ def main():
                 lbj_line.append(float(t[1]))
     gb.add_line(jb_line, "Jimmy Butler")
     gb.add_line(lbj_line, "LeBron James")
+    print(jb_line)
+    print(lbj_line)
     gb.build_line_graph()
     gb.display()
     
