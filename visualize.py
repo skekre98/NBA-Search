@@ -13,8 +13,7 @@ def main():
         "https://www.basketball-reference.com/boxscores/202010110MIA.html"
     ]
 
-    for link in games:
-        get_game_stats(link)
+    get_game_stats(games[0])
 
 if __name__ == "__main__":
     main()

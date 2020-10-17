@@ -332,5 +332,34 @@ team2 : dict
     A dictionary of players with list of stats as value
 """
 def get_game_stats(link):
-    # TODO
-    pass
+    resp = requests.get(link)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    table = page_content.findAll("table",attrs={"class":"sortable stats_table"})
+
+    home_map = {}
+    away_map = {}
+    home_table = table[0]
+    away_table = table[8]
+    home_team = home_table.find("caption").string.split(" (")[0]
+    away_team = away_table.find("caption").string.split(" (")[0]
+    home_map["name"] = home_team
+    away_map["name"] = away_team
+
+    labels_tr = home_table.find("tr",attrs={"class":"thead"})
+    labels_th = labels_tr.findAll("th")
+    labels = []
+    for i, th in enumerate(labels_th):
+        if i > 0:
+            labels.append(th["aria-label"])
+    
+    home_tr_list = home_table.findAll("tr")
+    away_tr_list = away_table.findAll("tr")
+    for i in range(len(home_tr_list)):
+        home_tr = home_tr_list[i]
+        away_tr = away_tr_list[i]
+        if home_tr.find("th").find("a"):
+            home_player = home_tr.find("th").find("a").string
+            away_player = away_tr.find("th").find("a").string
+            print(home_player)
+            print(away_player)
+    
