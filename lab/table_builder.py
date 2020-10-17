@@ -2,12 +2,13 @@ from visualizer import Visualizer
 
 class TableBuilder(Visualizer):
 
-    def __init__(self, file):
+    def __init__(self, rows, columns_labels):
         super().__init__()
-        self.csv = file
+        self.rows = rows
+        self.column_labels = columns_labels
 
-    # This function is to build a pie chart of the labels
-    # in current csv file and load into plot 
-    def build_pie(self):
+    # This function is to build a table with 
+    # the rows and column labels
+    def build_table(self):
         # TODO
         pass
