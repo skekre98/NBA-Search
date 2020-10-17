@@ -326,9 +326,9 @@ link : string
 
 Returns
 -------
-team1 : dict
+home_map : dict
     A dictionary of players with list of stats as value
-team2 : dict
+away_map : dict
     A dictionary of players with list of stats as value
 """
 def get_game_stats(link):
