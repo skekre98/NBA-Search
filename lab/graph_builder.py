@@ -1,3 +1,4 @@
+import numpy as np
 from visualizer import Visualizer
 
 class GraphBuilder(Visualizer):
@@ -8,12 +9,16 @@ class GraphBuilder(Visualizer):
         self.line_labels = []
         self.xlabels = xlabels
 
+    # Function to add line to current list of lines 
     def add_line(self, line, label):
         if len(line) != len(self.xlabels):
             raise ValueError("Length of line was larger than configured x-axis")
         self.lines.append(line)
         self.line_labels.append(label)
 
+    # Function to plot line graph 
     def build_line_graph(self):
-        # TODO
-        pass
+        x = np.arange(1, len(self.xlabels)+1)
+        self.plt.xticks(x, self.xlabels)
+        for line in self.lines:
+            self.plt.plot(x, line)
