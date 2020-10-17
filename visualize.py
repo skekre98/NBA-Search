@@ -33,9 +33,7 @@ def main():
             if t[0] == "Points":
                 lbj_line.append(float(t[1]))
     gb.add_line(jb_line, "Jimmy Butler")
-    print(jb_line)
     gb.add_line(lbj_line, "LeBron James")
-    print(lbj_line)
     gb.build_line_graph()
     gb.display()
     
