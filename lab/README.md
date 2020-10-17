@@ -2,7 +2,7 @@
 
 These objects can be used to simplify experimentation related to NBA data.
 
-### GraphBuilder
+## GraphBuilder
 
 These are examples of how to use *GraphBuilder*.
 
