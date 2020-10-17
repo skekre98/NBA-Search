@@ -1,5 +1,6 @@
+import itertools
 import numpy as np
-from visualizer import Visualizer
+from lab.visualizer import Visualizer
 
 class GraphBuilder(Visualizer):
 
@@ -20,5 +21,7 @@ class GraphBuilder(Visualizer):
     def build_line_graph(self):
         x = np.arange(1, len(self.xlabels)+1)
         self.plt.xticks(x, self.xlabels)
-        for line in self.lines:
-            self.plt.plot(x, line)
+        for i, line in enumerate(self.lines):
+            self.plt.plot(x, line, label=self.line_labels[i])
+            print(x)
+        self.plt.legend()

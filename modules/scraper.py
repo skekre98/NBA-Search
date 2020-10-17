@@ -364,10 +364,10 @@ def get_game_stats(link):
             away_td = away_tr.findAll("td")
             home_stat_list = []
             away_stat_list = []
-            for j in range(len(home_td)):
+            for j in range(min(len(away_td), len(home_td))):
                 home_stat_list.append((labels[j], home_td[j].string))
                 away_stat_list.append((labels[j], away_td[j].string))
             home_map[home_player] = home_stat_list
-            away_map[home_player] = away_stat_list
+            away_map[away_player] = away_stat_list
 
     return home_map, away_map
