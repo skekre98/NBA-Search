@@ -1,6 +1,6 @@
 from visualizer import Visualizer
 
-class CSVReader(Visualizer):
+class TableBuilder(Visualizer):
 
     def __init__(self, file):
         super().__init__()

@@ -13,8 +13,9 @@ def main():
         "https://www.basketball-reference.com/boxscores/202010110MIA.html"
     ]
 
-    for link in games:
-        get_game_stats(link)
+    home_map, away_map = get_game_stats(games[0])
+    print(home_map)
+    print(away_map)
 
 if __name__ == "__main__":
     main()
