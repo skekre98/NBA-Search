@@ -9,6 +9,6 @@ class TableBuilder(Visualizer):
 
     # This function is to build a table with 
     # the rows and column labels
-    def build_pie(self):
+    def build_table(self):
         # TODO
         pass
