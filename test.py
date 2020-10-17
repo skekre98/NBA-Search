@@ -3,6 +3,7 @@ import random
 from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
+from inference.statnode import StatNode
 from preprocess import funnel_name
 import preprocess
 from app import app
@@ -109,6 +110,36 @@ class TestScraper(unittest.TestCase):
             random_stat = random.choice(stats)
             stat = scraper.get_adv_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
+
+
+# Test cases for stat node
+class TestStatNode(unittest.TestCase):
+
+    # Method to test stat node response 
+    def test_node_response(self):
+        node = StatNode()
+        node.load_query("query")
+        resp = node.response()
+        stat = [int(word) for word in resp.split() if word.replace('.','').isdigit()]
+        self.assertTrue(isinstance(resp, str))
+    
+    def test_extract_name(self):
+        node = StatNode()
+        node.load_query("What is Kobe Bryant's shooting percentage?")
+        name = node.extract_name()
+        self.assertEqual(name, "Kobe Bryant's")
+
+    def test_extract_stat(self):
+        node = StatNode()
+        node.load_query("What is Kobe Bryant's true shooting percentage?")
+        stat = node.extract_stat()
+        self.assertEqual(stat, "true shooting percentage")
+    
+    def test_get_player_stat(self):
+        node = StatNode()
+        val = node.get_player_stat("Kobe Bryant", "true shooting percentage")
+        self.assertTrue(isinstance(val, float))
+
 
 # Test cases for rank node
 class TestRankNode(unittest.TestCase):
