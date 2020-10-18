@@ -8,6 +8,8 @@ These are examples of how to use *GraphBuilder*.
 
 #### Line Graph
 ```python
+from lab.graph_builder import GraphBuilder
+
 xlabels = ["Game 1", "Game 2", "Game 3", "Game 4", "Game 5", "Game 6"]
 jb_line = [23.0, 25.0, 40.0, 22.0, 35.0, 12.0]
 lbj_line = [25.0, 33.0, 25.0, 28.0, 40.0, 28.0]
