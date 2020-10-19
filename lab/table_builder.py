@@ -2,13 +2,24 @@ from visualizer import Visualizer
 
 class TableBuilder(Visualizer):
 
-    def __init__(self, rows, columns_labels):
+    def __init__(self,  columns_labels):
         super().__init__()
-        self.rows = rows
+        self.rows = []
         self.column_labels = columns_labels
+        
 
     # This function is to build a table with 
     # the rows and column labels
     def build_table(self):
         # TODO
-        pass
+        visualize = Visualizer()
+        cell_txt = []
+        for row in self.rows:
+            cell_txt.append([f'{cell}' for cell in row])
+        visualize.plt.table(cell_txt,cellLoc='center',colLabels=self.column_labels)
+        visualize.display()
+        # pass
+
+    #A function to add a list to list of rows
+    def add_row(self,row):
+        self.rows.append(row)
