@@ -3,6 +3,8 @@ from sklearn.externals import joblib
 from modules.transformer import predictors, query_tokenizer
 from inference.ranknode import RankNode
 from inference.statnode import StatNode
+from inference.infonode import InfoNode
+
 
 class InferenceNetwork(object):
 
@@ -19,5 +21,7 @@ class InferenceNetwork(object):
             node = RankNode()
         elif self.node_type == "stat":
             node = StatNode()
+        elif self.node_type == "info":
+            node = InfoNode()
         node.load_query(self.query)
         return node.response()
