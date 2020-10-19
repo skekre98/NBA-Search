@@ -12,14 +12,20 @@ class TableBuilder(Visualizer):
     # the rows and column labels
     def build_table(self):
         # TODO
-        visualize = Visualizer()
-        cell_txt = []
-        for row in self.rows:
-            cell_txt.append([f'{cell}' for cell in row])
-        visualize.plt.table(cell_txt,cellLoc='center',colLabels=self.column_labels)
-        visualize.display()
-        # pass
+        try:
+            visualize = Visualizer()
+            cell_txt = []
+            for row in self.rows:
+                cell_txt.append([f'{cell}' for cell in row])
+            visualize.plt.table(cell_txt,cellLoc='center',colLabels=self.column_labels)
+            visualize.display()
+            # pass
+        except Exception:
+            print('An error occurred while generating the table.')
 
     #A function to add a list to list of rows
     def add_row(self,row):
-        self.rows.append(row)
+        if len(row)!=len(self.column_labels):
+            raise  Exception('Number of columns is not exact')
+        else:
+            self.rows.append(row)
