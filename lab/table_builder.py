@@ -21,7 +21,7 @@ class TableBuilder(Visualizer):
     #A function to add a list to list of rows
     def add_row(self,row):
         if len(row)!=len(self.column_labels):
-            raise  Exception('Number of columns is not exact')
+            raise ValueError('Number of elements in row does not match header')
         else:
             self.rows.append(row)
             self.cell_txt.append([f'{cell}' for cell in row])
