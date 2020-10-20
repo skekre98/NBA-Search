@@ -38,7 +38,7 @@ def create_pipeline():
     return pipe
 
 def main():
-    # Build model 
+    # Train model 
     print("Training Query Classifier...")
     query_classifier = create_pipeline()
     joblib.dump(query_classifier, "./inference/models/query_classifier.pkl")
