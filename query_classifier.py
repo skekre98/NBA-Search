@@ -1,5 +1,7 @@
+import warnings
 import pandas as pd
 from modules.transformer import predictors, query_tokenizer
+warnings.filterwarnings(action='ignore', category=FutureWarning)
 
 # ML packages
 from sklearn.svm import LinearSVC
@@ -32,11 +34,12 @@ def create_pipeline():
 
     # Fit our data
     pipe.fit(X_train,y_train)
-    print("Accuracy:", pipe.score(X_test,y_test))
+    print("Query Classifier Training Accuracy:", pipe.score(X_test,y_test))
     return pipe
 
 def main():
-    # Build model 
+    # Train model 
+    print("Training Query Classifier...")
     query_classifier = create_pipeline()
     joblib.dump(query_classifier, "./inference/models/query_classifier.pkl")
 
