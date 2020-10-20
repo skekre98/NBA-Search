@@ -32,6 +32,8 @@ class InfoNode(object):
 		resp_5 = "I'm a bot made by skekre98 in 2020, waiting for you to ask me real questions!"
 		resp_6 = "I was built by skekre98 and the open source community in 2020!"
 		make_response = [resp_4,resp_5,resp_6]
+		resp_7 = "I'm a bot here to listen to your questions"
+		resp_8 = "I'm a chatbot here to understand what you are telling me"
 
 		if 'do' in lemma or 'be' in lemma:
 			return random.choice(be_response)
