@@ -2,7 +2,7 @@ from visualizer import Visualizer
 
 class TableBuilder(Visualizer):
 
-    def __init__(self,  columns_labels,cell_txt):
+    def __init__(self,  columns_labels):
         super().__init__()
         self.cell_txt = []
         self.rows = []
