@@ -4,6 +4,7 @@ from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
 from inference.statnode import StatNode
+from inference.infonode import InfoNode
 from preprocess import funnel_name
 import preprocess
 from app import app
@@ -294,6 +295,42 @@ class TestRouting(unittest.TestCase):
             response = c.get('/predictions')
             self.assertEqual(response.status_code, 200)
 
+# Test cases for info node
+class TestInfoNode(unittest.TestCase):
+    
+    #Test extract_components returns correct verb
+    def test_extract_components(self):
+        node = InfoNode()
+        test_phrase = {"who are you?":"be", "what do you do?":"do", "who build you?":"build", "who made you?":"make"}
+          
+        for phrase in test_phrase:
+            node.load_query(phrase)
+            test_verb = list(node.extract_components())[0]
+            true_verb = test_phrase.get(phrase)
+            
+            self.assertTrue(test_verb == true_verb, 
+                            "extract_components test failed at phrase: {}. Got verb: {}, expecting verb: {}.".format(phrase, test_verb, true_verb))
+    
+    #Test generate_random_response returns the correct response
+    def test_generate_random_response(self):
+        node = InfoNode()
+        test_verbs = ["be", "do", "build", "make", "Cannot Understand"]
+        
+        for true_verb in test_verbs:
+            verbs = node.generate_random_response(true_verb,test=True)
+            
+            self.assertTrue(true_verb in verbs,
+                            "generate_random_response test failed at verb: {}. Got response for verb(s): {}, expecting response for verb: {}.".format(true_verb,verbs,true_verb))
+    
+    def test_response(self):
+        node = InfoNode()
+        test_verbs = ["be", "do", "build", "make", "Cannot Understand"]
+        
+        for verb in test_verbs:
+            node.load_query(verb)
+            resp = node.response()
+            self.assertIsInstance(resp,str,"response test failed at verb: {}. Got instance of {}, expected instance of str".format(verb,type(resp)))
+        
 
 if __name__ == '__main__':
     unittest.main()
