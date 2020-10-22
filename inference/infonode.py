@@ -24,7 +24,7 @@ class InfoNode(object):
 		return verbs
 
 	def generate_random_response(self, lemma, test=False):
-		resp_1 = "I'm a NBA search bot, here to answer your NBA queries."
+		resp_1 = "I'm an NBA search bot, here to answer your NBA queries."
 		resp_2 = "I'm a chatbot here to answer your questions, obviously."
 		resp_3 = "I'm just some lines of code trying to decipher what you asked me in a different language via math and natural language processing."
 		be_response = [resp_1,resp_2,resp_3]
