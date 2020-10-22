@@ -35,13 +35,13 @@ class InfoNode(object):
 
 		if 'do' in lemma or 'be' in lemma:
 			if test:
-				return(['do','be'])
+				return({'do','be'})
 			else:
 				return random.choice(be_response)
 
 		elif 'make' in lemma or 'build' in lemma:
 			if test:
-				return(['make','build'])
+				return({'make','build'})
 			else:
 				return random.choice(make_response)
 
