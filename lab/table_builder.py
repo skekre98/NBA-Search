@@ -13,7 +13,6 @@ class TableBuilder(Visualizer):
     def build_table(self):
         try:
             self.plt.table(self.cell_txt,cellLoc='center',colLabels=self.column_labels)
-            # pass
         except Exception:
             print('An error occurred while generating the table.')
 
