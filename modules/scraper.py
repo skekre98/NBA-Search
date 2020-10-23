@@ -371,3 +371,25 @@ def get_game_stats(link):
             away_map[away_player] = away_stat_list
 
     return home_map, away_map
+
+
+"""
+Function to get NBA player's advanced stats
+for a specific game
+
+Parameters
+----------
+link : string
+    The game to scrape for NBA player
+    advanced stats
+
+Returns
+-------
+home_map : dict
+    A dictionary of players with list of advanced stats as value
+away_map : dict
+    A dictionary of players with list of advanced stats as value
+"""
+def get_game_adv_stats(link):
+    # TODO
+    pass
