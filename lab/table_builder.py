@@ -1,4 +1,4 @@
-from visualizer import Visualizer
+from lab.visualizer import Visualizer
 
 class TableBuilder(Visualizer):
 
