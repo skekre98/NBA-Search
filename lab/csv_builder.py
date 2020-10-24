@@ -22,7 +22,7 @@ class CSVBuilder(Visualizer):
                     if label in labels:
                         weights[labels.index(label)] += 1
                     else:
-                        labels.append(row[len(row) - 1])
+                        labels.append(label)
                         weights.append(1)
 
         fig1, pie_chart = self.plt.subplots()
