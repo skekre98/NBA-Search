@@ -39,6 +39,7 @@ def main():
     gb.build_line_graph()
     gb.display()
 
+
     col_labels = ["Name", "Points", "Assists"]
     tb = TableBuilder(col_labels)
     rows = [
@@ -46,7 +47,6 @@ def main():
         ["Kevin Durant", 24.0, 13.0],
         ["Jimmy Butler", 23.0, 14.0]
     ]
-
 
     for row in rows:
         tb.add_row(row)
