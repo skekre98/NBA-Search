@@ -1,4 +1,7 @@
 # Cluster API
+import math
+import statistics
+
 from sklearn.cluster import KMeans
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
@@ -35,7 +38,7 @@ class ClusterStore(object):
                 break
         print(wcss)
         print('Total clusters:', i)
-        total_cluster = i
+        self.total_cluster = i
         y_kmeans = kmeans.predict(data_transformed)
         print(y_kmeans)
         '''
@@ -43,12 +46,14 @@ class ClusterStore(object):
         storing same cluster entity in a dictionary
         ex: cluster0: [entity1, entity10, entity50......]
         '''
-        clusters = {}
-        for i in range(total_cluster):
-            clusters[i] = []
+        self.original_data = self.clusters
+        self.kmeans_clusters = {}
+        for i in range(self.total_cluster):
+            self.kmeans_clusters[i] = []
         for i in range(len(y_kmeans)):
-            clusters[y_kmeans[i]].append(i)
-        print(clusters)
+            self.kmeans_clusters[y_kmeans[i]].append(i)
+        print(self.kmeans_clusters)
+        self.clustered = True
 
     # Function to run agglomerative clustering on current data 
     def build_agglomerative_clusters(self):
@@ -60,11 +65,40 @@ class ClusterStore(object):
         # TODO 
         pass
 
+    def euclidian_dist(self,entity1, entity2):
+        '''
+        :param entity1: X
+        :param entity2: Y
+        :return: euclidian distance between two entity point (3D)
+        '''
+        X = self.clusters[entity1]
+        Y = self.clusters[entity2]
+        return math.sqrt(pow((X[0]-Y[0]),2) + pow((X[1]-Y[1]),2) + pow((X[2]-Y[2]),2))
+
+    def avg_distance_between_two_cluster(self,k1,k2):
+        '''
+        :param k1: cluster1
+        :param k2: cluster2
+        :return: average distance between two cluster
+        :formula: dist(Ki,Kj) = mean(dist(eil,ejm)) where every eil belongs to Ki not belongs to Kj
+                                                    and every ejk belongs to Kj not belongs to Ki
+        '''
+        dist = []
+        for k1_entity in k1:
+            for k2_entity in k2:
+                dist.append(self.euclidian_dist(k1_entity,k2_entity))
+        return statistics.mean(dist)
+
     # Function to calculate average distance of current clusters 
     def average_distance(self):
-        # TODO
-        pass
-
+        '''
+        :return: average distance of all clusters store in avg_distance
+        '''
+        dist = []
+        for i in range(self.total_cluster):
+            for j in range(i+1, self.total_cluster):
+                dist.append(self.avg_distance_between_two_cluster(self.kmeans_clusters[i],self.kmeans_clusters[j]))
+        self.avg_distance = statistics.mean(dist)
     # Function to reset clusters back to original data 
     def reset(self):
         # TODO
@@ -76,6 +110,8 @@ if __name__=='__main__':
     entity_map ={}
     for i in range(200):
         entity_map[i] = 'entity'+str(i+1)
-    print(entity_map)
+    # print(entity_map)
     c_ob= ClusterStore(data,entity_map)
     c_ob.build_kmeans_clusters()
+    c_ob.average_distance()
+    print(c_ob.avg_distance)
