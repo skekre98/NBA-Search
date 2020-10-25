@@ -102,7 +102,7 @@ class TestScraper(unittest.TestCase):
         self.assertEqual(scraper.get_player_url("LeBron James"), "https://www.basketball-reference.com/players/j/jamesle01.html")
         self.assertEqual(scraper.get_player_url("Dennis Rodman"), "https://www.basketball-reference.com/players/r/rodmade01.html")
 
-    # Method to test advanced stat scraper 
+    # Method to test advanced stat scraper for player
     def test_get_adv_stats(self):
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
         stats = ["true shooting percentage", "total rebound percentage", "defensive box plus/minus"]
@@ -111,7 +111,18 @@ class TestScraper(unittest.TestCase):
             random_stat = random.choice(stats)
             stat = scraper.get_adv_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
-
+    
+    # Method to test advanced stat scraper from game link 
+    def test_get_game_adv_stats(self):
+        adv_stats = ['Minutes Played', 'True Shooting Percentage', 'Effective Field Goal Percentage', '3-Point Attempt Rate', 'Free Throw Attempt Rate']
+        home, away = scraper.get_game_adv_stats("https://www.basketball-reference.com/boxscores/202009300LAL.html")
+        ad_stats = away['Anthony Davis']
+        scraper_stats = {}
+        for stat in ad_stats:
+            scraper_stats.add(stat[0])
+        
+        for adv_stat in adv_stats:
+            self.assertTrue(adv_stat in adv_stats)
 
 # Test cases for stat node
 class TestStatNode(unittest.TestCase):

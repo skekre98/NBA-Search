@@ -13,6 +13,7 @@ class TreeNode(Node):
 class TreeBuilder(object):
 
     def __init__(self, root):
+        # root will be type TreeNode
         self.root = root
         self.size = 0
 
