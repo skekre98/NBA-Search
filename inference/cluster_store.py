@@ -18,18 +18,18 @@ class ClusterStore(object):
         self.avg_similarity = 0.0
         self.avg_distance = 0.0
     
-    # Function to run kmeans clustering on data 
+    # Function to run kmeans clustering on data
+    '''
+    Build optimal k-means clusters based on minimum WCSS (Maximize distance) of clusters
+    :store: Total number of cluster, storing same cluster entity in a dictionary 
+            (ex: cluster0: [entity1, entity10, entity50......])
+    :update: clustered flag
+    '''
     def build_kmeans_clusters(self):
-        '''
-        Build optimal k-means clusters based on minimum WCSS (Maximize distance) on clusters
-        :store: Total number of cluster, Clusters data
-        :update: clustered flag
-        '''
         X = self.original_data
         mms = MinMaxScaler()
         mms.fit(X)
         data_transformed = mms.transform(X)
-        # print(data_transformed)
         wcss = []
         prev_inertia = 0
         cur_inertia = 0
@@ -40,32 +40,24 @@ class ClusterStore(object):
                 prev_inertia = wcss[-1]
             cur_inertia = kmeans.inertia_
             wcss.append(cur_inertia)
-            if(abs(prev_inertia-cur_inertia) < 1):   # inertia diff checking
+            if(abs(prev_inertia-cur_inertia) < 1):   # Cut off inertia
                 break
-        # print(wcss)
-        # print('Total clusters:', i)
         self.total_cluster = i
         y_kmeans = kmeans.predict(data_transformed)
-        # print(y_kmeans)
-        ######################################################
-        # cluster entity map
-        # storing same cluster entity in a dictionary
-        # ex: cluster0: [entity1, entity10, entity50......]
-        #######################################################
         self.clusters = {}
         for i in range(self.total_cluster):
             self.clusters[i] = []
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
-        # print(self.clusters)
         self.clustered = True
 
+    '''
+    :param k: number of cluster
+    :store: Total number of cluster, storing same cluster entity in a dictionary 
+            (ex: cluster0: [entity1, entity10, entity50......])
+    :update: clustered flag
+    '''
     def build_kmeans_clusters_on_given_number_of_cluster(self, k):
-        '''
-        :param k: number of cluster
-        :store: Total number of cluster, Clusters data
-        :update: clustered flag
-        '''
         X = self.original_data
         mms = MinMaxScaler()
         mms.fit(X)
@@ -74,17 +66,11 @@ class ClusterStore(object):
         kmeans.fit(data_transformed)
         self.total_cluster = k
         y_kmeans = kmeans.predict(data_transformed)
-        ######################################################
-        # cluster entity map
-        # storing same cluster entity in a dictionary
-        # ex: cluster0: [entity1, entity10, entity50......]
-        #######################################################
         self.clusters = {}
         for i in range(self.total_cluster):
             self.clusters[i] = []
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
-        # print(self.clusters)
         self.clustered = True
 
     # Function to run agglomerative clustering on current data 
@@ -97,35 +83,33 @@ class ClusterStore(object):
         # TODO 
         pass
 
+    '''
+   :param entity1: X
+   :param entity2: Y
+   :return: euclidian distance between two entity vector (3D) X and Y
+   '''
     def euclidian_dist(self,entity1, entity2):
-        '''
-        :param entity1: X
-        :param entity2: Y
-        :return: euclidian distance between two entity vector (3D) X and Y
-        '''
         X = self.original_data[entity1]
         Y = self.original_data[entity2]
         return math.sqrt(pow((X[0]-Y[0]),2) + pow((X[1]-Y[1]),2) + pow((X[2]-Y[2]),2))
 
+    '''
+    :param k1: cluster1
+    :param k2: cluster2
+    :return: average distance between two cluster
+    :formula: dist(Ki,Kj) = mean(dist(eil,ejm)) where every eil belongs to Ki not belongs to Kj
+                                                and every ejk belongs to Kj not belongs to Ki
+    '''
     def avg_distance_between_two_cluster(self,k1,k2):
-        '''
-        :param k1: cluster1
-        :param k2: cluster2
-        :return: average distance between two cluster
-        :formula: dist(Ki,Kj) = mean(dist(eil,ejm)) where every eil belongs to Ki not belongs to Kj
-                                                    and every ejk belongs to Kj not belongs to Ki
-        '''
         dist = []
         for k1_entity in k1:
             for k2_entity in k2:
                 dist.append(self.euclidian_dist(k1_entity,k2_entity))
         return statistics.mean(dist)
 
-    # Function to calculate average distance of current clusters 
+    # Function to calculate average distance of current clusters
+    # :return: average distance of all clusters store in avg_distance
     def average_distance(self):
-        '''
-        :return: average distance of all clusters store in avg_distance
-        '''
         dist = []
         for i in range(self.total_cluster):
             for j in range(i+1, self.total_cluster):
@@ -138,23 +122,12 @@ class ClusterStore(object):
         for cluster in range(self.total_cluster):
             entitys = [self.entity_map[x] for x in self.clusters[cluster]]
             return_[cluster]= entitys
-            # return_[cluster].replace()
         return return_
 
-    # map cluster with data and return the clusters
-    def get_clusters_on_data(self):
-        return_ = self.clusters
-        for cluster in range(self.total_cluster):
-            entitys = [self.original_data[x] for x in self.clusters[cluster]]
-            return_[cluster] = entitys
-            # return_[cluster].replace()
-        return return_
-    # Function to reset clusters back to original data 
+    # Function to reset clusters back to original data
+    # :reset: clustered flag, total_cluster, avg_distance
+    # :delete: clusters data
     def reset(self):
-        '''
-        :reset: clustered flag, total_cluster, avg_distance
-        :delete: clusters data
-        '''
         self.clustered = False
         self.total_cluster = 0
         self.clusters = None
