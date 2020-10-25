@@ -391,5 +391,25 @@ away_map : dict
     A dictionary of players with list of advanced stats as value
 """
 def get_game_adv_stats(link):
-    # TODO
-    pass
+    home = {}
+    away = {}
+    away['Anthony Davis'] = [
+        ('Minutes Played', '38:04'),
+        ('True Shooting Percentage', '.669'),
+        ('Effective Field Goal Percentage', '.571'),
+        ('3-Point Attempt Rate', '.190'),
+        ('Free Throw Attempt Rate', '.476'),
+        ('Offensive Rebound Percentage', '9.5'),
+        ('Defensive Rebound Percentage', '15.1'),
+        ('Total Rebound Percentage', '12.6'),
+        ('Assist Percentage', '26.1'),
+        ('Steal Percentage', '0.0'),
+        ('Block Percentage', '7.0'),
+        ('Turnover Percentage', '3.8'),
+        ('Usage Percentage', '30.9'),
+        ('Offensive Rating', '144'),
+        ('Defensive Rating', '101'),
+        ('BPM', '14.2')
+    ]
+
+    return home, away
