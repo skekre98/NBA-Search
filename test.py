@@ -117,7 +117,7 @@ class TestScraper(unittest.TestCase):
         adv_stats = ['Minutes Played', 'True Shooting Percentage', 'Effective Field Goal Percentage', '3-Point Attempt Rate', 'Free Throw Attempt Rate']
         home, away = scraper.get_game_adv_stats("https://www.basketball-reference.com/boxscores/202009300LAL.html")
         ad_stats = away['Anthony Davis']
-        scraper_stats = {}
+        scraper_stats = set()
         for stat in ad_stats:
             scraper_stats.add(stat[0])
         
