@@ -12,7 +12,7 @@ class StatNode(object):
 
 	def __init__(self):
 		self.query = ""
-		self.nlp = spacy.load("en_core_web_sm")
+		self.nlp = spacy.load("en_core_web_md")
 
 	def load_query(self, query):
 		self.query = query
@@ -48,8 +48,45 @@ class StatNode(object):
 		return name
 	
 	def extract_stat(self):
-		# TODO 
-		return "true shooting percentage"
+         doc = self.nlp(self.query)
+         stat = ""
+         stat_final = ""
+         max_sim = 0
+         sim_threshold = 0.7
+
+         #preprocessing user query and choosing the most ocurring word classes in statistics dictionary
+         for token in doc:
+             if token.pos_ == "ADJ" or token.pos_ == "VERB" or token.pos_ == "NOUN" or token.pos_ == "NUM" or token.text == "per" or token.pos_ == "SYM" or token.pos_ == "CCONJ":
+                 stat = str(stat) + token.text + " "
+         stat = stat[:-1]
+
+         #checking if there is an exaxt match in dictionary, in order to save some time and avoid similarity prediction
+         for entry, entry2 in zip(total_stat_map, adv_stat_map):
+             if entry == stat or entry2 == stat:
+                 stat_final = stat
+         if stat_final != "":
+             return stat_final
+     
+         #if no exact match was found, we need to check similarity between stats and user query
+         stat = self.nlp(stat)
+         for entry in total_stat_map:
+             entry = self.nlp(entry)
+             sim = stat.similarity(entry)
+             if max_sim < sim:
+                 max_sim = sim
+                 stat_final = entry #using stat_final because original variable stat is used to check similarity, so we can not change it
+
+         for entry in adv_stat_map:
+             entry = self.nlp(entry)
+             sim = stat.similarity(entry)
+             if max_sim < sim:
+                 max_sim = sim
+                 stat_final = entry
+         
+         #returning extracted stat if similarity exceeds minimum threshold
+         if(max_sim > sim_threshold):
+             return str(stat_final)
+         return None
 	
 	def get_player_stat(self, name, stat):
 		if stat in total_stat_map:
