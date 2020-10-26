@@ -1,8 +1,8 @@
-from visualizer import Visualizer
+from lab.visualizer import Visualizer
 
 class TableBuilder(Visualizer):
 
-    def __init__(self,  columns_labels,cell_txt):
+    def __init__(self,  columns_labels):
         super().__init__()
         self.cell_txt = []
         self.rows = []
@@ -13,7 +13,6 @@ class TableBuilder(Visualizer):
     def build_table(self):
         try:
             self.plt.table(self.cell_txt,cellLoc='center',colLabels=self.column_labels)
-            # pass
         except Exception:
             print('An error occurred while generating the table.')
 

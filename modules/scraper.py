@@ -371,3 +371,63 @@ def get_game_stats(link):
             away_map[away_player] = away_stat_list
 
     return home_map, away_map
+
+
+"""
+Function to get NBA player's advanced stats
+for a specific game
+
+Parameters
+----------
+link : string
+    The game to scrape for NBA player
+    advanced stats
+
+Returns
+-------
+home_map : dict
+    A dictionary of players with list of advanced stats as value
+away_map : dict
+    A dictionary of players with list of advanced stats as value
+"""
+def get_game_adv_stats(link):
+    resp = requests.get(link)
+    page_content = BeautifulSoup(resp.content, "html.parser")
+    table = page_content.findAll("table",attrs={"class":"sortable stats_table"})
+
+    home_map = {}
+    away_map = {}
+    home_table = table[7]
+    away_table = table[15]
+    home_team = table[0].find("caption").string.split(" (")[0]
+    away_team = table[8].find("caption").string.split(" (")[0]
+    home_map["name"] = home_team
+    away_map["name"] = away_team
+
+    labels_tr = home_table.find("tr",attrs={"class":"thead"})
+    labels_th = labels_tr.findAll("th")
+    labels = []
+    for i, th in enumerate(labels_th):
+        if i > 0:
+            labels.append(th["aria-label"])
+    
+    home_tr_list = home_table.findAll("tr")
+    away_tr_list = away_table.findAll("tr")
+    for i in range(len(home_tr_list)):
+        home_tr = home_tr_list[i]
+        away_tr = away_tr_list[i]
+        if home_tr.find("th").find("a"):
+            home_player = home_tr.find("th").find("a").string
+            away_player = away_tr.find("th").find("a").string
+            home_td = home_tr.findAll("td")
+            away_td = away_tr.findAll("td")
+            home_stat_list = []
+            away_stat_list = []
+            for j in range(min(len(away_td), len(home_td))):
+                home_stat_list.append((labels[j], home_td[j].string))
+                away_stat_list.append((labels[j], away_td[j].string))
+            home_map[home_player] = home_stat_list
+            away_map[away_player] = away_stat_list
+
+    return home_map, away_map
+    

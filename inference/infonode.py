@@ -23,10 +23,10 @@ class InfoNode(object):
 				verbs.add(entity.lemma_)
 		return verbs
 
-	def generate_random_response(self, lemma):
-		resp_1 = "I'm an NBA search bot, here to answer your NBA queries"
-		resp_2 = "I'm a chatbot here to answer your questions, obviously"
-		resp_3 = "I'm just some lines of code trying to decipher what you asked me in a different language via math and natural language processing"
+	def generate_random_response(self, lemma, test=False):
+		resp_1 = "I'm an NBA search bot, here to answer your NBA queries."
+		resp_2 = "I'm a chatbot here to answer your questions, obviously."
+		resp_3 = "I'm just some lines of code trying to decipher what you asked me in a different language via math and natural language processing."
 		be_response = [resp_1,resp_2,resp_3]
 		resp_4 = "I was made by skekre98 in 2020, and I'm being built by the open source community on GitHub!"
 		resp_5 = "I'm a bot made by skekre98 in 2020, waiting for you to ask me real questions!"
@@ -34,8 +34,19 @@ class InfoNode(object):
 		make_response = [resp_4,resp_5,resp_6]
 
 		if 'do' in lemma or 'be' in lemma:
-			return random.choice(be_response)
+			if test:
+				return({'do','be'})
+			else:
+				return random.choice(be_response)
+
 		elif 'make' in lemma or 'build' in lemma:
-			return random.choice(make_response)
+			if test:
+				return({'make','build'})
+			else:
+				return random.choice(make_response)
+
 		else:
-			return "I'm not sure what you're asking me. Can you be more clear?"
+			if test:
+				return 'Cannot Understand'
+			else:
+				return "I'm not sure what you're asking me. Can you be more clear?"

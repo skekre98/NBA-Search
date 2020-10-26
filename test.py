@@ -4,6 +4,7 @@ from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
 from inference.statnode import StatNode
+from inference.infonode import InfoNode
 from preprocess import funnel_name
 import preprocess
 from app import app
@@ -101,7 +102,7 @@ class TestScraper(unittest.TestCase):
         self.assertEqual(scraper.get_player_url("LeBron James"), "https://www.basketball-reference.com/players/j/jamesle01.html")
         self.assertEqual(scraper.get_player_url("Dennis Rodman"), "https://www.basketball-reference.com/players/r/rodmade01.html")
 
-    # Method to test advanced stat scraper 
+    # Method to test advanced stat scraper for player
     def test_get_adv_stats(self):
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
         stats = ["true shooting percentage", "total rebound percentage", "defensive box plus/minus"]
@@ -110,7 +111,18 @@ class TestScraper(unittest.TestCase):
             random_stat = random.choice(stats)
             stat = scraper.get_adv_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
-
+    
+    # Method to test advanced stat scraper from game link 
+    def test_get_game_adv_stats(self):
+        adv_stats = ['Minutes Played', 'True Shooting Percentage', 'Effective Field Goal Percentage', '3-Point Attempt Rate', 'Free Throw Attempt Rate']
+        home, away = scraper.get_game_adv_stats("https://www.basketball-reference.com/boxscores/202009300LAL.html")
+        ad_stats = away['Anthony Davis']
+        scraper_stats = set()
+        for stat in ad_stats:
+            scraper_stats.add(stat[0])
+        
+        for adv_stat in adv_stats:
+            self.assertTrue(adv_stat in adv_stats)
 
 # Test cases for stat node
 class TestStatNode(unittest.TestCase):
@@ -294,6 +306,42 @@ class TestRouting(unittest.TestCase):
             response = c.get('/predictions')
             self.assertEqual(response.status_code, 200)
 
+# Test cases for info node
+class TestInfoNode(unittest.TestCase):
+    
+    #Test extract_components returns correct verb
+    def test_extract_components(self):
+        node = InfoNode()
+        test_phrase = {"who are you?":"be", "what do you do?":"do", "who build you?":"build", "who made you?":"make"}
+          
+        for phrase in test_phrase:
+            node.load_query(phrase)
+            test_verb = list(node.extract_components())[0]
+            true_verb = test_phrase.get(phrase)
+            
+            self.assertTrue(test_verb == true_verb, 
+                            "extract_components test failed at phrase: {}. Got verb: {}, expecting verb: {}.".format(phrase, test_verb, true_verb))
+    
+    #Test generate_random_response returns the correct response
+    def test_generate_random_response(self):
+        node = InfoNode()
+        test_verbs = ["be", "do", "build", "make", "Cannot Understand"]
+        
+        for true_verb in test_verbs:
+            verbs = node.generate_random_response(true_verb,test=True)
+            
+            self.assertTrue(true_verb in verbs,
+                            "generate_random_response test failed at verb: {}. Got response for verb(s): {}, expecting response for verb: {}.".format(true_verb,verbs,true_verb))
+    
+    def test_response(self):
+        node = InfoNode()
+        test_verbs = ["be", "do", "build", "make", "Cannot Understand"]
+        
+        for verb in test_verbs:
+            node.load_query(verb)
+            resp = node.response()
+            self.assertIsInstance(resp,str,"response test failed at verb: {}. Got instance of {}, expected instance of str".format(verb,type(resp)))
+        
 
 if __name__ == '__main__':
     unittest.main()

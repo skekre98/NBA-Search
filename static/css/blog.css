@@ -176,14 +176,14 @@ ul {
 	max-width: none;
 	width: -webkit-calc(100% + 50px);
 	width: calc(100% + 50px);
-	opacity: 0.7;
+	opacity: 1;
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
 	transition: opacity 0.35s, transform 0.35s;
 	-webkit-transform: translate3d(-40px,0, 0);
 	transform: translate3d(-40px,0,0);
 }
 
-.effect-lily:hover img { opacity: 1; }
+.effect-lily:hover img { opacity: 0.7; }
 
 .effect-lily:hover img {
     -webkit-transform: translate3d(0,0,0);
