@@ -32,7 +32,7 @@ nba_words = {"nba",
         }
 
 # unsure message 
-unsure = "I'm not sure if this has to do with the NBA. Try being more specific"
+unsure = "I'm not sure if this has to do with the NBA. Try being more specific."
 
 # non-NBA message 
 non_nba = "This has nothing to do with the NBA. Let's talk about something else. Perhaps the National Basketball League?"
