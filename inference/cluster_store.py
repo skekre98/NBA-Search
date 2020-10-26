@@ -17,8 +17,7 @@ class ClusterStore(object):
         self.clustered = False
         self.avg_similarity = 0.0
         self.avg_distance = 0.0
-    
-    # Function to run kmeans clustering on data
+
     '''
     Build optimal k-means clusters based on minimum WCSS (Maximize distance) of clusters
     :store: Total number of cluster, storing same cluster entity in a dictionary 
@@ -91,7 +90,7 @@ class ClusterStore(object):
     def euclidian_dist(self,entity1, entity2):
         X = self.original_data[entity1]
         Y = self.original_data[entity2]
-        return math.sqrt(pow((X[0]-Y[0]),2) + pow((X[1]-Y[1]),2) + pow((X[2]-Y[2]),2))
+        return np.linalg.norm(X-Y)
 
     '''
     :param k1: cluster1
@@ -107,7 +106,6 @@ class ClusterStore(object):
                 dist.append(self.euclidian_dist(k1_entity,k2_entity))
         return statistics.mean(dist)
 
-    # Function to calculate average distance of current clusters
     # :return: average distance of all clusters store in avg_distance
     def average_distance(self):
         dist = []
@@ -124,7 +122,6 @@ class ClusterStore(object):
             return_[cluster]= entitys
         return return_
 
-    # Function to reset clusters back to original data
     # :reset: clustered flag, total_cluster, avg_distance
     # :delete: clusters data
     def reset(self):
@@ -132,26 +129,3 @@ class ClusterStore(object):
         self.total_cluster = 0
         self.clusters = None
         self.avg_distance = 0.0
-
-if __name__=='__main__':
-    data = np.random.uniform(0,500, [200,3])
-    # print(data)
-    entity_map ={}
-    for i in range(200):
-        entity_map[i] = 'entity'+str(i+1)
-    # print(entity_map)
-    c_ob= ClusterStore(data,entity_map)
-    c_ob.build_kmeans_clusters()
-    c_ob.average_distance()
-    print('Total Clusters: ', c_ob.total_cluster)
-    print(c_ob.get_clusters_on_entity_map())
-    print('Avg distance: ',c_ob.avg_distance)
-    c_ob.reset()
-    print('Total Clusters: ', c_ob.total_cluster)
-    print(c_ob.get_clusters_on_entity_map())
-    print('Avg distance: ', c_ob.avg_distance)
-    c_ob.build_kmeans_clusters_on_given_number_of_cluster(8)
-    c_ob.average_distance()
-    print('Total Clusters: ', c_ob.total_cluster)
-    print(c_ob.get_clusters_on_entity_map())
-    print('Avg distance: ', c_ob.avg_distance)
