@@ -83,10 +83,10 @@ class ClusterStore(object):
         pass
 
     '''
-   :param entity1: X
-   :param entity2: Y
-   :return: euclidian distance between two entity vector (3D) X and Y
-   '''
+    :param entity1: X
+    :param entity2: Y
+    :return: euclidian distance between two entity vector (3D) X and Y
+    '''
     def euclidian_dist(self,entity1, entity2):
         X = self.original_data[entity1]
         Y = self.original_data[entity2]
