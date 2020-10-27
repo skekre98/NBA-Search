@@ -1,12 +1,14 @@
 import unittest
 import random
+import preprocess
 from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
 from inference.statnode import StatNode
 from inference.infonode import InfoNode
+from inference.inference_network import InferenceNetwork
 from preprocess import funnel_name
-import preprocess
+from data.text_data import non_nba, unsure
 from app import app
 
 # Test cases for Analysis API 
@@ -152,7 +154,6 @@ class TestStatNode(unittest.TestCase):
         val = node.get_player_stat("Kobe Bryant", "true shooting percentage")
         self.assertTrue(isinstance(val, float))
 
-
 # Test cases for rank node
 class TestRankNode(unittest.TestCase):
 
@@ -224,7 +225,7 @@ class TestPreprocess(unittest.TestCase):
             player_name = funnel_name(names[i])
             self.assertTrue(player_name in ' '.join(names))
 
-# Test cases for URL Routing
+# Test cases for URL routing
 class TestRouting(unittest.TestCase):
     # Method to test <blank> routing
     def test_blank_routing(self):
@@ -341,7 +342,28 @@ class TestInfoNode(unittest.TestCase):
             node.load_query(verb)
             resp = node.response()
             self.assertIsInstance(resp,str,"response test failed at verb: {}. Got instance of {}, expected instance of str".format(verb,type(resp)))
-        
+
+# Test cases for inference network
+class TestInferenceNetwork(unittest.TestCase):
+
+    # Test if wrong rank classification is handled correctly
+    def test_wrong_rank_classification(self):
+        query = "lebron james"
+        handler = InferenceNetwork(query)
+        node_type = handler.node_type
+        response = handler.response()
+        self.assertEqual(node_type, "rank")  # Making sure it gets wrongly classified as rank
+        self.assertIn(response, {non_nba, unsure})
+    
+    # Test if wrong stat classification is handled correctly
+    def test_wrong_stat_classification(self):
+        query = "is this a shot?"
+        handler = InferenceNetwork(query)
+        node_type = handler.node_type
+        response = handler.response()
+        self.assertEqual(node_type, "stat")  # Making sure it gets wrongly classified as stat
+        self.assertIn(response, {non_nba, unsure})   
+
 
 if __name__ == '__main__':
     unittest.main()
