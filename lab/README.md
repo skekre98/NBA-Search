@@ -19,3 +19,24 @@ gb.add_line(lbj_line, "LeBron James")
 gb.build_line_graph()
 gb.display()
 ```
+
+#### Bar Graph
+```python
+from lab.graph_builder import GraphBuilder
+
+champs = {
+    "Boston\nCeltics": 17,
+    "Los Angeles\nLakers": 17,
+    "Chicago\nBulls": 6,
+    "Golden\nState\nWarriors": 6,
+    "San\nAntonio\nSpurs": 5
+}
+
+gb = GraphBuilder([team for team in champs])
+for team, val in champs.items():
+    gb.add_bar(team, val)
+
+gb.build_bar_graph()
+gb.plt.title('NBA Teams with the Most Championships')
+gb.display()
+```

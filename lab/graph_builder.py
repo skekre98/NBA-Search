@@ -6,11 +6,12 @@ class GraphBuilder(Visualizer):
 
     def __init__(self, xlabels):
         super().__init__()
+        
+        self.xlabels = xlabels
 
         # Line Graph 
         self.lines = []
         self.line_labels = []
-        self.xlabels = xlabels
         self.marker = itertools.cycle(('+', '.', 'o', '*', '1', '2', '3', '4'))
 
         # Bar Graph 
@@ -36,5 +37,5 @@ class GraphBuilder(Visualizer):
         self.bars.append((label, val))
     
     def build_bar_graph(self):
-        # TODO
-        pass
+        self.plt.bar(self.xlabels, [bar[1] for bar in self.bars])
+
