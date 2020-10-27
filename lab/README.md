@@ -33,8 +33,8 @@ champs = {
 }
 
 gb = GraphBuilder([team for team in champs])
-for team, val in champs.items():
-    gb.add_bar(team, val)
+for val in champs.values():
+    gb.add_bar(val)
 
 gb.build_bar_graph()
 gb.plt.title('NBA Teams with the Most Championships')
