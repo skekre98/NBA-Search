@@ -27,7 +27,7 @@ def main():
     for row in rows:
         tb.add_row(row)
     tb.build_table()
-    tb.display()
+    tb.save('table')
     
 if __name__ == "__main__":
     main()
