@@ -353,7 +353,7 @@ class TestInferenceNetwork(unittest.TestCase):
         node_type = handler.node_type
         response = handler.response()
         self.assertEqual(node_type, "rank")  # Making sure it gets wrongly classified as rank
-        self.assertIn(response, [non_nba, unsure])
+        self.assertIn(response, {non_nba, unsure})
     
     # Test if wrong stat classification is handled correctly
     def test_wrong_stat_classification(self):
@@ -362,7 +362,7 @@ class TestInferenceNetwork(unittest.TestCase):
         node_type = handler.node_type
         response = handler.response()
         self.assertEqual(node_type, "stat")  # Making sure it gets wrongly classified as stat
-        self.assertIn(response, [non_nba, unsure])   
+        self.assertIn(response, {non_nba, unsure})   
 
 
 if __name__ == '__main__':
