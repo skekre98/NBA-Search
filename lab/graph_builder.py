@@ -37,5 +37,5 @@ class GraphBuilder(Visualizer):
         self.bar_vals.append(val)
     
     def build_bar_graph(self):
-        self.plt.bar(self.xlabels, [val for val in self.bar_vals])
+        self.plt.bar(self.xlabels, self.bar_vals)
 
