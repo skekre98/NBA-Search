@@ -24,7 +24,7 @@ class ClusterStore(object):
             (ex: cluster0: [entity1, entity10, entity50......])
     :update: clustered flag
     '''
-    def build_kmeans_clusters(self):
+    def build_optimal_kmeans_clusters(self):
         X = self.original_data
         mms = MinMaxScaler()
         mms.fit(X)
@@ -56,7 +56,7 @@ class ClusterStore(object):
             (ex: cluster0: [entity1, entity10, entity50......])
     :update: clustered flag
     '''
-    def build_kmeans_clusters_on_given_number_of_cluster(self, k):
+    def build_kmeans_clusters(self, k):
         X = self.original_data
         mms = MinMaxScaler()
         mms.fit(X)
@@ -72,9 +72,17 @@ class ClusterStore(object):
             self.clusters[y_kmeans[i]].append(i)
         self.clustered = True
 
-    # Function to run agglomerative clustering on current data 
-    def build_agglomerative_clusters(self):
+    # Function to run agglomerative clustering on current data
+    # This function should return the optimal number of clusters
+    # based on some kind of metric 
+    def build_optimal_agglomerative_clusters(self):
         # TODO 
+        pass
+
+    # Function to run agglomerative clustering 
+    # with specified number of cluster: c -> int
+    def build_agglomerative_clusters(self, c):
+        # TODO
         pass
 
     # Function to calculate the average similarity of current clusters 
