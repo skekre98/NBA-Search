@@ -214,7 +214,6 @@ class TestRankNode(unittest.TestCase):
             random_stat = random.choice(stats)
             stat = node.get_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
-
 # Test case for data preprocess
 class TestPreprocess(unittest.TestCase):
 
@@ -306,7 +305,6 @@ class TestRouting(unittest.TestCase):
         with app.test_client() as c:
             response = c.get('/predictions')
             self.assertEqual(response.status_code, 200)
-
 # Test cases for info node
 class TestInfoNode(unittest.TestCase):
     
