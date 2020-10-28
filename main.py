@@ -23,8 +23,6 @@ def main():
         os.system('python3 app.py')
     elif sys.argv[1] == "data":
         os.system('python3 visualize.py')
-    elif sys.argv[1] == "train":
-        os.system('python3 query_classifier.py')
     else:
         print("ERROR: Invalid Arguments")
         printHelp()
