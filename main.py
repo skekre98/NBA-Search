@@ -13,12 +13,7 @@ def printHelp():
 def main():
 
     # Removing training history inside sqlite3 file 
-    try:
-        print("Removing previous training instance")
-        os.remove('db.sqlite3')
-    except OSError:
-        print("No previous instance detected")
-
+    
     if len(sys.argv)<=1:
         print("ERROR: Missing Arguments")
         printHelp()
