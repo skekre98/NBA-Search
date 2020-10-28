@@ -3,14 +3,13 @@ import sys
 
 # Function to print help messages
 def printHelp():
+    print("usage: python main.py {test, run, data}")
     print("  options:")
     print("    test: runs unit tests for backend functions")
     print("    run: Runs Flask server on localhost port 5000")
     print("    data: data visualization for training sets")
 
 def main():
-
-    # Removing training history inside sqlite3 file 
     
     if len(sys.argv)<=1:
         print("ERROR: Missing Arguments")
