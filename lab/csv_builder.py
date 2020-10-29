@@ -3,9 +3,9 @@ import csv
 
 class CSVBuilder(Visualizer):
 
-    def __init__(self, file):
+    def __init__(self, file_name):
         super().__init__()
-        self.csv = file
+        self.file_name = file_name
 
     # This function is to build a pie chart of the labels
     # in current csv file and load into plot
@@ -13,7 +13,7 @@ class CSVBuilder(Visualizer):
         labels = []
         weights = []
 
-        with self.csv as csv_file:
+        with open(self.file_name, newline='') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter = ',')
             for row in csv_reader:
                 if len(row) > 0:

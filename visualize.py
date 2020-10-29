@@ -54,7 +54,7 @@ def main():
     tb.display()
 
 
-    csv = CSVBuilder(open('data/pie_data.csv'))
+    csv = CSVBuilder('data/pie_data.csv')
     csv.build_pie()
     csv.display()
 
