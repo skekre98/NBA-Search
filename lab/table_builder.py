@@ -12,7 +12,8 @@ class TableBuilder(Visualizer):
     # the rows and column labels
     def build_table(self):
         try:
-            self.plt.table(self.cell_txt,cellLoc='center',colLabels=self.column_labels)
+            self.plt.axis('off')
+            self.plt.table(self.cell_txt,cellLoc='center',colLabels=self.column_labels,loc='center')
         except Exception:
             print('An error occurred while generating the table.')
 

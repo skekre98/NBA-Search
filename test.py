@@ -1,12 +1,14 @@
 import unittest
 import random
+import preprocess
 from datetime import date
 from modules import analysis, scraper
 from inference.ranknode import RankNode
 from inference.statnode import StatNode
 from inference.infonode import InfoNode
+from inference.inference_network import InferenceNetwork
 from preprocess import funnel_name
-import preprocess
+from data.text_data import non_nba, unsure
 from app import app
 
 # Test cases for Analysis API 
@@ -102,7 +104,7 @@ class TestScraper(unittest.TestCase):
         self.assertEqual(scraper.get_player_url("LeBron James"), "https://www.basketball-reference.com/players/j/jamesle01.html")
         self.assertEqual(scraper.get_player_url("Dennis Rodman"), "https://www.basketball-reference.com/players/r/rodmade01.html")
 
-    # Method to test advanced stat scraper 
+    # Method to test advanced stat scraper for player
     def test_get_adv_stats(self):
         names = ["Kobe Bryant", "Lebron James", "Klay Thompson"]
         stats = ["true shooting percentage", "total rebound percentage", "defensive box plus/minus"]
@@ -111,7 +113,18 @@ class TestScraper(unittest.TestCase):
             random_stat = random.choice(stats)
             stat = scraper.get_adv_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
-
+    
+    # Method to test advanced stat scraper from game link 
+    def test_get_game_adv_stats(self):
+        adv_stats = ['Minutes Played', 'True Shooting Percentage', 'Effective Field Goal Percentage', '3-Point Attempt Rate', 'Free Throw Attempt Rate']
+        home, away = scraper.get_game_adv_stats("https://www.basketball-reference.com/boxscores/202009300LAL.html")
+        ad_stats = away['Anthony Davis']
+        scraper_stats = set()
+        for stat in ad_stats:
+            scraper_stats.add(stat[0])
+        
+        for adv_stat in adv_stats:
+            self.assertTrue(adv_stat in adv_stats)
 
 # Test cases for stat node
 class TestStatNode(unittest.TestCase):
@@ -140,7 +153,6 @@ class TestStatNode(unittest.TestCase):
         node = StatNode()
         val = node.get_player_stat("Kobe Bryant", "true shooting percentage")
         self.assertTrue(isinstance(val, float))
-
 
 # Test cases for rank node
 class TestRankNode(unittest.TestCase):
@@ -202,7 +214,6 @@ class TestRankNode(unittest.TestCase):
             random_stat = random.choice(stats)
             stat = node.get_stat(random_name, random_stat)
             self.assertTrue(isinstance(stat, float))
-
 # Test case for data preprocess
 class TestPreprocess(unittest.TestCase):
 
@@ -213,7 +224,7 @@ class TestPreprocess(unittest.TestCase):
             player_name = funnel_name(names[i])
             self.assertTrue(player_name in ' '.join(names))
 
-# Test cases for URL Routing
+# Test cases for URL routing
 class TestRouting(unittest.TestCase):
     # Method to test <blank> routing
     def test_blank_routing(self):
@@ -294,7 +305,6 @@ class TestRouting(unittest.TestCase):
         with app.test_client() as c:
             response = c.get('/predictions')
             self.assertEqual(response.status_code, 200)
-
 # Test cases for info node
 class TestInfoNode(unittest.TestCase):
     
@@ -330,7 +340,28 @@ class TestInfoNode(unittest.TestCase):
             node.load_query(verb)
             resp = node.response()
             self.assertIsInstance(resp,str,"response test failed at verb: {}. Got instance of {}, expected instance of str".format(verb,type(resp)))
-        
+
+# Test cases for inference network
+class TestInferenceNetwork(unittest.TestCase):
+
+    # Test if wrong rank classification is handled correctly
+    def test_wrong_rank_classification(self):
+        query = "lebron james"
+        handler = InferenceNetwork(query)
+        node_type = handler.node_type
+        response = handler.response()
+        self.assertEqual(node_type, "rank")  # Making sure it gets wrongly classified as rank
+        self.assertIn(response, {non_nba, unsure})
+    
+    # Test if wrong stat classification is handled correctly
+    def test_wrong_stat_classification(self):
+        query = "is this a shot?"
+        handler = InferenceNetwork(query)
+        node_type = handler.node_type
+        response = handler.response()
+        self.assertEqual(node_type, "stat")  # Making sure it gets wrongly classified as stat
+        self.assertIn(response, {non_nba, unsure})   
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -51,12 +51,7 @@ def main():
     for row in rows:
         tb.add_row(row)
     tb.build_table()
-    tb.display()
-
-
-    csv = CSVBuilder('data/pie_data.csv')
-    csv.build_pie()
-    csv.display()
-
+    tb.save('table')
+    
 if __name__ == "__main__":
     main()
