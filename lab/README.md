@@ -54,3 +54,24 @@ csb = CSVBuilder(file)
 csb.build_pie()
 csb.display()
 ```
+
+## TableBuilder
+
+These are examples of how to use *TableBuilder*.
+
+#### Table
+```python
+from lab.table_builder import TableBuilder
+
+columns = ["Name", "Points", "Assists"]
+rows = [
+    ["Lebron James", 27.0, 8.0],
+    ["Kobe Bryant", 25.0, 7.0],
+    ["James Harden", 31.0, 2.0]
+]
+tb = TableBuilder(columns)
+for row in rows:
+    tb.add_row(row)
+tb.build_table()
+tb.display()
+```
