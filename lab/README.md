@@ -40,3 +40,17 @@ gb.build_bar_graph()
 gb.plt.title('NBA Teams with the Most Championships')
 gb.display()
 ```
+
+## CSVBuilder
+
+These are examples of how to use *CSVBuilder*.
+
+#### CSV Pie
+```python
+from lab.csv_builder import CSVBuilder
+
+file = "data/query.csv"
+csb = CSVBuilder(file)
+csb.build_pie()
+csb.display()
+```
