@@ -8,10 +8,15 @@ jobs:
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
-          name: Running tests
+          name: Setup
           command: |
             ./setup.sh
-            python3 -m unittest test.py
+      - run:
+          name: Tests
+          command: |
+            python3 -m unittest tests/flask_tests.py
+            python3 -m unittest tests/module_tests.py
+            python3 -m unittest tests/inference_tests.py
       - store_artifacts:
           path: test-reports/
           destination: NBA-Search
