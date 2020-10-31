@@ -17,15 +17,7 @@ class StatNode(object):
     def load_query(self, query):
         self.query = query
 
-    def generate_random_response(self):
-        name = self.extract_name()
-        stat = self.extract_stat()
-        if not name:
-            return inc_name
-        elif not stat:
-            return inc_stat
-
-        stat_val = self.get_player_stat(name, stat)
+    def generate_random_response(self, name, stat, val):
         resp_1 = "Seems {} has a {} of {}.".format(name, stat, stat_val)
         resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}.".format(name, stat_val, stat)
         resp_3 = "{}...obviously".format(stat_val)
@@ -47,8 +39,15 @@ class StatNode(object):
                      resp_9,
                      resp_10]
         return random.choice(resp_list)
-  
+
     def response(self):
+        name = self.extract_name()
+        stat = self.extract_stat()
+        stat_val = self.get_player_stat(name, stat)
+        if not name:
+            return inc_name
+        elif not stat:
+            return inc_stat
         return self.generate_random_response(name, stat, stat_val)
 
 
