@@ -15,7 +15,12 @@ def main():
         print("ERROR: Missing Arguments")
         printHelp()
     elif sys.argv[1] == "test":
-        os.system('python3 -m unittest test.py')
+        print("Flask Tests")
+        os.system('python3 -W ignore -m unittest tests/flask_tests.py')
+        print("Module Tests")
+        os.system('python3 -W ignore -m unittest tests/module_tests.py')
+        print("Inference Tests")
+        os.system('python3 -W ignore -m unittest tests/inference_tests.py')
     elif sys.argv[1] == "run":
         os.system('python3 app.py')
     elif sys.argv[1] == "data":
