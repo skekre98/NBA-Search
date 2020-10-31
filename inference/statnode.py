@@ -17,7 +17,7 @@ class StatNode(object):
     def load_query(self, query):
         self.query = query
 
-    def generate_random_response(self, name, stat, val):
+    def generate_random_response(self, name, stat_val):
         resp_1 = "Seems {} has a {} of {}.".format(name, stat, stat_val)
         resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}.".format(name, stat_val, stat)
         resp_3 = "{}...obviously".format(stat_val)
