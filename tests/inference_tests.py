@@ -1,5 +1,6 @@
 import warnings
-warnings.filterwarnings('ignore')
+warnings.filterwarnings(action='ignore', category=FutureWarning)
+warnings.simplefilter("ignore")
 
 import unittest
 import random
