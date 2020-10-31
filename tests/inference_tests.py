@@ -136,7 +136,7 @@ class TestInferenceNetwork(unittest.TestCase):
 
     # Test if wrong rank classification is handled correctly
     def test_wrong_rank_classification(self):
-        query = "lebron james"
+        query = "Who is a better singer Beyonce or me in the shower?"
         handler = InferenceNetwork(query)
         node_type = handler.node_type
         response = handler.response()
