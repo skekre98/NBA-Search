@@ -1,7 +1,3 @@
-import warnings
-warnings.filterwarnings(action='ignore', category=FutureWarning)
-warnings.simplefilter("ignore")
-
 import unittest
 import random
 from datetime import date

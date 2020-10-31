@@ -15,11 +15,11 @@ jobs:
           name: Tests
           command: |
             echo Flask Tests
-            python3 -m unittest tests/flask_tests.py
+            python3 -W ignore -m unittest tests/flask_tests.py
             echo Module Tests
-            python3 -m unittest tests/module_tests.py
+            python3 -W ignore -m unittest tests/module_tests.py
             echo Inference Tests
-            python3 -m unittest tests/inference_tests.py
+            python3 -W ignore -m unittest tests/inference_tests.py
       - store_artifacts:
           path: test-reports/
           destination: NBA-Search
