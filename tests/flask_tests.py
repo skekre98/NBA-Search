@@ -1,3 +1,7 @@
+import warnings
+warnings.filterwarnings(action='ignore', category=FutureWarning)
+warnings.filterwarnings(action='ignore', category=RuntimeWarning)
+
 import unittest
 from preprocess import funnel_name
 from app import app

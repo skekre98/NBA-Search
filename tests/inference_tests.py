@@ -1,3 +1,7 @@
+import warnings
+warnings.filterwarnings(action='ignore', category=FutureWarning)
+warnings.filterwarnings(action='ignore', category=RuntimeWarning)
+
 import unittest
 import random
 from data.text_data import non_nba, unsure
