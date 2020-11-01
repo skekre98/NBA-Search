@@ -17,7 +17,7 @@ class TreeBuilder(object):
     def __init__(self, root):
         # root will be type TreeNode
         self.root = root
-        self.size = 0
+        self.size = 1
 
     # Function to push to tree
     def push(self, node):
@@ -27,7 +27,7 @@ class TreeBuilder(object):
             # if value of node to be added is greater, go right
             if node.val > currNode.val:
                 # if right child exists, go right
-                if currNode.right != None:
+                if currNode.right:
                     currNode = currNode.right
                 # if no right child, add node as right child
                 else:
@@ -37,7 +37,7 @@ class TreeBuilder(object):
             # else, go left
             else:
                 # if left child exists, go left
-                if currNode.left != None:
+                if currNode.left:
                     currNode = currNode.left
                 # if no left child, add node as left child and break
                 else:
@@ -45,6 +45,8 @@ class TreeBuilder(object):
                     node.parent = currNode
                     break
 
+        # increment size of tree on pushing new node
+        self.size += 1
         return
 
     # Function to remove node from tree
