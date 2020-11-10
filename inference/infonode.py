@@ -39,7 +39,7 @@ class InfoNode(object):
 		resp_3 = "I'm just some lines of code trying to decipher what you asked me in a different language via math and natural language processing."
 		resp_4 = "I am a robot! I run on so many lines of code, and I am ready to answer your NBA queries."
 		resp_5 = "I am actually a human that lives inside a computer that runs on code. Wait, thats a robot. I am a robot."
-		resp_6 = "Bot, chatbot, robot, wizard. Those are all the things I've been describbed as. I can answer NBA questions for you."
+		resp_6 = "Bot, chatbot, robot, wizard. Those are all the things I've been described as. I can answer NBA questions for you."
 		resp_7 = "I may be a robot. I may be a person. You'll never know, but I am here to answer your NBA questions."
 		resp_8 = "I'm an NBA wizard ready to answer your NBA questions."
 		resp_9 = "I'm like santa clause, but I deliver NBA knowledge."
@@ -67,9 +67,9 @@ class InfoNode(object):
 		resp_5 = "I am constantly growing, thanks to the open source community on GitHub."
 		resp_6 = "Honestly, I did not even know I was being built, until skekre98 and the open source community told me."
 		resp_7 = "That is confidental information. Just kidding, I am being built by the open source community."
-		resp_8 = "I am smart. Not because of the knowledge I have, but because I count with the open source community on GitHub."
-		resp_9 = "Built and designed by skekre98 and the open source community on GitHub."
-		resp_10 = "I am being built by the open source community, and I skekre98 is leading them."
+		resp_8 = "I am smart. Not because of the knowledge I have, but because my backer is the GitHub open source community."
+		resp_9 = "Built and designed by skekre98, and the open source community on GitHub."
+		resp_10 = "I am being built by the open source community, and skekre98 is leading them."
   
 		responses = [resp_1, resp_2, resp_3, resp_4, resp_5, resp_6, resp_7, resp_8, resp_9, resp_10]
 		return random.choice(responses)
