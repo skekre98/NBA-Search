@@ -122,6 +122,7 @@ class TestInfoNode(unittest.TestCase):
             self.assertTrue(true_verb in verbs,
                             "generate_random_response test failed at verb: {}. Got response for verb(s): {}, expecting response for verb: {}.".format(true_verb,verbs,true_verb))
     
+    #Test response returns a str
     def test_response(self):
         node = InfoNode()
         test_verbs = ["be", "do", "build", "make", "Cannot Understand"]
@@ -130,6 +131,15 @@ class TestInfoNode(unittest.TestCase):
             node.load_query(verb)
             resp = node.response()
             self.assertIsInstance(resp,str,"response test failed at verb: {}. Got instance of {}, expected instance of str".format(verb,type(resp)))
+    
+    #Test make and be responses generator return a str     
+    def test_random_response(self):
+        node = InfoNode()
+        make_response = node.random_make_response()
+        be_response = node.random_be_response()
+        
+        self.assertIsInstance(make_response,str,'make response returned instance of {}, expected instance of str'.format(type(make_response)))
+        self.assertIsInstance(be_response,str,'be response returned instance of {}, expected instance of str'.format(type(be_response)))
 
 # Test cases for inference network
 class TestInferenceNetwork(unittest.TestCase):
