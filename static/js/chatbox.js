@@ -42,6 +42,7 @@ async function newmsg(){
     var data = $("#btn-input").val();
 
     $('chat_log').append('<div class="row msg_container base_sent"><div class="messages msg_sent"><p>'+data+'</p></div></div>');
+    clearInput();
     lastUserMessage = String(data);
     botMessage = 'TEST';
     await chatbotResponse();
@@ -49,7 +50,6 @@ async function newmsg(){
 
     messages.push(data);
     //Speech(botMessage) // Turned speech off, recommend adding a toggle switch so user can choose 
-    clearInput();
     $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);
 }
 
