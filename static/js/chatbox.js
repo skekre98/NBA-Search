@@ -9,6 +9,13 @@ botMessage = "", //var keeps track of what the chatbot is going to say
 botName = 'Chatbot', //name of the chatbot
 talking = true; //when false the speach function doesn't work
 
+window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />'); 
+            else $('head > link').filter(':first').replaceWith(defaultCSS); 
+        }
+
 // Function to handle bot response 
 async function chatbotResponse() {
   talking = true;
@@ -16,6 +23,11 @@ async function chatbotResponse() {
 
     const payload = new FormData();
     payload.append('msg', lastUserMessage);
+
+    for(var value of payload.values()) {
+      console.log(value);
+    }
+
     const res = await fetch('/bot-msg', {
         method: 'post',
         body: payload
@@ -24,31 +36,37 @@ async function chatbotResponse() {
     botMessage = await res.json();
 }
 
-//this runs each time enter is pressed.
-//It controls the overall input and output
-async function newEntry() {
-  //if the message from the user isn't empty then run 
-  if (document.getElementById("chatbox").value != "") {
-    //pulls the value from the chatbox ands sets it to lastUserMessage
-    lastUserMessage = document.getElementById("chatbox").value;
-    //sets the chat box to be clear
-    document.getElementById("chatbox").value = "";
-    //adds the value of the chatbox to the array messages
-    messages.push("<b>You:</b> " + lastUserMessage);
-    //Speech(lastUserMessage);  //says what the user typed outloud
-    //sets the variable botMessage in response to lastUserMessage
+// Auto-scroll and update based on https://stackoverflow.com/a/39729993
+
+async function newmsg(){
+    var data = $("#btn-input").val();
+
+    $('chat_log').append('<div class="row msg_container base_sent"><div class="messages msg_sent"><p>'+data+'</p></div></div>');
+    clearInput();
+    lastUserMessage = String(data);
+    botMessage = 'TEST';
     await chatbotResponse();
-    //add the chatbot's name and message to the array messages
-    messages.push("<b>" + botName + ":</b> " + botMessage);
-    // says the message using the text to speech function written below
-    Speech(botMessage);
-    //outputs the last few array elements of messages to html
-    for (var i = 1; i < 8; i++) {
-      if (messages[messages.length - i])
-        document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
-    }
-  }
+    $('chat_log').append('<div class="row msg_container base_receive"><div class="messages msg_receive"><p>'+botMessage+'</p></div></div>')
+
+    messages.push(data);
+    //Speech(botMessage) // Turned speech off, recommend adding a toggle switch so user can choose 
+    $(".msg_container_base").stop().animate({ scrollTop: $(".msg_container_base")[0].scrollHeight}, 1000);
 }
+
+
+$("#submit").click(async function() {
+    newmsg();
+});
+
+function clearInput() {
+    $("#myForm :input").each(function() {
+        $(this).val(''); //clears form
+    });
+}
+
+$("#myForm").submit(function() {
+    return false; // do-nothing code to prevent redirection
+});
 
 // Function to convert text to speech
 //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
@@ -67,16 +85,10 @@ function keyPress(e) {
   var key = (x.keyCode || x.which);
   if (key == 13 || key == 3) {
     //runs this function when enter is pressed
-    newEntry();
+    newmsg();
   }
   if (key == 38) {
     console.log('hi')
       //document.getElementById("chatbox").value = lastUserMessage;
   }
-}
-
-//clears the placeholder text ion the chatbox
-//this function is set to run when the users brings focus to the chatbox, by clicking on it
-function placeHolder() {
-  document.getElementById("chatbox").placeholder = "";
 }

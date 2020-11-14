@@ -20,6 +20,7 @@
       href="https://user-images.githubusercontent.com/20112458/49326597-773b7280-f57a-11e8-853d-20ed61d18b0d.png"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     <style>
       body {
         font-family: monospace;
@@ -167,31 +168,24 @@
         </div>
     </header>
     <!-- Chat box-->
-      <div id="boximg">
-        <div id='bodybox'>
-            <div id='chatborder'>
-              <p id="chatlog20" class="chatlog">&nbsp;</p>
-              <p id="chatlog19" class="chatlog">&nbsp;</p>
-              <p id="chatlog18" class="chatlog">&nbsp;</p>
-              <p id="chatlog17" class="chatlog">&nbsp;</p>
-              <p id="chatlog16" class="chatlog">&nbsp;</p>
-              <p id="chatlog15" class="chatlog">&nbsp;</p>
-              <p id="chatlog14" class="chatlog">&nbsp;</p>
-              <p id="chatlog13" class="chatlog">&nbsp;</p>
-              <p id="chatlog12" class="chatlog">&nbsp;</p>
-              <p id="chatlog11" class="chatlog">&nbsp;</p>
-              <p id="chatlog10" class="chatlog">&nbsp;</p>
-              <p id="chatlog9" class="chatlog">&nbsp;</p>
-              <p id="chatlog8" class="chatlog">&nbsp;</p>
-              <p id="chatlog7" class="chatlog">&nbsp;</p>
-              <p id="chatlog6" class="chatlog">&nbsp;</p>
-              <p id="chatlog5" class="chatlog">&nbsp;</p>
-              <p id="chatlog4" class="chatlog">&nbsp;</p>
-              <p id="chatlog3" class="chatlog">&nbsp;</p>
-              <p id="chatlog2" class="chatlog">&nbsp;</p>
-              <p id="chatlog1" class="chatlog">&nbsp;</p>
-              <input type="text" name="chat" id="chatbox" placeholder="Type here to chat." onfocus="placeHolder()" size="40">
-            </div>
+      <div class="panel panel-primary" style="border:0px">
+        <div class="panel-heading top-bar">
+          <h3 class="panel-title">Chatbot</h3>
+        </div>
+    
+    
+        <div class="panel-body msg_container_base">
+          <chat_log> </chat_log>
+        </div>
+        <!--CHAT USER BOX-->
+        <div class="panel-footer">
+          <div class="input-group" id="myForm">
+              <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here...">
+              
+              <button class="btn btn-primary btn-sm" id="submit" type="submit" style="background-color:#fa8320">Send</button>
+              
+          </form>
+          </div>
         </div>
       </div>
 
