@@ -49,6 +49,25 @@ class RankNode(object):
 		(max_entity, min_entity) = better_player(entity_1, entity_2)
 		return self.generate_random_response(max_entity, min_entity, stat)
 
+
+	"""
+	Function to get a random response given two player entities
+
+	Parameters
+	----------
+	max_entity : string tuple
+		The player with better stats (name, stat)
+	min_entity : string tuple
+		The player with worse stats (name, stat)
+	stat : string
+		The stat that is being compared
+	
+	Returns
+	-------
+	response : string
+		The randomly selected and formatted response
+
+	"""
 	def generate_random_response(self, max_entity, min_entity, stat):		
 		resp_1 = "{} has performed better in the past with a {} of {}.".format(max_entity[0], stat, max_entity[1])
 		resp_2 = "Statistically speaking {} is superior with a {} of {}.".format(max_entity[0], stat, max_entity[1])
@@ -68,6 +87,20 @@ class RankNode(object):
 		resp_list = [resp_1, resp_2, resp_3, resp_4, resp_5, resp_6, resp_7, resp_8, resp_9, resp_10, resp_11, resp_12, resp_13, resp_14, resp_15]
 		return random.choice(resp_list)
 
+	"""
+	Function to get the name of a player and their org name
+
+	Parameters
+	----------
+	n/a
+
+	Returns
+	-------
+	player_name : string
+		the name of a the player
+	org_name : string
+		the name of that player's org
+	"""
 	def extract_names(self):
 		stack = [None, None]
 		doc = self.nlp(self.query)
@@ -80,6 +113,17 @@ class RankNode(object):
 					stack.append(entity.text)
 		return stack[-1], stack[-2]
 	
+	"""
+	Function to extract token
+	Parameters
+	----------
+	n/a
+
+	Returns
+	-------
+	token text : string
+		matched metric 
+	"""
 	def extract_metric(self):
 		metric_pos = [("NN", "NOUN"), ("VBG", "VERB")]
 		doc = self.nlp(self.query)
@@ -88,7 +132,8 @@ class RankNode(object):
 				if tag == token.tag_ and pos == token.pos_:
 					return token.text 
 		return None
-	
+
+
 	def metric2stat(self, metric):
 		metric = metric.lower()
 		max_similarity = lambda a, b : a if a[1] > b[1] else b
