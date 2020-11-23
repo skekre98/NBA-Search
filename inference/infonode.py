@@ -9,13 +9,41 @@ class InfoNode(object):
 		self.nlp = spacy.load('en_core_web_sm')
 
 	def load_query(self, query):
+		"""
+		Function loads query to instance variable query. 
+		----------
+		input :
+		query - A request made to the node in format of a string. 
+		Returns
+		-------
+		output : none
+		"""
 		self.query = query
 
 	def response(self):
+		"""
+		Function loads query to instance variable query. 
+		----------
+		input :
+		query - A request made to the node in format of a string. 
+		Returns
+		-------
+		output : generate_random_response is called. A random responses is returned depending on which logical test the lemma falls into. 
+  		A response is returned in a form of a string.
+		"""
 		lemma = self.extract_components()
 		return self.generate_random_response(lemma)
 
 	def extract_components(self):
+		"""
+		Function extract the lemma component of the user query.  
+		----------
+		input : none
+		Function uses the instance variable query in order to receive the data
+		Returns
+		-------
+		output : returns a set that contains the lemma of the query.
+		"""
 		verbs = set()
 		doc = self.nlp(self.query)
 		for entity in doc:
@@ -29,8 +57,8 @@ class InfoNode(object):
 		in conjuction with the generate_random_response.
 		----------
 		input : None
-		-------
 		Returns
+		-------
 		output : Random response.
 			The response is a string.
 		"""
@@ -55,8 +83,8 @@ class InfoNode(object):
 		in conjuction with the generate_random_response.
 		----------
 		input : None
-		-------
 		Returns
+		-------
 		output : Random response.
 			The response is a string.
 		"""
@@ -75,6 +103,22 @@ class InfoNode(object):
 		return random.choice(responses)
 
 	def generate_random_response(self, lemma, test=False):
+		"""
+		Function uses the lemma passed to determine the appropriate response to be returned. If the lemma does not fall in
+		an appropriate category, then a default message is returned.
+		A True test arguement can be passed in order to make sure that the the logic is working properly in a unittest.
+		----------
+		input :
+		lemma - lemma extracted from user query.
+		test - If True, then test responses will be returned. This is used in conjuction with the unittest test modules located
+		in the test directory. 
+  
+		Returns
+		-------
+		output : random responses depending on which logical test the lemma falls into. A response is returned in a form of a string.
+		If True is passed to the test arguement, then a set is returned or a string depending on the test case. 
+		"""
+  
 		if 'do' in lemma or 'be' in lemma:
 			if test:
 				return({'do','be'})
