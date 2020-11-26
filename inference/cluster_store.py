@@ -5,6 +5,7 @@ import statistics
 from sklearn.cluster import KMeans
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import jaccard_score
 
 
 class ClusterStore(object):
@@ -49,6 +50,7 @@ class ClusterStore(object):
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
         self.clustered = True
+        print("CLUSTERS: ", self.clusters)
 
     '''
     :param k: number of cluster
@@ -71,12 +73,13 @@ class ClusterStore(object):
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
         self.clustered = True
+        print("CLUSTERS: ", self.clusters)
 
     # Function to run agglomerative clustering on current data
     # This function should return the optimal number of clusters
     # based on some kind of metric 
     def build_optimal_agglomerative_clusters(self):
-        # TODO 
+        # TODO
         pass
 
     # Function to run agglomerative clustering 
@@ -85,10 +88,13 @@ class ClusterStore(object):
         # TODO
         pass
 
-    # Function to calculate the average similarity of current clusters 
+    # Function to calculate the average similarity of current clusters
     def average_similarity(self):
-        # TODO 
-        pass
+        similarities = []
+        for i in range(self.total_cluster):
+            for j in range(i+1, self.total_cluster):
+                similarities.append(jaccard_score(self.clusters[i],self.clusters[j]))
+        self.avg_similarity = statistics.mean(similarities)
 
     '''
     :param entity1: X
