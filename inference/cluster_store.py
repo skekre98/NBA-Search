@@ -5,7 +5,6 @@ import statistics
 from sklearn.cluster import KMeans
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.metrics import jaccard_score
 from sklearn.metrics.pairwise import cosine_similarity
 
 
@@ -51,7 +50,6 @@ class ClusterStore(object):
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
         self.clustered = True
-        print("CLUSTERS: ", self.clusters)
 
     '''
     :param k: number of cluster
