@@ -34,10 +34,10 @@ def test_accuracy(test_path):
     return "DONE"
 
 def models_test():
-    # USAGE: ./models_test MODEL TESTCRITERIA PATH_TO_TEST_CASE
+    # USAGE: python3 models_test.py MODEL TESTCRITERIA PATH_TO_TEST_CASE
     if len(sys.argv)<3:
         print("ERROR: Missing Arguments")
-        print("USAGE: ./models_test MODEL TESTCRITERIA PATH_TO_TEST_CASE")
+        print("USAGE: python3 models_test.py MODEL TESTCRITERIA PATH_TO_TEST_CASE")
     elif sys.argv[1] == "classifier":
         if sys.argv[2] == "accuracy":
             test_accuracy(sys.argv[3])
