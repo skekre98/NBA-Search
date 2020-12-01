@@ -17,6 +17,24 @@ class StatNode(object):
     def load_query(self, query):
         self.query = query
 
+
+"""
+Function to get a list of a random_response. 
+
+Parameters
+----------
+stat : string
+    The stat that is being compared to stat_val
+name : string
+    NBA player for stat retrieval
+stat_val: string
+    statistic value
+
+Returns
+-------
+resp_list : list
+    The list of random response
+"""
     def generate_random_response(self, name, stat, stat_val):
         resp_1 = "Seems {} has a {} of {}.".format(name, stat, stat_val)
         resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}.".format(name, stat_val, stat)
@@ -40,6 +58,23 @@ class StatNode(object):
                      resp_10]
         return random.choice(resp_list)
 
+"""
+    Function to generate a response
+    
+    Parameters
+    ----------
+    self : none
+        
+    
+    Returns
+    -------
+    name : string
+      NBA player for stat retrieval
+    stat : string
+      The stat that is being compared to stat_val
+    stat_val : string
+      statistic value
+"""
     def response(self):
         name = self.extract_name()
         stat = self.extract_stat()
@@ -50,6 +85,18 @@ class StatNode(object):
         stat_val = self.get_player_stat(name, stat)
         return self.generate_random_response(name, stat, stat_val)
 
+"""
+    Function that extracts the player's name
+    
+    Parameters
+    ----------
+    self : none
+        
+    Returns
+    -------
+    name : string
+      NBA player for stat retrieval
+"""
 
     def extract_name(self):
         doc = self.nlp(self.query)
@@ -64,6 +111,19 @@ class StatNode(object):
 
         return name
     
+
+"""
+Function that extracts the player's statistics
+Parameters
+----------
+self : none
+        
+Returns
+-------
+stat_final : string
+    Player statistics
+or None
+"""
     def extract_stat(self):
          doc = self.nlp(self.query)
          stat = ""
@@ -104,7 +164,23 @@ class StatNode(object):
          if(max_sim > sim_threshold):
              return str(stat_final)
          return None
+
+"""
+  Function to get player statistics
     
+    Parameters
+    ----------
+    self : none
+    stat : string
+      The stat that is being compared to stat_val
+    name : string
+      NBA player for stat retrieval    
+    
+    Returns
+    -------
+    val : string
+      statistic value
+"""    
     def get_player_stat(self, name, stat):
         if stat in total_stat_map:
             val = get_total_stat(name, stat)
