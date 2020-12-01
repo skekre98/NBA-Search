@@ -50,7 +50,6 @@ class ClusterStore(object):
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
         self.clustered = True
-        print("CLusters: ", self.clusters)
 
     '''
     :param k: number of cluster
