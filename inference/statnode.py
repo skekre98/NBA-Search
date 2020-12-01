@@ -166,7 +166,7 @@ or None
          return None
 
 """
-  Function to get player statistics
+Function to get player statistics
     
     Parameters
     ----------
