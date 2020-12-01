@@ -5,6 +5,7 @@ import statistics
 from sklearn.cluster import KMeans
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.cluster import AgglomerativeClustering
 from sklearn.metrics.pairwise import cosine_similarity
 
 
@@ -83,8 +84,15 @@ class ClusterStore(object):
     # Function to run agglomerative clustering 
     # with specified number of cluster: c -> int
     def build_agglomerative_clusters(self, c):
-        # TODO
-        pass
+        self.total_cluster = c
+        X = np.asarray(self.original_data)
+        clustering = AgglomerativeClustering(n_clusters=c).fit(X)
+        self.clusters = {}
+        for i in range(self.total_cluster):
+            self.clusters[i] = []
+        for i in range(len(clustering.labels_)):
+            self.clusters[clustering.labels_[i]].append(i)
+
 
     # Function to calculate the average similarity of current clusters
     def average_similarity(self):
