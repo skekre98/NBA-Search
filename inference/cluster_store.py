@@ -50,6 +50,7 @@ class ClusterStore(object):
         for i in range(len(y_kmeans)):
             self.clusters[y_kmeans[i]].append(i)
         self.clustered = True
+        print("CLusters: ", self.clusters)
 
     '''
     :param k: number of cluster
@@ -89,16 +90,18 @@ class ClusterStore(object):
     # Function to calculate the average similarity of current clusters
     def average_similarity(self):
         similarities = []
-        for i in range(self.total_cluster):
-            for j in range(i+1, self.total_cluster):
-                cluster1 = self.clusters[i]
-                cluster2 = self.clusters[j]
-                max_size = max(len(cluster1), len(cluster2))
-                cluster1 = cluster1 + ([0] * (max_size - len(cluster1)))
-                cluster2 = cluster2 + ([0] * (max_size - len(cluster2)))
-                arr1 = np.asarray(cluster1).reshape(1, -1)
-                arr2 = np.asarray(cluster2).reshape(1, -1)
-                similarities.append(cosine_similarity(arr1, arr2)[0][0])
+        for cluster in self.clusters.values():
+            cluster_similarities = []
+            for i in range(len(cluster)):
+                for j in range(i+1, len(cluster)):
+                    entity1 = self.original_data[cluster[i]]
+                    entity2 = self.original_data[cluster[j]]
+                    arr1 = np.asarray(entity1).reshape(1, -1)
+                    arr2 = np.asarray(entity2).reshape(1, -1)
+                    cluster_similarities.append(cosine_similarity(arr1, arr2)[0][0])
+            if len(cluster_similarities) == 0:
+                continue
+            similarities.append(statistics.mean(cluster_similarities))
         self.avg_similarity = statistics.mean(similarities)
 
 
