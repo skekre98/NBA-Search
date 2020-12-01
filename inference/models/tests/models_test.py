@@ -4,6 +4,7 @@ sys.path.append("../../..")
 from inference.inference_network import InferenceNetwork
 import csv
 import os
+import query_classifier
 os.chdir('../../../')
 
 def test_accuracy():
@@ -14,10 +15,8 @@ def test_accuracy():
 
     for model, test_path in model_test_map.items():
 
-
-        os.system('python3 ' + model) # train models, dumps into model .pkl file
-
         model_name = model[:len(model) - 3]
+        getattr(sys.modules[__name__], model_name).main()
 
         # Query classification 
         model_file = "inference/models/classifiers/" + model_name + ".pkl"
