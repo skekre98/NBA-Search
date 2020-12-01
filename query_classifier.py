@@ -41,7 +41,7 @@ def main():
     # Train model 
     print("Training Query Classifier...")
     query_classifier = create_pipeline()
-    joblib.dump(query_classifier, "./inference/models/query_classifier.pkl")
+    joblib.dump(query_classifier, "./inference/models/classifiers/query_classifier.pkl")
 
 if __name__ == "__main__":
     main()
