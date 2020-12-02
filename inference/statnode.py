@@ -69,6 +69,7 @@ class StatNode(object):
          doc = self.nlp(self.query)
          stat = ""
          stat_final = ""
+         sim_threshold = 50
 
          #preprocessing user query and choosing the most ocurring word classes in statistics dictionary
          for token in doc:
@@ -93,12 +94,13 @@ class StatNode(object):
          # 'doc' gives better results than 'stat', worth continuing to look into
          stat_total, ratio_total = process.extractOne(str(doc), stat_map1)
          stat_adv, ratio_adv = process.extractOne(str(doc), stat_map2)
-         if ratio_total > ratio_adv:
-             stat_final = stat_total
-             return stat_final
+         #if neither ratio is higher than the similarity threshold, return None
+         if ratio_total < sim_threshold and ratio_adv < sim_threshold:
+             return None
+         elif ratio_total > ratio_adv:
+             return stat_total
          else:
-             stat_final = stat_adv
-             return stat_final
+             return stat_adv
 
     def get_player_stat(self, name, stat):
         if stat in total_stat_map:
