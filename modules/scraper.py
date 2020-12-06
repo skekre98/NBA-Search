@@ -133,19 +133,24 @@ def get_standings(conf):
     resp = requests.get(base_url)
     page_content = BeautifulSoup(resp.content, "html.parser")
     table = page_content.findAll("tr",attrs={"class":"full_table"})
-
+    
     # Iterate over ranking table in website HTML 
     standings = []
-    for i,row in enumerate(table):
-        team = row.find("a")["title"]
+    # print(table[0])
+    # print(table[0].find("a"))
+    # print(table[0].find("a").get("title"))
+    for i, row in enumerate(table):
+        team = row.find("a").get("title")
         wins = row.find("td",attrs={"data-stat":"wins"}).string
         losses = row.find("td",attrs={"data-stat":"losses"}).string
         team_map = {
 		"name" : team,
 		"wins" : wins,
 		"losses" : losses
-	}
+	    }
         standings.append(team_map)
+        if i == 29:
+            break
     
     # Return rankings based on conference 
     switch = {
