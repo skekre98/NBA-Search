@@ -26,7 +26,7 @@ This issue is meant for potential bugs. Please provide the following information
 
 ### Pull requests
 
-Please document any public function and class. At least required: 
+Please document any public function and class. At least required:
 
 * Function: Summary, Parameters, and Returns.
 * Class: Summary and Attributes
@@ -37,7 +37,7 @@ Is your fork not up-to-date with the NBA-Search code? Most of the time that isn'
 
 The first time:
 ```
-git remote add upstream https://github.com/skekre98/NBA-Search.git 
+git remote add upstream https://github.com/skekre98/NBA-Search.git
 ```
 
 After that your repository will have two remotes. You could update your remote (the fork) in the following way:
@@ -47,7 +47,7 @@ git fetch upstream
 git checkout <your feature branch>
 git rebase upstream/master
 ..fix if needed and
-git push -f 
+git push -f
 ```
 
 if `rebase` won't work well, use `git merge master` as alternative.

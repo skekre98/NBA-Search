@@ -15,7 +15,7 @@
       navText: [
         '<img src="img/icon/left.svg" alt="">',
         '<img src="img/icon/right.svg" alt="">'
-        
+
       ],
       responsive:{
         0:{
@@ -55,7 +55,7 @@
       navText: [
         '<img src="img/icon/left.svg" alt="">',
         '<img src="img/icon/right.svg" alt="">'
-        
+
       ],
       responsive:{
         0:{
@@ -97,6 +97,6 @@
 			}
 		});
 	}
-  
+
 
 }(jQuery));

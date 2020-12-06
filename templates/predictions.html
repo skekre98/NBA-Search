@@ -20,7 +20,7 @@
         <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
-    
+
         <title>March Madness Stock Matchup</title>
     </head>
     <body>
@@ -50,7 +50,7 @@
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
-                                
+
 
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul class="navbar-nav mr-auto">
@@ -97,9 +97,9 @@
             <p align="center">
                 <img class="predimg" src="{{url_for('static', filename='img/predictions.png')}}" width="350" height="300">
             </p>
-        </div> 
-    
-    
+        </div>
+
+
         <section id="bracket">
             <p align="center">
                 <img class="playoffimg" src="{{url_for('static', filename='img/playoffs.png')}}" width="500" height="125">
@@ -123,11 +123,11 @@
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["wc1"][-4][0][0] }}<span class="score">{{ bracket["wc1"][-4][0][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["wc1"][-4][1][0] }}<span class="score">{{ bracket["wc1"][-4][1][1] }}</span></li>
-                </ul>												
+                </ul>
             </div>	<!-- END ROUND ONE -->
-    
+
             <div class="round round-two">
-                <div class="round-details">Round 2</div>			
+                <div class="round-details">Round 2</div>
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["wc2"][-1][1][0] }}<span class="score">{{ bracket["wc2"][-1][1][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["wc2"][-2][1][0] }}<span class="score">{{ bracket["wc2"][-2][1][1] }}</span></li>
@@ -135,53 +135,53 @@
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["wc2"][-1][0][0] }}<span class="score">{{ bracket["wc2"][-1][0][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["wc2"][-2][0][0] }}<span class="score">{{ bracket["wc2"][-2][0][1] }}</span></li>
-                </ul>	
-                </ul>										
+                </ul>
+                </ul>
             </div>	<!-- END ROUND TWO -->
-            
+
             <div class="round round-three">
-                <div class="round-details">Western Finals</div>			
+                <div class="round-details">Western Finals</div>
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["wcf"][0][1][0] }}<span class="score">{{ bracket["wcf"][0][1][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["wcf"][0][0][0] }}<span class="score">{{ bracket["wcf"][0][0][1] }}</span></li>
-                </ul>											
-            </div>	<!-- END ROUND THREE -->		
-        </div> 
-    
+                </ul>
+            </div>	<!-- END ROUND THREE -->
+        </div>
+
     <div class="champion">
             <div class="final">
                 <i class="fa fa-trophy"></i>
-                <div class="round-details">NBA Finals</div>		
+                <div class="round-details">NBA Finals</div>
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["f"][0][0] }}<span class="score">{{ bracket["f"][0][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["f"][1][0] }}<span class="score">{{ bracket["f"][1][1] }}</span></li>
                 </ul>
             </div>
         </div>
-    
-    
+
+
         <div class="split split-two">
-    
-    
+
+
             <div class="round round-three">
-                <div class="round-details">Eastern Finals</div>						
+                <div class="round-details">Eastern Finals</div>
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["ecf"][0][1][0] }}<span class="score">{{ bracket["ecf"][0][1][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["ecf"][0][0][0] }}<span class="score">{{ bracket["ecf"][0][0][1] }}</span></li>
-                </ul>										
-            </div>	<!-- END ROUND THREE -->	
-    
+                </ul>
+            </div>	<!-- END ROUND THREE -->
+
             <div class="round round-two">
-                <div class="round-details">Round 2</div>						
+                <div class="round-details">Round 2</div>
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["ec2"][-1][1][0] }}<span class="score">{{ bracket["ec2"][-1][1][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["ec2"][-1][0][0] }}<span class="score">{{ bracket["ec2"][-1][0][1] }}</span></li>
-                </ul>	
+                </ul>
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["ec2"][-2][0][0] }}<span class="score">{{ bracket["ec2"][-2][0][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["ec2"][-2][1][0] }}<span class="score">{{ bracket["ec2"][-2][1][1] }}</span></li>
-                </ul>	
-                </ul>										
+                </ul>
+                </ul>
             </div>	<!-- END ROUND TWO -->
              <div class="round round-one current">
                 <div class="round-details">Round 1</div>
@@ -200,8 +200,8 @@
                 <ul class="matchup">
                     <li class="team team-top">{{ bracket["ec1"][-1][0][0] }}<span class="score">{{ bracket["ec1"][-1][0][1] }}</span></li>
                     <li class="team team-bottom">{{ bracket["ec1"][-1][1][0] }}<span class="score">{{ bracket["ec1"][-1][1][1] }}</span></li>
-                </ul>					
-            </div>	<!-- END ROUND ONE -->          				
+                </ul>
+            </div>	<!-- END ROUND ONE -->
         </div>
         </div>
         </section>

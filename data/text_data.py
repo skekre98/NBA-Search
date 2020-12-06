@@ -1,56 +1,120 @@
-# NBA word set 
-nba_words = {"nba", 
-            "player",
-            "players", 
-            "basketball", 
-            "rebounds",
-            "rebound",
-            "rebounding",
-            "rebounder", 
-            "points",
-            "point", 
-            "league", 
-            "bench", 
-            "score",
-            "passing",
-            "passer",
-            "maker",
-            "shooting",
-            "shooter",
-            "scorer",
-            "trade",
-            "trades", 
-            "dunk", 
-            "steal",
-            "steals",
-            "assists", 
-            "assist",
-            "team",
-            "teams",
-            "defending",
-            "defender"
-        }
+# Copyright (c) 2020 Sharvil Kekre skekre98
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
-# unsure message 
+# NBA word set
+nba_words = {
+    "nba",
+    "player",
+    "players",
+    "basketball",
+    "rebounds",
+    "rebound",
+    "rebounding",
+    "rebounder",
+    "points",
+    "point",
+    "league",
+    "bench",
+    "score",
+    "passing",
+    "passer",
+    "maker",
+    "shooting",
+    "shooter",
+    "scorer",
+    "trade",
+    "trades",
+    "dunk",
+    "steal",
+    "steals",
+    "assists",
+    "assist",
+    "team",
+    "teams",
+    "defending",
+    "defender",
+}
+
+# unsure message
 unsure = "I'm not sure if this has to do with the NBA. Try being more specific."
 
-# non-NBA message 
+# non-NBA message
 non_nba = "This has nothing to do with the NBA. Let's talk about something else. Perhaps the National Basketball League?"
 
 # nba percent data
-percent_list = ["fg", 
-                "field goal", 
-                "three point", 
-                "3pt", 
-                "free throw", 
-                "FT",
-                "2pt"
-                "two point" 
-            ]
+percent_list = [
+    "fg",
+    "field goal",
+    "three point",
+    "3pt",
+    "free throw",
+    "FT",
+    "2pt" "two point",
+]
 
-total_stat_map = {'field goals per game': 'fg_per_g', 'field goal attempts per game': 'fga_per_g', 'field goal percentage': 'fg_pct', '3-point field goals per game': 'fg3_per_g', '3-point field goal attempts per game': 'fg3a_per_g', '3-point field goal percentage': 'fg3_pct', '2-point field goals per game': 'fg2_per_g', '2-point field goal attempts per game': 'fg2a_per_g', '2-point field goal percentage': 'fg2_pct', 'effective field goal percentage': 'efg_pct', 'free throws per game': 'ft_per_g', 'free throw attempts per game': 'fta_per_g', 'free throw percentage': 'ft_pct', 'offensive rebounds per game': 'orb_per_g', 'defensive rebounds per game': 'drb_per_g', 'total rebounds per game': 'trb_per_g', 'assists per game': 'ast_per_g', 'steals per game': 'stl_per_g', 'blocks per game': 'blk_per_g', 'turnovers per game': 'tov_per_g', 'personal fouls per game': 'pf_per_g', 'points per game': 'pts_per_g'}
+total_stat_map = {
+    "field goals per game": "fg_per_g",
+    "field goal attempts per game": "fga_per_g",
+    "field goal percentage": "fg_pct",
+    "3-point field goals per game": "fg3_per_g",
+    "3-point field goal attempts per game": "fg3a_per_g",
+    "3-point field goal percentage": "fg3_pct",
+    "2-point field goals per game": "fg2_per_g",
+    "2-point field goal attempts per game": "fg2a_per_g",
+    "2-point field goal percentage": "fg2_pct",
+    "effective field goal percentage": "efg_pct",
+    "free throws per game": "ft_per_g",
+    "free throw attempts per game": "fta_per_g",
+    "free throw percentage": "ft_pct",
+    "offensive rebounds per game": "orb_per_g",
+    "defensive rebounds per game": "drb_per_g",
+    "total rebounds per game": "trb_per_g",
+    "assists per game": "ast_per_g",
+    "steals per game": "stl_per_g",
+    "blocks per game": "blk_per_g",
+    "turnovers per game": "tov_per_g",
+    "personal fouls per game": "pf_per_g",
+    "points per game": "pts_per_g",
+}
 
-adv_stat_map = {'true shooting percentage': 'ts_pct', '3-point attempt rate': 'fg3a_per_fga_pct', 'free throw attempt rate': 'fta_per_fga_pct', 'offensive rebound percentage': 'orb_pct', 'defensive rebound percentage': 'drb_pct', 'total rebound percentage': 'trb_pct', 'assist percentage': 'ast_pct', 'steal percentage': 'stl_pct', 'block percentage': 'blk_pct', 'turnover percentage': 'tov_pct', 'usage percentage': 'usg_pct', 'offensive win shares': 'ows', 'defensive win shares': 'dws', 'win shares': 'ws', 'win shares per 48 minutes': 'ws_per_48', 'offensive box plus/minus': 'obpm', 'defensive box plus/minus': 'dbpm', 'box plus/minus': 'bpm', 'value over replacement player': 'vorp'}
+adv_stat_map = {
+    "true shooting percentage": "ts_pct",
+    "3-point attempt rate": "fg3a_per_fga_pct",
+    "free throw attempt rate": "fta_per_fga_pct",
+    "offensive rebound percentage": "orb_pct",
+    "defensive rebound percentage": "drb_pct",
+    "total rebound percentage": "trb_pct",
+    "assist percentage": "ast_pct",
+    "steal percentage": "stl_pct",
+    "block percentage": "blk_pct",
+    "turnover percentage": "tov_pct",
+    "usage percentage": "usg_pct",
+    "offensive win shares": "ows",
+    "defensive win shares": "dws",
+    "win shares": "ws",
+    "win shares per 48 minutes": "ws_per_48",
+    "offensive box plus/minus": "obpm",
+    "defensive box plus/minus": "dbpm",
+    "box plus/minus": "bpm",
+    "value over replacement player": "vorp",
+}
 
 alltime_player_list = [
     "Alaa Abdelnaby",
@@ -4855,5 +4919,5 @@ alltime_player_list = [
     "Jim Zoet",
     "Bill Zopf",
     "Ivica Zubac",
-    "Matt Zunic"
+    "Matt Zunic",
 ]

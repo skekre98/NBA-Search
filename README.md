@@ -1,6 +1,6 @@
 <p align="center">
      <img src="/static/img/AI-Orange.png" width="540" height="360">
-</p> 
+</p>
 
 # NBA-Search
 

@@ -9,7 +9,7 @@ botMessage = "", //var keeps track of what the chatbot is going to say
 botName = 'Chatbot', //name of the chatbot
 talking = true; //when false the speach function doesn't work
 
-// Function to handle bot response 
+// Function to handle bot response
 async function chatbotResponse() {
   talking = true;
   botMessage = "I'm confused"; //the default message
@@ -27,7 +27,7 @@ async function chatbotResponse() {
 //this runs each time enter is pressed.
 //It controls the overall input and output
 async function newEntry() {
-  //if the message from the user isn't empty then run 
+  //if the message from the user isn't empty then run
   if (document.getElementById("chatbox").value != "") {
     //pulls the value from the chatbox ands sets it to lastUserMessage
     lastUserMessage = document.getElementById("chatbox").value;

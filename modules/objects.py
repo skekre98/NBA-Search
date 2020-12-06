@@ -1,17 +1,39 @@
-class Team(object):
+# Copyright (c) 2020 Sharvil Kekre skekre98
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
 
-    def __init__(self,name,w,l,r):
+
+class Team(object):
+    def __init__(self, name, w, l, r):
         self.name = name
         self.wins = w
         self.losses = l
         self.rank = r
-    
+
     def __str__(self):
-        s = "{}. {} ~ Wins: {} Losses: {}".format(self.rank, self.name, self.wins, self.losses)
+        s = "{}. {} ~ Wins: {} Losses: {}".format(
+            self.rank, self.name, self.wins, self.losses
+        )
         return s
 
-class Player(object):
 
+class Player(object):
     def __init__(self, n):
         self.name = n
         self.position = None
@@ -42,7 +64,6 @@ class Player(object):
         self.personal_fouls = None
         self.points = None
 
-    
     def create(self, attr):
         self.position = attr["pos"]
         self.team = attr["team_id"]
@@ -71,7 +92,7 @@ class Player(object):
         self.turnovers = float(attr["tov_per_g"])
         self.personal_fouls = float(attr["pf_per_g"])
         self.points = float(attr["pts_per_g"])
-    
+
     def get_fantasy_score(self):
         score = 0
         score += 3 * self.three_points
@@ -83,8 +104,3 @@ class Player(object):
         score += 2 * self.steals
         score += -1 * self.turnovers
         return score
-        
-        
-
-
-

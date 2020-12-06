@@ -1,8 +1,29 @@
+# Copyright (c) 2020 Sharvil Kekre skekre98
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 import pandas as pd
-from modules.scraper import get_game_stats
+
+from lab.csv_builder import CSVBuilder
 from lab.graph_builder import GraphBuilder
 from lab.table_builder import TableBuilder
-from lab.csv_builder import CSVBuilder
+from modules.scraper import get_game_stats
 
 
 def main():
@@ -13,7 +34,7 @@ def main():
         "https://www.basketball-reference.com/boxscores/202010040MIA.html",
         "https://www.basketball-reference.com/boxscores/202010060MIA.html",
         "https://www.basketball-reference.com/boxscores/202010090LAL.html",
-        "https://www.basketball-reference.com/boxscores/202010110MIA.html"
+        "https://www.basketball-reference.com/boxscores/202010110MIA.html",
     ]
 
     xlabels = ["Game 1", "Game 2", "Game 3", "Game 4", "Game 5", "Game 6"]
@@ -39,19 +60,19 @@ def main():
     gb.build_line_graph()
     gb.display()
 
-
     col_labels = ["Name", "Points", "Assists"]
     tb = TableBuilder(col_labels)
     rows = [
         ["Lebron James", 25.0, 12.0],
         ["Kevin Durant", 24.0, 13.0],
-        ["Jimmy Butler", 23.0, 14.0]
+        ["Jimmy Butler", 23.0, 14.0],
     ]
 
     for row in rows:
         tb.add_row(row)
     tb.build_table()
-    tb.save('table')
-    
+    tb.save("table")
+
+
 if __name__ == "__main__":
     main()
