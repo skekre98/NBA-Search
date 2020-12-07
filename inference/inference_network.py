@@ -1,5 +1,5 @@
 import pickle
-from sklearn.externals import joblib
+import joblib
 from modules.transformer import predictors, query_tokenizer
 from modules.analysis import isNBA
 from inference.ranknode import RankNode
