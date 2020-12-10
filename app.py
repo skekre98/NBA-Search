@@ -95,7 +95,6 @@ def predictions():
     bracket = create_html_bracket(bracket)
     west_standings = get_standings("west")
     east_standings = get_standings("east")
-    print(east_standings)
     return render_template("predictions.html", bracket=bracket, west_standings=west_standings, east_standings=east_standings)
 
 """

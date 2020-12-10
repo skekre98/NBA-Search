@@ -136,9 +136,6 @@ def get_standings(conf):
     
     # Iterate over ranking table in website HTML 
     standings = []
-    # print(table[0])
-    # print(table[0].find("a"))
-    # print(table[0].find("a").get("title"))
     for i, row in enumerate(table):
         team = row.find("a").get("title")
         wins = row.find("td",attrs={"data-stat":"wins"}).string
