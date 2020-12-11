@@ -1,359 +1,359 @@
 <!DOCTYPE html>
 <html>
-<title>Predictions</title>
+    <title>Predictions</title>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
-    <!-- themify CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <!-- bracket CSS  -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/bracket.css')}}">
-    <!-- standings CSS  -->
-    <link rel="stylesheet" href="{{url_for('static', filename='css/standings.css')}}">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet'
-        type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet'
-        type='text/css'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+        <!-- themify CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/themify-icons.css')}}">
+        <!-- style CSS -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <!-- bracket CSS  -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bracket.css')}}">
+        <!-- standings CSS  -->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/standings.css')}}">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet'
+            type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet'
+            type='text/css'>
 
-    <title>March Madness Stock Matchup</title>
-</head>
+        <title>March Madness Stock Matchup</title>
+    </head>
 
-<body>
-    <!--::header part start::-->
-    <header class="header_area">
-        <div class="sub_header">
+    <body>
+        <!--::header part start::-->
+        <header class="header_area">
+            <div class="sub_header">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-4 col-xl-6">
+                            <div id="logo">
+                                <a href="#"><img src="{{url_for('static', filename='img/bbrain.png')}}" alt="SHAQ"
+                                        style="width:75px;height:60px;" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-xl-6">
+                            <div class="sub_header_social_icon float-right">
+                                <a href="https://github.com/skekre98/NBA-Search" class="register_icon"><i
+                                        class="ti-arrow-right"></i>CONTRIBUTE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main_menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+
+
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li class="nav-item active">
+                                            <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
+                                        </li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Insights
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ url_for('blog') }}">Blogs</a>
+                                                <a class="dropdown-item" href="{{ url_for('predictions') }}">Predictions</a>
+                                            </div>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a href="{{ url_for('authors') }}" class="nav-link">About Us</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="https://github.com/skekre98/NBA-Search/graphs/contributors"
+                                                class="nav-link" target="_blank">Contributors</a>
+                                        </li>
+                                    </ul>
+                                    <div class="header_social_icon d-none d-lg-block">
+                                        <ul>
+                                            <li><a href="https://www.basketball-reference.com"><i
+                                                        class="ti-basketball"></i></a></li>
+                                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"><i
+                                                        class="ti-html5"></i></a></li>
+                                            <li><a href="https://developer.mozilla.org/en-US/docs/Archive/CSS3"><i
+                                                        class="ti-css3"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="hero">
+            <p align="center">
+                <img class="predimg" src="{{url_for('static', filename='img/predictions.png')}}" width="350" height="300">
+            </p>
+        </div>
+
+
+        <section id="bracket">
+            <p align="center">
+                <img class="playoffimg" src="{{url_for('static', filename='img/playoffs.png')}}" width="500" height="125">
+            </p>
+            <div class="container">
+                <div class="split split-one">
+                    <div class="round round-one current">
+                        <div class="round-details">Round 1</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wc1"][-1][0][0] }}<span
+                                    class="score">{{ bracket["wc1"][-1][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wc1"][-1][1][0] }}<span
+                                    class="score">{{ bracket["wc1"][-1][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wc1"][-3][0][0] }}<span
+                                    class="score">{{ bracket["wc1"][-3][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wc1"][-3][1][0] }}<span
+                                    class="score">{{ bracket["wc1"][-3][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wc1"][-2][0][0] }}<span
+                                    class="score">{{ bracket["wc1"][-2][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wc1"][-2][1][0] }}<span
+                                    class="score">{{ bracket["wc1"][-2][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wc1"][-4][0][0] }}<span
+                                    class="score">{{ bracket["wc1"][-4][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wc1"][-4][1][0] }}<span
+                                    class="score">{{ bracket["wc1"][-4][1][1] }}</span></li>
+                        </ul>
+                    </div> <!-- END ROUND ONE -->
+
+                    <div class="round round-two">
+                        <div class="round-details">Round 2</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wc2"][-1][1][0] }}<span
+                                    class="score">{{ bracket["wc2"][-1][1][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wc2"][-2][1][0] }}<span
+                                    class="score">{{ bracket["wc2"][-2][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wc2"][-1][0][0] }}<span
+                                    class="score">{{ bracket["wc2"][-1][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wc2"][-2][0][0] }}<span
+                                    class="score">{{ bracket["wc2"][-2][0][1] }}</span></li>
+                        </ul>
+                        </ul>
+                    </div> <!-- END ROUND TWO -->
+
+                    <div class="round round-three">
+                        <div class="round-details">Western Finals</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["wcf"][0][1][0] }}<span
+                                    class="score">{{ bracket["wcf"][0][1][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["wcf"][0][0][0] }}<span
+                                    class="score">{{ bracket["wcf"][0][0][1] }}</span></li>
+                        </ul>
+                    </div> <!-- END ROUND THREE -->
+                </div>
+
+                <div class="champion">
+                    <div class="final">
+                        <i class="fa fa-trophy"></i>
+                        <div class="round-details">NBA Finals</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["f"][0][0] }}<span
+                                    class="score">{{ bracket["f"][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["f"][1][0] }}<span
+                                    class="score">{{ bracket["f"][1][1] }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="split split-two">
+
+
+                    <div class="round round-three">
+                        <div class="round-details">Eastern Finals</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ecf"][0][1][0] }}<span
+                                    class="score">{{ bracket["ecf"][0][1][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ecf"][0][0][0] }}<span
+                                    class="score">{{ bracket["ecf"][0][0][1] }}</span></li>
+                        </ul>
+                    </div> <!-- END ROUND THREE -->
+
+                    <div class="round round-two">
+                        <div class="round-details">Round 2</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ec2"][-1][1][0] }}<span
+                                    class="score">{{ bracket["ec2"][-1][1][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ec2"][-1][0][0] }}<span
+                                    class="score">{{ bracket["ec2"][-1][0][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ec2"][-2][0][0] }}<span
+                                    class="score">{{ bracket["ec2"][-2][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ec2"][-2][1][0] }}<span
+                                    class="score">{{ bracket["ec2"][-2][1][1] }}</span></li>
+                        </ul>
+                        </ul>
+                    </div> <!-- END ROUND TWO -->
+                    <div class="round round-one current">
+                        <div class="round-details">Round 1</div>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ec1"][-2][0][0] }}<span
+                                    class="score">{{ bracket["ec1"][-2][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ec1"][-2][1][0] }}<span
+                                    class="score">{{ bracket["ec1"][-2][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ec1"][-3][0][0] }}<span
+                                    class="score">{{ bracket["ec1"][-3][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ec1"][-3][1][0] }}<span
+                                    class="score">{{ bracket["ec1"][-3][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ec1"][-4][0][0] }}<span
+                                    class="score">{{ bracket["ec1"][-4][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ec1"][-4][1][0] }}<span
+                                    class="score">{{ bracket["ec1"][-4][1][1] }}</span></li>
+                        </ul>
+                        <ul class="matchup">
+                            <li class="team team-top">{{ bracket["ec1"][-1][0][0] }}<span
+                                    class="score">{{ bracket["ec1"][-1][0][1] }}</span></li>
+                            <li class="team team-bottom">{{ bracket["ec1"][-1][1][0] }}<span
+                                    class="score">{{ bracket["ec1"][-1][1][1] }}</span></li>
+                        </ul>
+                    </div> <!-- END ROUND ONE -->
+                </div>
+            </div>
+        </section>
+
+        <!-- START STANDINGS SECTION -->
+        <h2 class="nba-standings-header">NBA Standings</h2>
+        <div class="row nba-standings">
+            <div class="col-md-4">
+                <h3 class="nba-standings-sub-header">WESTERN</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead style="border-color: white;">
+                            <tr>
+                                <th class="col-md-1">TEAM NAME</th>
+                                <th class="col-md-2">WINS</th>
+                                <th class="col-md-3">LOSES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-1">{{ west_standings[0]["name"] }}</td>
+                                <td class="col-md-2">{{ west_standings[0]["wins"] }}</td>
+                                <td class="col-md-3">{{ west_standings[0]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ west_standings[1]["name"] }}</td>
+                                <td class="col-md-2">{{ west_standings[1]["wins"] }}</td>
+                                <td class="col-md-3">{{ west_standings[1]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ west_standings[2]["name"] }}</td>
+                                <td class="col-md-2">{{ west_standings[2]["wins"] }}</td>
+                                <td class="col-md-3">{{ west_standings[2]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ west_standings[3]["name"] }}</td>
+                                <td class="col-md-2">{{ west_standings[3]["wins"] }}</td>
+                                <td class="col-md-3">{{ west_standings[3]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ west_standings[4]["name"] }}</td>
+                                <td class="col-md-2">{{ west_standings[4]["wins"] }}</td>
+                                <td class="col-md-3">{{ west_standings[4]["losses"] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3 class="nba-standings-sub-header">EASTERN</h3>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="col-md-1">TEAM NAME</th>
+                                <th class="col-md-2">WINS</th>
+                                <th class="col-md-3">LOSES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-md-1">{{ east_standings[0]["name"] }}</td>
+                                <td class="col-md-2">{{ east_standings[0]["wins"] }}</td>
+                                <td class="col-md-3">{{ east_standings[0]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ east_standings[1]["name"] }}</td>
+                                <td class="col-md-2">{{ east_standings[1]["wins"] }}</td>
+                                <td class="col-md-3">{{ east_standings[1]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ east_standings[2]["name"] }}</td>
+                                <td class="col-md-2">{{ east_standings[2]["wins"] }}</td>
+                                <td class="col-md-3">{{ east_standings[2]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ east_standings[3]["name"] }}</td>
+                                <td class="col-md-2">{{ east_standings[3]["wins"] }}</td>
+                                <td class="col-md-3">{{ east_standings[3]["losses"] }}</td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-1">{{ east_standings[4]["name"] }}</td>
+                                <td class="col-md-2">{{ east_standings[4]["wins"] }}</td>
+                                <td class="col-md-3">{{ east_standings[4]["losses"] }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END STANDINGS SECTION -->
+
+        <!-- footer part start-->
+        <footer class="copyright_part">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-4 col-xl-6">
-                        <div id="logo">
-                            <a href="#"><img src="{{url_for('static', filename='img/bbrain.png')}}" alt="SHAQ"
-                                    style="width:75px;height:60px;" /></a>
-                        </div>
-                    </div>
-                    <div class="col-md-8 col-xl-6">
-                        <div class="sub_header_social_icon float-right">
-                            <a href="https://github.com/skekre98/NBA-Search" class="register_icon"><i
-                                    class="ti-arrow-right"></i>CONTRIBUTE</a>
-                        </div>
+                    <p class="footer-text m-0 col-lg-8 col-md-12">
+                        </script> In Loving Memory Of Kobe Bryant <i class="ti-heart" aria-hidden="true"></i>
+                    </p>
+                    <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                        <a href="https://www.basketball-reference.com"><i class="ti-basketball"></i></a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"><i class="ti-html5"></i></a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Archive/CSS3"><i class="ti-css3"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="main_menu">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+        </footer>
+        <!-- footer part end-->
 
-
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item active">
-                                        <a class="nav-link active" href="{{ url_for('home') }}">Home</a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Insights
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ url_for('blog') }}">Blogs</a>
-                                            <a class="dropdown-item" href="{{ url_for('predictions') }}">Predictions</a>
-                                        </div>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="{{ url_for('authors') }}" class="nav-link">About Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="https://github.com/skekre98/NBA-Search/graphs/contributors"
-                                            class="nav-link" target="_blank">Contributors</a>
-                                    </li>
-                                </ul>
-                                <div class="header_social_icon d-none d-lg-block">
-                                    <ul>
-                                        <li><a href="https://www.basketball-reference.com"><i
-                                                    class="ti-basketball"></i></a></li>
-                                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"><i
-                                                    class="ti-html5"></i></a></li>
-                                        <li><a href="https://developer.mozilla.org/en-US/docs/Archive/CSS3"><i
-                                                    class="ti-css3"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="hero">
-        <p align="center">
-            <img class="predimg" src="{{url_for('static', filename='img/predictions.png')}}" width="350" height="300">
-        </p>
-    </div>
-
-
-    <section id="bracket">
-        <p align="center">
-            <img class="playoffimg" src="{{url_for('static', filename='img/playoffs.png')}}" width="500" height="125">
-        </p>
-        <div class="container">
-            <div class="split split-one">
-                <div class="round round-one current">
-                    <div class="round-details">Round 1</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wc1"][-1][0][0] }}<span
-                                class="score">{{ bracket["wc1"][-1][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wc1"][-1][1][0] }}<span
-                                class="score">{{ bracket["wc1"][-1][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wc1"][-3][0][0] }}<span
-                                class="score">{{ bracket["wc1"][-3][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wc1"][-3][1][0] }}<span
-                                class="score">{{ bracket["wc1"][-3][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wc1"][-2][0][0] }}<span
-                                class="score">{{ bracket["wc1"][-2][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wc1"][-2][1][0] }}<span
-                                class="score">{{ bracket["wc1"][-2][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wc1"][-4][0][0] }}<span
-                                class="score">{{ bracket["wc1"][-4][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wc1"][-4][1][0] }}<span
-                                class="score">{{ bracket["wc1"][-4][1][1] }}</span></li>
-                    </ul>
-                </div> <!-- END ROUND ONE -->
-
-                <div class="round round-two">
-                    <div class="round-details">Round 2</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wc2"][-1][1][0] }}<span
-                                class="score">{{ bracket["wc2"][-1][1][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wc2"][-2][1][0] }}<span
-                                class="score">{{ bracket["wc2"][-2][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wc2"][-1][0][0] }}<span
-                                class="score">{{ bracket["wc2"][-1][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wc2"][-2][0][0] }}<span
-                                class="score">{{ bracket["wc2"][-2][0][1] }}</span></li>
-                    </ul>
-                    </ul>
-                </div> <!-- END ROUND TWO -->
-
-                <div class="round round-three">
-                    <div class="round-details">Western Finals</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["wcf"][0][1][0] }}<span
-                                class="score">{{ bracket["wcf"][0][1][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["wcf"][0][0][0] }}<span
-                                class="score">{{ bracket["wcf"][0][0][1] }}</span></li>
-                    </ul>
-                </div> <!-- END ROUND THREE -->
-            </div>
-
-            <div class="champion">
-                <div class="final">
-                    <i class="fa fa-trophy"></i>
-                    <div class="round-details">NBA Finals</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["f"][0][0] }}<span
-                                class="score">{{ bracket["f"][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["f"][1][0] }}<span
-                                class="score">{{ bracket["f"][1][1] }}</span></li>
-                    </ul>
-                </div>
-            </div>
-
-
-            <div class="split split-two">
-
-
-                <div class="round round-three">
-                    <div class="round-details">Eastern Finals</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ecf"][0][1][0] }}<span
-                                class="score">{{ bracket["ecf"][0][1][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ecf"][0][0][0] }}<span
-                                class="score">{{ bracket["ecf"][0][0][1] }}</span></li>
-                    </ul>
-                </div> <!-- END ROUND THREE -->
-
-                <div class="round round-two">
-                    <div class="round-details">Round 2</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ec2"][-1][1][0] }}<span
-                                class="score">{{ bracket["ec2"][-1][1][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ec2"][-1][0][0] }}<span
-                                class="score">{{ bracket["ec2"][-1][0][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ec2"][-2][0][0] }}<span
-                                class="score">{{ bracket["ec2"][-2][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ec2"][-2][1][0] }}<span
-                                class="score">{{ bracket["ec2"][-2][1][1] }}</span></li>
-                    </ul>
-                    </ul>
-                </div> <!-- END ROUND TWO -->
-                <div class="round round-one current">
-                    <div class="round-details">Round 1</div>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ec1"][-2][0][0] }}<span
-                                class="score">{{ bracket["ec1"][-2][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ec1"][-2][1][0] }}<span
-                                class="score">{{ bracket["ec1"][-2][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ec1"][-3][0][0] }}<span
-                                class="score">{{ bracket["ec1"][-3][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ec1"][-3][1][0] }}<span
-                                class="score">{{ bracket["ec1"][-3][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ec1"][-4][0][0] }}<span
-                                class="score">{{ bracket["ec1"][-4][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ec1"][-4][1][0] }}<span
-                                class="score">{{ bracket["ec1"][-4][1][1] }}</span></li>
-                    </ul>
-                    <ul class="matchup">
-                        <li class="team team-top">{{ bracket["ec1"][-1][0][0] }}<span
-                                class="score">{{ bracket["ec1"][-1][0][1] }}</span></li>
-                        <li class="team team-bottom">{{ bracket["ec1"][-1][1][0] }}<span
-                                class="score">{{ bracket["ec1"][-1][1][1] }}</span></li>
-                    </ul>
-                </div> <!-- END ROUND ONE -->
-            </div>
-        </div>
-    </section>
-
-    <!-- START STANDINGS SECTION -->
-    <h2 class="nba-standings-header">NBA Standings</h2>
-    <div class="row nba-standings">
-        <div class="col-md-4">
-            <h3 class="nba-standings-sub-header">WESTERN</h3>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead style="border-color: white;">
-                        <tr>
-                            <th class="col-md-1">TEAM NAME</th>
-                            <th class="col-md-2">WINS</th>
-                            <th class="col-md-3">LOSES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-md-1">{{ west_standings[0]["name"] }}</td>
-                            <td class="col-md-2">{{ west_standings[0]["wins"] }}</td>
-                            <td class="col-md-3">{{ west_standings[0]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ west_standings[1]["name"] }}</td>
-                            <td class="col-md-2">{{ west_standings[1]["wins"] }}</td>
-                            <td class="col-md-3">{{ west_standings[1]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ west_standings[2]["name"] }}</td>
-                            <td class="col-md-2">{{ west_standings[2]["wins"] }}</td>
-                            <td class="col-md-3">{{ west_standings[2]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ west_standings[3]["name"] }}</td>
-                            <td class="col-md-2">{{ west_standings[3]["wins"] }}</td>
-                            <td class="col-md-3">{{ west_standings[3]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ west_standings[4]["name"] }}</td>
-                            <td class="col-md-2">{{ west_standings[4]["wins"] }}</td>
-                            <td class="col-md-3">{{ west_standings[4]["losses"] }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h3 class="nba-standings-sub-header">EASTERN</h3>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th class="col-md-1">TEAM NAME</th>
-                            <th class="col-md-2">WINS</th>
-                            <th class="col-md-3">LOSES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-md-1">{{ east_standings[0]["name"] }}</td>
-                            <td class="col-md-2">{{ east_standings[0]["wins"] }}</td>
-                            <td class="col-md-3">{{ east_standings[0]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ east_standings[1]["name"] }}</td>
-                            <td class="col-md-2">{{ east_standings[1]["wins"] }}</td>
-                            <td class="col-md-3">{{ east_standings[1]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ east_standings[2]["name"] }}</td>
-                            <td class="col-md-2">{{ east_standings[2]["wins"] }}</td>
-                            <td class="col-md-3">{{ east_standings[2]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ east_standings[3]["name"] }}</td>
-                            <td class="col-md-2">{{ east_standings[3]["wins"] }}</td>
-                            <td class="col-md-3">{{ east_standings[3]["losses"] }}</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-1">{{ east_standings[4]["name"] }}</td>
-                            <td class="col-md-2">{{ east_standings[4]["wins"] }}</td>
-                            <td class="col-md-3">{{ east_standings[4]["losses"] }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- END STANDINGS SECTION -->
-
-    <!-- footer part start-->
-    <footer class="copyright_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <p class="footer-text m-0 col-lg-8 col-md-12">
-                    </script> In Loving Memory Of Kobe Bryant <i class="ti-heart" aria-hidden="true"></i>
-                </p>
-                <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
-                    <a href="https://www.basketball-reference.com"><i class="ti-basketball"></i></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5"><i class="ti-html5"></i></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Archive/CSS3"><i class="ti-css3"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- footer part end-->
-
-    <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
-    <!-- custom js -->
-    <script src="{{url_for('static', filename='js/custom.js')}}"></script>
-    <script src="{{url_for('static', filename='js/chatbox.js')}}"></script>
-</body>
+        <script src="{{url_for('static', filename='js/jquery-1.12.1.min.js')}}"></script>
+        <!-- custom js -->
+        <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+        <script src="{{url_for('static', filename='js/chatbox.js')}}"></script>
+    </body>
 
 </html>
