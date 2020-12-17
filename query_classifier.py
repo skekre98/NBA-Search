@@ -6,7 +6,7 @@ warnings.filterwarnings(action='ignore', category=FutureWarning)
 # ML packages
 from sklearn.svm import LinearSVC
 from sklearn.pipeline import Pipeline
-from sklearn.externals import joblib
+import joblib
 from sklearn.metrics import accuracy_score  
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
