@@ -7,11 +7,40 @@ nlp = spacy.load('en_core_web_sm')
 wh_words = ['what','where','which','why','who','how','or']
 punctuations = string.punctuation
 
-# Function to clean the text 
+
+"""
+Function to clean the text, by
+removing leading and trailing white space
+and converting to lower case.
+
+Parameters
+----------
+text : String
+    Text to be cleaned.
+
+Returns
+-------
+cleaned_text : String
+    The cleaned text.
+"""
 def clean_text(text):     
     return text.strip().lower()
 
-# Function to tokenize text 
+# Function to tokenize text
+
+"""
+Function to tokenize the text.
+
+Parameters
+----------
+sentence : String
+    The sentence to be tokenized.
+
+Returns
+-------
+tokens : List
+    List of words that are classified as token by nlp.
+"""
 def query_tokenizer(sentence):
     mytokens = nlp(sentence)
     tokens = []
@@ -20,8 +49,24 @@ def query_tokenizer(sentence):
             tokens.append(str(token.lemma_).lower())
     return tokens
 
-# Class for text transformation
+"""
+A class which inherits from `sklearn.base.TransformerMixin<https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html#sklearn.base.TransformerMixin>`.
+It cleans the text to the format required.
+"""
 class predictors(TransformerMixin):
+    """
+    Function to clean a list of words.
+
+    Parameters
+    ----------
+    X : List
+        List of words to be clean.
+
+    Returns
+    -------
+    cleaned_list : List
+        List of clean words.
+    """
     def transform(self, X, **transform_params):
         return [clean_text(text) for text in X]
     def fit(self, X, y=None, **fit_params):
@@ -29,7 +74,22 @@ class predictors(TransformerMixin):
     def get_params(self, deep=True):
         return {}
 
-# Function to convert scraped data to HTML format 
+# Function to convert scraped data to HTML format
+"""
+Function to convert scraped data to HTML format.
+
+Parameters
+----------
+bracket_map : Dictionary
+    Dictionary of scraped data categorised into two key-value pairs, namely the "Western Conference First Round" and "Eastern Conference First Round".
+    The function will convert the values from this two keys into HTML format.
+
+Returns
+-------
+playoff_map : Dictionary
+    Dictionary of the data in HTML format. 
+    The dictionary will show the matchup for each series, and the number of wins during the series.
+"""
 def create_html_bracket(bracket_map):
     west = [bracket_map["Western Conference First Round"]]
     east = [bracket_map["Eastern Conference First Round"]]
@@ -78,7 +138,43 @@ def create_html_bracket(bracket_map):
 
     return playoff_map
 
-# Function to build HTML level for playoff bracket 
+"""
+Function to build HTML level for playoff bracket 
+
+Parameters
+----------
+bracket_map : Dictionary
+    Dictionary of scraped data categorised into two key-value pairs, namely the "Western Conference First Round" and "Eastern Conference First Round".
+    The function will convert the values from this two keys into HTML format.
+
+prev : List
+    List of the Series scored for the previous round.
+    It should be one of the value in the `bracket` dictionary.
+
+bracket : Dictionary
+    Dictionary that contains the playoff informations, namely the match-up for each series and the number of wins for each team in the serires.
+    This data has the following structure (*Note: # represents an integer stored as String):
+        {
+            Western First Round : [
+                [
+                    [Team A, #], [Team B, #] // Match-up and how many games won by each team.
+                    :
+                ]
+            ],
+            Western Second Round : [...], 
+            Western Finals : [...],
+            Eastern ...
+        }
+
+conf : String
+    String with value "west" or "east" only.
+
+Returns
+-------
+playoff_map : Dictionary
+    Dictionary of the data in HTML format. 
+    The dictionary will show the matchup for each series, and the number of wins during the series.
+"""
 def build_level(prev, bracket, conf):
 
     level_map = {

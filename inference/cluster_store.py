@@ -5,6 +5,8 @@ import statistics
 from sklearn.cluster import KMeans
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 class ClusterStore(object):
@@ -76,19 +78,39 @@ class ClusterStore(object):
     # This function should return the optimal number of clusters
     # based on some kind of metric 
     def build_optimal_agglomerative_clusters(self):
-        # TODO 
+        # TODO
         pass
 
     # Function to run agglomerative clustering 
     # with specified number of cluster: c -> int
     def build_agglomerative_clusters(self, c):
-        # TODO
-        pass
+        self.total_cluster = c
+        X = np.asarray(self.original_data)
+        clustering = AgglomerativeClustering(n_clusters=c).fit(X)
+        self.clusters = {}
+        for i in range(self.total_cluster):
+            self.clusters[i] = []
+        for i in range(len(clustering.labels_)):
+            self.clusters[clustering.labels_[i]].append(i)
 
-    # Function to calculate the average similarity of current clusters 
+
+    # Function to calculate the average similarity of current clusters
     def average_similarity(self):
-        # TODO 
-        pass
+        similarities = []
+        for cluster in self.clusters.values():
+            cluster_similarities = []
+            for i in range(len(cluster)):
+                for j in range(i+1, len(cluster)):
+                    entity1 = self.original_data[cluster[i]]
+                    entity2 = self.original_data[cluster[j]]
+                    arr1 = np.asarray(entity1).reshape(1, -1)
+                    arr2 = np.asarray(entity2).reshape(1, -1)
+                    cluster_similarities.append(cosine_similarity(arr1, arr2)[0][0])
+            if len(cluster_similarities) == 0:
+                continue
+            similarities.append(statistics.mean(cluster_similarities))
+        self.avg_similarity = statistics.mean(similarities)
+
 
     '''
     :param entity1: X
