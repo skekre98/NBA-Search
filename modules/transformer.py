@@ -96,17 +96,18 @@ def create_html_bracket(bracket_map):
     finals = []
     playoff_map = {}
 
-    if west == [[]] or east == [[]]:
-        playoff_map = {
-        "wc1" : [],
-        "wc2" : [],
-        "wcf" : [],
-        "ec1" : [],
-        "ec2" : [],
-        "ecf" : [],
-        "f" : []
+    if west == [[]] or east == [[]]: # if returned scraped data is empty, need to return an empty map with correct fields
+        empty_map = {
+        "wc1" : [[["",""],["",""]], [["",""],["",""]], [["",""],["",""]], [["",""],["",""]]],
+        "wc2" : [[["",""],["",""]], [["",""],["",""]]],
+        "wcf" : [[["",""],["",""]]],
+        "ec1" : [[["",""],["",""]], [["",""],["",""]], [["",""],["",""]], [["",""],["",""]]],
+        "ec2" : [[["",""],["",""]], [["",""],["",""]]],
+        "ecf" : [[["",""],["",""]]],
+        "f" :   [[["",""],["",""]]]
         }
-        return playoff_map
+        print(empty_map)
+        return empty_map
 
     for i in range(2):
         west_level = build_level(west[-1], bracket_map, "west")
