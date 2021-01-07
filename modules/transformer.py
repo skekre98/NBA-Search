@@ -96,7 +96,7 @@ def create_html_bracket(bracket_map):
     finals = []
     playoff_map = {}
 
-    if west == [[]] or east == [[]]: # if returned scraped data is empty, need to return an empty map with correct fields
+    if not west[0] or not east[0]: # if returned scraped data is empty, need to return an empty map with correct fields
         empty_map = {
         "wc1" : [[["",""],["",""]], [["",""],["",""]], [["",""],["",""]], [["",""],["",""]]],
         "wc2" : [[["",""],["",""]], [["",""],["",""]]],
