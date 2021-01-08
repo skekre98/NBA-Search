@@ -186,7 +186,7 @@ def get_per(year):
         per = 0.0
         stats = row.findAll("td")
         for stat in stats:
-            if stat["data-stat"] == "per":
+            if stat["data-stat"] == "per" and stat.string:
                 per = float(stat.string)
         per_list.append((name, per))
     return per_list
