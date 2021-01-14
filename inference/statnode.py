@@ -2,9 +2,10 @@ import spacy
 import random
 from modules.scraper import get_adv_stat, get_total_stat
 from data.text_data import adv_stat_map, total_stat_map
+from fuzzywuzzy import fuzz, process
 
 inc_name = "Seems I couldn't extract the name for retrieval, try writing your question more verbosely. "
-inc_name += "Unfortunately English is not my native language..."
+inc_name += "Unfortunately, English is not my native language..."
 inc_stat = "Seems I couldn't extract the statistic for retrieval, try writing your question more verbosely. "
 inc_stat += "Can you really blame me? English is not my first language..."
 
@@ -18,34 +19,34 @@ class StatNode(object):
         self.query = query
 
 
-"""
-Function to get a list of a random_response. 
-
-Parameters
-----------
-stat : string
-    The stat that is being compared to stat_val
-name : string
-    NBA player for stat retrieval
-stat_val: string
-    statistic value
-
-Returns
--------
-resp_list : list
-    The list of random response
-"""
+    """
+    Function to get a list of a random_response. 
+    
+    Parameters
+    ----------
+    stat : string
+        The stat that is being compared to stat_val
+    name : string
+        NBA player for stat retrieval
+    stat_val: string
+        statistic value
+    
+    Returns
+    -------
+    resp_list : list
+        The list of random response
+    """
     def generate_random_response(self, name, stat, stat_val):
-        resp_1 = "Seems {} has a {} of {}.".format(name, stat, stat_val)
+        resp_1 = "Seems {} has an {} out of {}.".format(name, stat, stat_val)
         resp_2 = "After checking my little black book, I've found that {} has {} under his name for {}.".format(name, stat_val, stat)
         resp_3 = "{}...obviously".format(stat_val)
-        resp_4 = "Last I checked... {} had a {} of {}.".format(name, stat, stat_val)
-        resp_5 = "Do you not have every NBA stat since the beginning of time memorized? Well he has a {} of {}.".format(stat, stat_val)
-        resp_6 = "{} has {} of {}, impressive isn't it?".format(name, stat, stat_val)
-        resp_7 = "As we are speaking, {} has {} of {}".format(name, stat, stat_val)
-        resp_8 = "After watching hours of tapes, I came with {} of {} for {}".format(stat, stat_val, name)
-        resp_9 = "If my calculations are correct {} has {} of {} during his career".format(name, stat, stat_val)
-        resp_10 = "Couldn't you Google that? Well since we're already here: {} has {} of {}".format(name, stat, stat_val)
+        resp_4 = "Last I checked... {} had a {} out of {}.".format(name, stat, stat_val)
+        resp_5 = "Do you not have every NBA stat since the beginning of time memorized? Well, he has a {} out of {}.".format(stat, stat_val)
+        resp_6 = "{} has {} out of {}, impressive isn't it?".format(name, stat, stat_val)
+        resp_7 = "As we are speaking, {} has {} out of {}".format(name, stat, stat_val)
+        resp_8 = "After watching hours of tapes, I came up with {} out of {} for {}".format(stat, stat_val, name)
+        resp_9 = "If my calculations are correct {} has {} out of {} during his career".format(name, stat, stat_val)
+        resp_10 = "Couldn't you Google that? Well since we're already here: {} has {} out of {}".format(name, stat, stat_val)
         resp_list = [resp_1,
                      resp_2,
                      resp_3,
@@ -58,23 +59,23 @@ resp_list : list
                      resp_10]
         return random.choice(resp_list)
 
-"""
-    Function to generate a response
-    
-    Parameters
-    ----------
-    self : none
+    """
+        Function to generate a response
         
-    
-    Returns
-    -------
-    name : string
-      NBA player for stat retrieval
-    stat : string
-      The stat that is being compared to stat_val
-    stat_val : string
-      statistic value
-"""
+        Parameters
+        ----------
+        self : none
+            
+        
+        Returns
+        -------
+        name : string
+          NBA player for stat retrieval
+        stat : string
+          The stat that is being compared to stat_val
+        stat_val : string
+          statistic value
+    """
     def response(self):
         name = self.extract_name()
         stat = self.extract_stat()
@@ -85,18 +86,18 @@ resp_list : list
         stat_val = self.get_player_stat(name, stat)
         return self.generate_random_response(name, stat, stat_val)
 
-"""
-    Function that extracts the player's name
-    
-    Parameters
-    ----------
-    self : none
+    """
+        Function that extracts the player's name
         
-    Returns
-    -------
-    name : string
-      NBA player for stat retrieval
-"""
+        Parameters
+        ----------
+        self : none
+            
+        Returns
+        -------
+        name : string
+          NBA player for stat retrieval
+    """
 
     def extract_name(self):
         doc = self.nlp(self.query)
@@ -112,18 +113,18 @@ resp_list : list
         return name
     
 
-"""
-Function that extracts the player's statistics
-Parameters
-----------
-self : none
-        
-Returns
--------
-stat_final : string
-    Player statistics
-or None
-"""
+    """
+    Function that extracts the player's statistics
+    Parameters
+    ----------
+    self : none
+            
+    Returns
+    -------
+    stat_final : string
+        Player statistics
+    or None
+    """
     def extract_stat(self):
          doc = self.nlp(self.query)
          stat = ""
@@ -165,22 +166,22 @@ or None
              return str(stat_final)
          return None
 
-"""
-  Function to get player statistics
-    
-    Parameters
-    ----------
-    self : none
-    stat : string
-      The stat that is being compared to stat_val
-    name : string
-      NBA player for stat retrieval    
-    
-    Returns
-    -------
-    val : string
-      statistic value
-"""    
+    """
+      Function to get player statistics
+        
+        Parameters
+        ----------
+        self : none
+        stat : string
+          The stat that is being compared to stat_val
+        name : string
+          NBA player for stat retrieval    
+        
+        Returns
+        -------
+        val : string
+          statistic value
+    """
     def get_player_stat(self, name, stat):
         if stat in total_stat_map:
             val = get_total_stat(name, stat)
