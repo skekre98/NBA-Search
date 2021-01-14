@@ -111,29 +111,33 @@ class StatNode(object):
                     name = entity.text
 
         return name
-    
+  <<<<<<< Florent18570
 
-    """
-    Function that extracts the player's statistics
-    Parameters
-    ----------
-    self : none
-            
-    Returns
-    -------
-    stat_final : string
-        Player statistics
-    or None
-    """
+
+      """
+      Function that extracts the player's statistics
+      Parameters
+      ----------
+      self : none
+
+      Returns
+      -------
+      stat_final : string
+          Player statistics
+      or None
+      """
+  =======
+
+  >>>>>>> master
     def extract_stat(self):
          doc = self.nlp(self.query)
          stat = ""
          stat_final = ""
-         max_sim = 0
-         sim_threshold = 0.7
+         sim_threshold = 50
 
          #preprocessing user query and choosing the most ocurring word classes in statistics dictionary
          for token in doc:
+
              if token.pos_ == "ADJ" or token.pos_ == "VERB" or token.pos_ == "NOUN" or token.pos_ == "NUM" or token.text == "per" or token.pos_ == "SYM" or token.pos_ == "CCONJ":
                  stat = str(stat) + token.text + " "
          stat = stat[:-1]
@@ -144,44 +148,65 @@ class StatNode(object):
                  stat_final = stat
          if stat_final != "":
              return stat_final
-     
-         #if no exact match was found, we need to check similarity between stats and user query
-         stat = self.nlp(stat)
-         for entry in total_stat_map:
-             entry = self.nlp(entry)
-             sim = stat.similarity(entry)
-             if max_sim < sim:
-                 max_sim = sim
-                 stat_final = entry #using stat_final because original variable stat is used to check similarity, so we can not change it
+  <<<<<<< Florent18570
 
-         for entry in adv_stat_map:
-             entry = self.nlp(entry)
-             sim = stat.similarity(entry)
-             if max_sim < sim:
-                 max_sim = sim
-                 stat_final = entry
-         
-         #returning extracted stat if similarity exceeds minimum threshold
-         if(max_sim > sim_threshold):
-             return str(stat_final)
-         return None
+           #if no exact match was found, we need to check similarity between stats and user query
+           stat = self.nlp(stat)
+           for entry in total_stat_map:
+               entry = self.nlp(entry)
+               sim = stat.similarity(entry)
+               if max_sim < sim:
+                   max_sim = sim
+                   stat_final = entry #using stat_final because original variable stat is used to check similarity, so we can not change it
 
-    """
-      Function to get player statistics
-        
-        Parameters
-        ----------
-        self : none
-        stat : string
-          The stat that is being compared to stat_val
-        name : string
-          NBA player for stat retrieval    
-        
-        Returns
-        -------
-        val : string
-          statistic value
-    """
+           for entry in adv_stat_map:
+               entry = self.nlp(entry)
+               sim = stat.similarity(entry)
+               if max_sim < sim:
+                   max_sim = sim
+                   stat_final = entry
+
+           #returning extracted stat if similarity exceeds minimum threshold
+           if(max_sim > sim_threshold):
+               return str(stat_final)
+           return None
+
+      """
+        Function to get player statistics
+
+          Parameters
+          ----------
+          self : none
+          stat : string
+            The stat that is being compared to stat_val
+          name : string
+            NBA player for stat retrieval    
+
+          Returns
+          -------
+          val : string
+            statistic value
+      """
+  =======
+
+           #if no exact match was found, use fuzzy string matching to find a close match
+           #create lists out of stat maps' keys
+           stat_map1 = total_stat_map.keys()
+           stat_map2 = adv_stat_map.keys()
+
+           #extract fuzzy matches from total and adv stat maps, compare which is closer and return
+           # 'doc' gives better results than 'stat', worth continuing to look into
+           stat_total, ratio_total = process.extractOne(str(doc), stat_map1)
+           stat_adv, ratio_adv = process.extractOne(str(doc), stat_map2)
+           #if neither ratio is higher than the similarity threshold, return None
+           if ratio_total < sim_threshold and ratio_adv < sim_threshold:
+               return None
+           elif ratio_total > ratio_adv:
+               return stat_total
+           else:
+               return stat_adv
+
+  >>>>>>> master
     def get_player_stat(self, name, stat):
         if stat in total_stat_map:
             val = get_total_stat(name, stat)
