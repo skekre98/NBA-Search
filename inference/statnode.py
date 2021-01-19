@@ -58,7 +58,6 @@ class StatNode(object):
                      resp_9,
                      resp_10]
         return random.choice(resp_list)
-
     """
         Function to generate a response
         
@@ -85,7 +84,6 @@ class StatNode(object):
             return inc_stat
         stat_val = self.get_player_stat(name, stat)
         return self.generate_random_response(name, stat, stat_val)
-
     """
         Function that extracts the player's name
         
@@ -98,7 +96,6 @@ class StatNode(object):
         name : string
           NBA player for stat retrieval
     """
-
     def extract_name(self):
         doc = self.nlp(self.query)
         name = None
@@ -109,11 +106,7 @@ class StatNode(object):
             for entity in doc.ents:
                 if entity.label_ == "ORG":
                     name = entity.text
-
         return name
-  <<<<<<< Florent18570
-
-
       """
       Function that extracts the player's statistics
       Parameters
@@ -126,9 +119,7 @@ class StatNode(object):
           Player statistics
       or None
       """
-  =======
 
-  >>>>>>> master
     def extract_stat(self):
          doc = self.nlp(self.query)
          stat = ""
@@ -148,7 +139,7 @@ class StatNode(object):
                  stat_final = stat
          if stat_final != "":
              return stat_final
-  <<<<<<< Florent18570
+
 
            #if no exact match was found, we need to check similarity between stats and user query
            stat = self.nlp(stat)
@@ -170,7 +161,6 @@ class StatNode(object):
            if(max_sim > sim_threshold):
                return str(stat_final)
            return None
-
       """
         Function to get player statistics
 
@@ -187,8 +177,6 @@ class StatNode(object):
           val : string
             statistic value
       """
-  =======
-
            #if no exact match was found, use fuzzy string matching to find a close match
            #create lists out of stat maps' keys
            stat_map1 = total_stat_map.keys()
@@ -206,7 +194,6 @@ class StatNode(object):
            else:
                return stat_adv
 
-  >>>>>>> master
     def get_player_stat(self, name, stat):
         if stat in total_stat_map:
             val = get_total_stat(name, stat)
