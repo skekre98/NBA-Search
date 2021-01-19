@@ -1,5 +1,5 @@
 import pickle
-from sklearn.externals import joblib
+import joblib
 from modules.transformer import predictors, query_tokenizer
 from modules.analysis import isNBA
 from inference.ranknode import RankNode
@@ -14,7 +14,7 @@ class InferenceNetwork(object):
         self.query = query
 
         # Query classification 
-        model_file = "inference/models/query_classifier.pkl"
+        model_file = "inference/models/classifiers/query_classifier.pkl"
         query_clf = joblib.load(model_file)
         self.node_type = query_clf.predict([query.lower()])[0]
     

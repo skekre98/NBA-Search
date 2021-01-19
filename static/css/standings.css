@@ -2,10 +2,6 @@
     color: #CC6600;
 }
 
-.table-bordered td, .table-bordered th {
-    background-color: white;
-}
-
 .nba-standings {
     justify-content: center;
     padding: 40px 0;
@@ -21,4 +17,9 @@
 
 .nba-standings-sub-header {
     text-align: center;
+}
+
+.table-bordered td, .table-bordered th {
+    background-color: white;
+    background-clip: padding-box;
 }

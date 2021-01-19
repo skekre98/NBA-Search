@@ -137,15 +137,17 @@ def get_standings(conf):
     # Iterate over ranking table in website HTML 
     standings = []
     for i,row in enumerate(table):
-        team = row.find("a")["title"]
+        team = row.find("a").get("title")
         wins = row.find("td",attrs={"data-stat":"wins"}).string
         losses = row.find("td",attrs={"data-stat":"losses"}).string
         team_map = {
-		"name" : team,
-		"wins" : wins,
-		"losses" : losses
-	}
+            "name" : team,
+            "wins" : wins,
+            "losses" : losses
+	    }
         standings.append(team_map)
+        if i == 29:
+            break
     
     # Return rankings based on conference 
     switch = {
@@ -184,7 +186,7 @@ def get_per(year):
         per = 0.0
         stats = row.findAll("td")
         for stat in stats:
-            if stat["data-stat"] == "per":
+            if stat["data-stat"] == "per" and stat.string:
                 per = float(stat.string)
         per_list.append((name, per))
     return per_list
