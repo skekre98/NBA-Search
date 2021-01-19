@@ -106,7 +106,9 @@ class StatNode(object):
             for entity in doc.ents:
                 if entity.label_ == "ORG":
                     name = entity.text
+        
         return name
+      
       """
       Function that extracts the player's statistics
       Parameters
