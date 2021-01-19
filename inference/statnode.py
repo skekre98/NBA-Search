@@ -18,7 +18,6 @@ class StatNode(object):
     def load_query(self, query):
         self.query = query
 
-
     """
     Function to get a list of a random_response. 
     
@@ -112,7 +111,6 @@ class StatNode(object):
 
         return name
     
-
     """
     Function that extracts the player's statistics
     Parameters
