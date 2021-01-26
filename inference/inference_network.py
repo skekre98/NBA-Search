@@ -17,7 +17,23 @@ class InferenceNetwork(object):
         model_file = "inference/models/classifiers/query_classifier.pkl"
         query_clf = joblib.load(model_file)
         self.node_type = query_clf.predict([query.lower()])[0]
-    
+
+    """
+       This function verifies that the request is related to NBA.
+       Parameters
+       ----------
+       self : none
+
+       Returns
+       -------
+       Check if query is NBA related
+           unsure:int
+           non_nba:int
+           
+           node.response: string
+       node.response is equal to either ranknode or statnode
+       
+    """
     def response(self):
         if self.node_type == "info":
             node = InfoNode()
