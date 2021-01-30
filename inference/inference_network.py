@@ -8,14 +8,14 @@ from inference.infonode import InfoNode
 from data.text_data import unsure, non_nba
 
 """
-    a class used to represent InferenceNetwork
+a class used to represent InferenceNetwork
 
 parameters
 ----------
 object: string
 
 return
-----------
+-------
 n/a
 """
 class InferenceNetwork(object):
@@ -29,7 +29,7 @@ query: string
 self: string
 
 return
-----------
+-------
 node.response(): string
     response to the query if it is NBA related 
 """
