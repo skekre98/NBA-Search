@@ -7,8 +7,33 @@ from inference.statnode import StatNode
 from inference.infonode import InfoNode
 from data.text_data import unsure, non_nba
 
+"""
+    a class used to represent InferenceNetwork
 
+parameters
+----------
+object: string
+
+return
+----------
+n/a
+"""
 class InferenceNetwork(object):
+"""
+    function for query classification
+
+parameters
+----------
+query: string
+    to check if the query is NBA related or not
+self: string
+
+return
+----------
+node.response(): string
+    response to the query if it is NBA related 
+"""
+
 
     def __init__(self, query):
         self.query = query
