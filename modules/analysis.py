@@ -130,6 +130,10 @@ def build_stat_clusters(clusters):
     cluster_map = pd.DataFrame()
     cluster_map['data_index'] = data.index.values
     cluster_map['cluster'] = km.labels_
+    
+    # Check Silhouette Score
+    silhouette_scr = silhouette_score(data, km.labels_, metric='euclidean')
+    print('Silhouette Score: %.3f' % silhouette_scr)
 
     # cluster list 
     player_clusters = []
