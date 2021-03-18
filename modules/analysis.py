@@ -5,6 +5,7 @@ from data.text_data import nba_words
 from modules.scraper import get_player_stats
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
 
 nlp = spacy.load("en_core_web_sm")
 
