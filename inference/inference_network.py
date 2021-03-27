@@ -28,16 +28,12 @@ class InferenceNetwork(object):
         Returns the query response from the appropriate node
     """
 
-
     def __init__(self, query):
-
         self.query = query
-
-        # Query classification 
+        # Query classification
         model_file = "inference/models/classifiers/query_classifier.pkl"
         query_clf = joblib.load(model_file)
         self.node_type = query_clf.predict([query.lower()])[0]
-
 
     def response(self):
         """
