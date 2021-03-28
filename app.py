@@ -1,9 +1,11 @@
 from modules.analysis import isNBA
-from modules.scraper import get_playoff_bracket, get_standings
+from modules.scraper import *
 from modules.transformer import create_html_bracket
 from modules.query import Query
 from data.text_data import unsure, non_nba
 from flask import Flask, render_template, request, jsonify, redirect
+import numpy as np
+
 
 app = Flask(__name__)
 
@@ -93,9 +95,7 @@ HTML file
 def predictions():
     bracket = get_playoff_bracket()
     bracket = create_html_bracket(bracket)
-    west_standings = get_standings("west")
-    east_standings = get_standings("east")
-    return render_template("predictions.html", bracket=bracket, west_standings=west_standings, east_standings=east_standings)
+    return render_template("predictions.html", bracket=bracket)
 
 """
 Function to download requested blog for user.
@@ -126,8 +126,8 @@ def download(id):
 
 """
 Function to handle POST request from user
-with embedded message. The message is then 
-passed to the chatbot and the response is returned 
+with embedded message. The message is then
+passed to the chatbot and the response is returned
 to user.
 
 Parameters
@@ -146,6 +146,24 @@ def get_bot_response():
     handler = Query(usr_msg)
     response = handler.process()
     return jsonify(response)
+
+@app.route("/v1/player/<string:name>/stats/<string:stat>")
+def player(name, stat):
+    stats = get_total_stat(name, stat)
+    print(stats)
+    return jsonify(player_name=name,
+                    stats=stats)
+
+@app.route("/v1/player/fullstat/<string:name>/")
+def full_stat(name):
+    name = get_target_name(name)
+    json = []
+    for key, value in dict.items(total_stat_map):
+        full_stats = get_total_stat(name, key)
+        json.append(full_stats)
+
+    json_array = np.array(json)
+    return jsonify(player_name = name, stats = json)
 
 if __name__ == "__main__":
     app.run()
