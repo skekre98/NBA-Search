@@ -3948,10 +3948,20 @@ ul {
 
 /**************** copyright part css start ****************/
 /* line 2, E:/166 Basketball/Basketball_Template/sass/_copyright_part.scss */
+
 .copyright_part {
   background-color: #303030;
   padding: 26px 0px;
 }
+
+.authors_copyright_part {
+  background-color: #303030;
+  padding: 26px 0px;
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 
 /* line 5, E:/166 Basketball/Basketball_Template/sass/_copyright_part.scss */
 .copyright_part a {
