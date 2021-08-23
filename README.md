@@ -40,7 +40,7 @@ This is an NBA Analytics website with multiple components such as a chatbot, blo
 
 There is a lot to do so contributions are really appreciated! This is a great project for early stage developers to work with.
 
-To begin it is recommended starting with issues labelled [good first issue](https://github.com/skekre98/NBA-Search/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+To begin it is recommended to start with issues labelled as [good first issue](https://github.com/skekre98/NBA-Search/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
 
 
 How to get started:
