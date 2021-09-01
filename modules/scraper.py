@@ -276,20 +276,21 @@ stat : string
 
 Returns
 -------
-stat_list : list
-    The list of tuples with player name and PER
+advance_stat : float
+    The latest advance stat
 """
 def get_adv_stat(name, stat):
     target_name = get_target_name(name)
     url = get_player_url(target_name)
     resp = requests.get(url)
     page_content = BeautifulSoup(resp.content, "html.parser")
-    advanced_div = page_content.find("div",attrs={"id":"all_advanced"})
-    comments = advanced_div.find_all(string=lambda text: isinstance(text, Comment))[0]
-    stat_html = str(comments)
-    stat_soup = BeautifulSoup(stat_html, "html.parser")
+    advanced_table = page_content.find("table",attrs={"id":"advanced"})
     stat_tag = adv_stat_map[stat]
-    stat_td = stat_soup.find("td", attrs={"data-stat":stat_tag})
+    if advanced_table:
+        stat_td = advanced_table.find_all("td", attrs={"data-stat":stat_tag})[-2]
+    else:
+        stat_td = False
+        
     return float(stat_td.string) if stat_td else 0.0
 
 
