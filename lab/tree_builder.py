@@ -1,5 +1,7 @@
 from anytree import Node
 from anytree.exporter import DotExporter
+from graphviz import Source, render
+
 
 class TreeNode(Node):
 
@@ -15,19 +17,49 @@ class TreeBuilder(object):
     def __init__(self, root):
         # root will be type TreeNode
         self.root = root
-        self.size = 0
+        self.size = 1
 
-    # Function to push to tree 
+    # Function to push to tree
     def push(self, node):
-        # TODO
-        pass
+        # pointer for the current node
+        currNode = self.root
+        while True:
+            # if value of node to be added is greater, go right
+            if node.val > currNode.val:
+                # if right child exists, go right
+                if currNode.right:
+                    currNode = currNode.right
+                # if no right child, add node as right child
+                else:
+                    currNode.right = node
+                    node.parent = currNode
+                    break
+            # else, go left
+            else:
+                # if left child exists, go left
+                if currNode.left:
+                    currNode = currNode.left
+                # if no left child, add node as left child and break
+                else:
+                    currNode.left = node
+                    node.parent = currNode
+                    break
 
-    # Function to remove node from tree 
+        # increment size of tree on pushing new node
+        self.size += 1
+        return
+
+    # Function to remove node from tree
     def pop(self, name):
         # TODO
         pass
 
     # Function to export tree as png(Use DotExporter)
     def export(self, file="tree"):
-        # TODO 
-        pass
+
+        # export to dot file
+        DotExporter(self.root).to_dotfile(file+".dot")
+        Source.from_file(file+'.dot')
+        # render as png
+        render('dot', 'png', file+'.dot')
+        return
