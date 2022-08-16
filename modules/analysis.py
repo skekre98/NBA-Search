@@ -5,6 +5,7 @@ from data.text_data import nba_words
 from modules.scraper import get_player_stats
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -130,6 +131,10 @@ def build_stat_clusters(clusters):
     cluster_map = pd.DataFrame()
     cluster_map['data_index'] = data.index.values
     cluster_map['cluster'] = km.labels_
+    
+    # Check Silhouette Score
+    silhouette_scr = silhouette_score(data, km.labels_, metric='euclidean')
+    print('Silhouette Score: %.3f' % silhouette_scr)
 
     # cluster list 
     player_clusters = []
