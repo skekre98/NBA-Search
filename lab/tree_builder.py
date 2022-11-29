@@ -25,14 +25,16 @@ class TreeBuilder(object):
     def pushHelper(self, root, node):
         if root == None:
             root = node
+            return root
         else:
             if root.val == node.val:
                 return root
             elif root.val < node.val:
                 root.right = pushHelper(self, root.right, node)
+                return root
             else:
                 root.left = pushHelper(self, root.left, node)
-        return root
+                return root
 
     # Function to remove node from tree 
     def pop(self, name):
