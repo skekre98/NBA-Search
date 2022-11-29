@@ -17,10 +17,25 @@ class TreeBuilder(object):
         self.root = root
         self.size = 0
 
-    # Function to push to tree 
+     # Function to push to tree 
     def push(self, node):
-        # TODO
-        pass
+        if (node != None):
+            self.root = pushHelper(self, self.root, node)
+        return self.root
+
+    def pushHelper(self, root, node):
+        if root == None:
+            root = node
+            return root
+        else:
+            if root.val == node.val:
+                return root
+            elif root.val < node.val:
+                root.right = pushHelper(self, root.right, node)
+                return root
+            else:
+                root.left = pushHelper(self, root.left, node)
+                return root
 
     # Function to remove node from tree 
     def pop(self, name):
