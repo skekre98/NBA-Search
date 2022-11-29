@@ -19,7 +19,8 @@ class TreeBuilder(object):
 
      # Function to push to tree 
     def push(self, node):
-        self.root = pushHelper(self, self.root, node)
+        if (node != None):
+            self.root = pushHelper(self, self.root, node)
         return self.root
 
     def pushHelper(self, root, node):
