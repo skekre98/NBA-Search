@@ -21,7 +21,7 @@ def main():
     jb_line = []
     lbj_line = []
     for game in games:
-        home_map, away_map = get_game_stats(game)
+        home_map, away_map = get_game_stats(game,adv_stats=False)
         if "Jimmy Butler" in home_map:
             jb = home_map["Jimmy Butler"]
             lbj = away_map["LeBron James"]

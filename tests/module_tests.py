@@ -110,7 +110,7 @@ class TestScraper(unittest.TestCase):
     # Method to test advanced stat scraper from game link 
     def test_get_game_adv_stats(self):
         adv_stats = ['Minutes Played', 'True Shooting Percentage', 'Effective Field Goal Percentage', '3-Point Attempt Rate', 'Free Throw Attempt Rate']
-        home, away = scraper.get_game_adv_stats("https://www.basketball-reference.com/boxscores/202009300LAL.html")
+        home, away = scraper.get_game_stats("https://www.basketball-reference.com/boxscores/202009300LAL.html",adv_stats=True)
         ad_stats = away['Anthony Davis']
         scraper_stats = set()
         for stat in ad_stats:
